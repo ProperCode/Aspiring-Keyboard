@@ -1,12 +1,10 @@
 ﻿using System.Collections.Generic;
-using System.Diagnostics;
 using System.Windows;
-using WindowsInput;
 using WindowsInput.Native;
 
 namespace Aspiring_Keyboard
 {
-	public class Grid_element
+    public class Grid_element
 	{
 		public string symbols;
 		public uint count = 0;

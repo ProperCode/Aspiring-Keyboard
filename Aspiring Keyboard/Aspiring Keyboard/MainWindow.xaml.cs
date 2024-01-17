@@ -1,8 +1,6 @@
 ﻿//highest error nr: MW005
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -12,11 +10,7 @@ using System.IO;
 using System.Windows.Threading;
 using WindowsInput;
 using WindowsInput.Native;
-using System.Globalization;
 using System.Speech.Synthesis;
-using System.Runtime.Remoting.Lifetime;
-using System.Windows.Documents;
-using System.Windows.Shapes;
 
 //resolved difficult issue: something sometimes messes up mousegrid and it doesn't appear
 
@@ -27,7 +21,7 @@ namespace Aspiring_Keyboard
         const bool check_if_already_running = true;
 
         const string prog_name = "Aspiring Keyboard";
-        const string prog_version = "1.0";
+        const string prog_version = "1.0-Alpha.1";
         const string copyright_text = "Copyright © 2023 Mikołaj Magowski. All rights reserved.";
         const string filename_settings = "settings_ak.txt";
         const string grids_foldername = "grids";
