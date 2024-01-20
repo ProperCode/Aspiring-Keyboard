@@ -1,12 +1,12 @@
-C:\Users\m\Documents\Visual Studio 2022\Projects\Aspiring Keyboard\Aspiring Keyboard\bin\Debug\Aspiring Keyboard.exe.config
-C:\Users\m\Documents\Visual Studio 2022\Projects\Aspiring Keyboard\Aspiring Keyboard\bin\Debug\Aspiring Keyboard.exe
-C:\Users\m\Documents\Visual Studio 2022\Projects\Aspiring Keyboard\Aspiring Keyboard\bin\Debug\Aspiring Keyboard.pdb
 C:\Users\m\Documents\Visual Studio 2022\Projects\Aspiring Keyboard\Aspiring Keyboard\obj\Debug\Aspiring Keyboard.csproj.AssemblyReference.cache
 C:\Users\m\Documents\Visual Studio 2022\Projects\Aspiring Keyboard\Aspiring Keyboard\obj\Debug\MainWindow.g.cs
 C:\Users\m\Documents\Visual Studio 2022\Projects\Aspiring Keyboard\Aspiring Keyboard\obj\Debug\MouseGrid.g.cs
 C:\Users\m\Documents\Visual Studio 2022\Projects\Aspiring Keyboard\Aspiring Keyboard\obj\Debug\App.g.cs
 C:\Users\m\Documents\Visual Studio 2022\Projects\Aspiring Keyboard\Aspiring Keyboard\obj\Debug\Aspiring Keyboard_MarkupCompile.cache
 C:\Users\m\Documents\Visual Studio 2022\Projects\Aspiring Keyboard\Aspiring Keyboard\obj\Debug\Aspiring Keyboard_MarkupCompile.lref
+C:\Users\m\Documents\Visual Studio 2022\Projects\Aspiring Keyboard\Aspiring Keyboard\bin\Debug\Aspiring Keyboard.exe.config
+C:\Users\m\Documents\Visual Studio 2022\Projects\Aspiring Keyboard\Aspiring Keyboard\bin\Debug\Aspiring Keyboard.exe
+C:\Users\m\Documents\Visual Studio 2022\Projects\Aspiring Keyboard\Aspiring Keyboard\bin\Debug\Aspiring Keyboard.pdb
 C:\Users\m\Documents\Visual Studio 2022\Projects\Aspiring Keyboard\Aspiring Keyboard\obj\Debug\MainWindow.baml
 C:\Users\m\Documents\Visual Studio 2022\Projects\Aspiring Keyboard\Aspiring Keyboard\obj\Debug\MouseGrid.baml
 C:\Users\m\Documents\Visual Studio 2022\Projects\Aspiring Keyboard\Aspiring Keyboard\obj\Debug\Aspiring Keyboard.g.resources

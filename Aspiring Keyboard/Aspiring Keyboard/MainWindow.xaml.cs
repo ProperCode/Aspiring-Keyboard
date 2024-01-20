@@ -22,7 +22,7 @@ namespace Aspiring_Keyboard
 
         const string prog_name = "Aspiring Keyboard";
         const string prog_version = "1.0-Alpha.1";
-        const string copyright_text = "Copyright © 2023 Mikołaj Magowski. All rights reserved.";
+        const string copyright_text = "Copyright © 2024 Mikołaj Magowski. All rights reserved.";
         const string filename_settings = "settings_ak.txt";
         const string grids_foldername = "grids";
         const bool resized_grid = true;
@@ -108,23 +108,23 @@ namespace Aspiring_Keyboard
         bool green_mode = true;
         bool read_status = true;
 
-        Command left_shift_command_a = Command.none;
-        Command right_shift_command_a = Command.none;
-        Command left_alt_command_a = Command.none;
-        Command right_alt_command_a = Command.none;
-        Command left_ctrl_command_a = Command.none;
-        Command right_ctrl_command_a = Command.none;
+        Command left_shift_action_a = Command.none;
+        Command right_shift_action_a = Command.none;
+        Command left_alt_action_a = Command.none;
+        Command right_alt_action_a = Command.none;
+        Command left_ctrl_action_a = Command.none;
+        Command right_ctrl_action_a = Command.none;
 
-        Command left_shift_command_b = Command.none;
-        Command right_shift_command_b = Command.none;
-        Command left_alt_command_b = Command.none;
-        Command right_alt_command_b = Command.none;
-        Command left_ctrl_command_b = Command.none;
-        Command right_ctrl_command_b = Command.none;
+        Command left_shift_action_b = Command.none;
+        Command right_shift_action_b = Command.none;
+        Command left_alt_action_b = Command.none;
+        Command right_alt_action_b = Command.none;
+        Command left_ctrl_action_b = Command.none;
+        Command right_ctrl_action_b = Command.none;
 
         Command command = Command.none;
 
-        bool repeat_command_indefinitely = false;
+        bool repeat_action_indefinitely = false;
         
         public MainWindow()
         {
@@ -187,18 +187,18 @@ namespace Aspiring_Keyboard
 
                 foreach (Command command in (Command[])Enum.GetValues(typeof(Command)))
                 {
-                    CBlshift_command_a.Items.Add(command.ToString().Replace("_", " ").FirstCharToUpper());
-                    CBrshift_command_a.Items.Add(command.ToString().Replace("_", " ").FirstCharToUpper());
-                    CBlalt_command_a.Items.Add(command.ToString().Replace("_", " ").FirstCharToUpper());
-                    CBralt_command_a.Items.Add(command.ToString().Replace("_", " ").FirstCharToUpper());
-                    CBlctrl_command_a.Items.Add(command.ToString().Replace("_", " ").FirstCharToUpper());
-                    CBrctrl_command_a.Items.Add(command.ToString().Replace("_", " ").FirstCharToUpper());
-                    CBlshift_command_b.Items.Add(command.ToString().Replace("_", " ").FirstCharToUpper());
-                    CBrshift_command_b.Items.Add(command.ToString().Replace("_", " ").FirstCharToUpper());
-                    CBlalt_command_b.Items.Add(command.ToString().Replace("_", " ").FirstCharToUpper());
-                    CBralt_command_b.Items.Add(command.ToString().Replace("_", " ").FirstCharToUpper());
-                    CBlctrl_command_b.Items.Add(command.ToString().Replace("_", " ").FirstCharToUpper());
-                    CBrctrl_command_b.Items.Add(command.ToString().Replace("_", " ").FirstCharToUpper());
+                    CBlshift_action_a.Items.Add(command.ToString().Replace("_", " ").FirstCharToUpper());
+                    CBrshift_action_a.Items.Add(command.ToString().Replace("_", " ").FirstCharToUpper());
+                    CBlalt_action_a.Items.Add(command.ToString().Replace("_", " ").FirstCharToUpper());
+                    CBralt_action_a.Items.Add(command.ToString().Replace("_", " ").FirstCharToUpper());
+                    CBlctrl_action_a.Items.Add(command.ToString().Replace("_", " ").FirstCharToUpper());
+                    CBrctrl_action_a.Items.Add(command.ToString().Replace("_", " ").FirstCharToUpper());
+                    CBlshift_action_b.Items.Add(command.ToString().Replace("_", " ").FirstCharToUpper());
+                    CBrshift_action_b.Items.Add(command.ToString().Replace("_", " ").FirstCharToUpper());
+                    CBlalt_action_b.Items.Add(command.ToString().Replace("_", " ").FirstCharToUpper());
+                    CBralt_action_b.Items.Add(command.ToString().Replace("_", " ").FirstCharToUpper());
+                    CBlctrl_action_b.Items.Add(command.ToString().Replace("_", " ").FirstCharToUpper());
+                    CBrctrl_action_b.Items.Add(command.ToString().Replace("_", " ").FirstCharToUpper());
                 }
 
                 CBlines.Items.Add("None");
@@ -261,7 +261,7 @@ namespace Aspiring_Keyboard
 
                 if (read_status) ss.SpeakAsync("Green mode enabled");
 
-                CBlshift_command_a.Focus();
+                CBlshift_action_a.Focus();
             }
             catch (Exception ex)
             {
@@ -436,7 +436,7 @@ namespace Aspiring_Keyboard
                                     }
                                     else if (IsKeyPushedDown(System.Windows.Forms.Keys.CapsLock))
                                     {
-                                        repeat_command_indefinitely = true;
+                                        repeat_action_indefinitely = true;
                                         break;
                                     }
                                 }
@@ -448,7 +448,7 @@ namespace Aspiring_Keyboard
                                     Thread.Sleep(10);
                                 }
 
-                                if (repeat_command_indefinitely)
+                                if (repeat_action_indefinitely)
                                 {
                                     Thread.Sleep(10);
 
@@ -460,9 +460,9 @@ namespace Aspiring_Keyboard
                                 if (cancel == false)
                                 {
                                     if(green_mode)
-                                        command = left_shift_command_a;
+                                        command = left_shift_action_a;
                                     else
-                                        command = left_shift_command_b;
+                                        command = left_shift_action_b;
                                 }
                             }
                             else if (IsKeyPushedDown(System.Windows.Forms.Keys.RShiftKey))
@@ -498,7 +498,7 @@ namespace Aspiring_Keyboard
                                     }
                                     else if (IsKeyPushedDown(System.Windows.Forms.Keys.CapsLock))
                                     {
-                                        repeat_command_indefinitely = true;
+                                        repeat_action_indefinitely = true;
                                         break;
                                     }
 
@@ -512,7 +512,7 @@ namespace Aspiring_Keyboard
                                     Thread.Sleep(10);
                                 }
 
-                                if (repeat_command_indefinitely)
+                                if (repeat_action_indefinitely)
                                 {
                                     Thread.Sleep(10);
 
@@ -522,9 +522,9 @@ namespace Aspiring_Keyboard
                                 if (cancel == false)
                                 {
                                     if (green_mode)
-                                        command = right_shift_command_a;
+                                        command = right_shift_action_a;
                                     else
-                                        command = right_shift_command_b;
+                                        command = right_shift_action_b;
                                 }
                             }
                             else if (IsKeyPushedDown(System.Windows.Forms.Keys.LMenu))
@@ -565,9 +565,9 @@ namespace Aspiring_Keyboard
                                 if (cancel == false)
                                 {
                                     if (green_mode)
-                                        command = left_alt_command_a;
+                                        command = left_alt_action_a;
                                     else
-                                        command = left_alt_command_b;
+                                        command = left_alt_action_b;
                                 }
                             }
                             else if (IsKeyPushedDown(System.Windows.Forms.Keys.RMenu))
@@ -610,9 +610,9 @@ namespace Aspiring_Keyboard
                                 if (cancel == false)
                                 {
                                     if (green_mode)
-                                        command = right_alt_command_a;
+                                        command = right_alt_action_a;
                                     else
-                                        command = right_alt_command_b;
+                                        command = right_alt_action_b;
                                 }
                             }
                             else if (IsKeyPushedDown(System.Windows.Forms.Keys.LControlKey))
@@ -644,9 +644,9 @@ namespace Aspiring_Keyboard
                                 if (cancel == false)
                                 {
                                     if (green_mode)
-                                        command = left_ctrl_command_a;
+                                        command = left_ctrl_action_a;
                                     else
-                                        command = left_ctrl_command_b;
+                                        command = left_ctrl_action_b;
                                 }
                             }
                             else if (IsKeyPushedDown(System.Windows.Forms.Keys.RControlKey))
@@ -678,9 +678,9 @@ namespace Aspiring_Keyboard
                                 if (cancel == false)
                                 {
                                     if (green_mode)
-                                        command = right_ctrl_command_a;
+                                        command = right_ctrl_action_a;
                                     else
-                                        command = right_ctrl_command_b;
+                                        command = right_ctrl_action_b;
                                 }
                             }
                             else if (IsKeyPushedDown(System.Windows.Forms.Keys.CapsLock))
@@ -771,7 +771,7 @@ namespace Aspiring_Keyboard
                                     release_buttons_and_keys();
                                 }
                             }
-                            while (repeat_command_indefinitely);
+                            while (repeat_action_indefinitely);
                         }
                     }
                 }
@@ -1110,7 +1110,7 @@ namespace Aspiring_Keyboard
                     {
                         string status = "";
 
-                        if (repeat_command_indefinitely)
+                        if (repeat_action_indefinitely)
                             status = "indefinite ";
 
                         if (command == Command.drag_and_drop && d == 0)
@@ -1173,7 +1173,7 @@ namespace Aspiring_Keyboard
                             }
 
                             cancel = true;
-                            repeat_command_indefinitely = false;
+                            repeat_action_indefinitely = false;
                             d = 2;
                         }
                         else if (IsKeyPushedDown(System.Windows.Forms.Keys.CapsLock))
@@ -1574,7 +1574,7 @@ namespace Aspiring_Keyboard
                 }
             }
 
-            if (repeat_command_indefinitely == false)
+            if (repeat_action_indefinitely == false)
             {
                 command = Command.none;
                 execution_nr = 0;

@@ -55,39 +55,39 @@
                 <TextBox x:Name="TBcontrol_keys" Text="11" Width="320" Height="300" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" Margin="0,0,0,0" Panel.ZIndex="99"/>
             </WrapPanel>
         </GroupBox>
-        <GroupBox Header="Green Mode Commands" HorizontalAlignment="Left" Height="222" VerticalAlignment="Top" Width="354" FontSize="14" Canvas.Top="10" Canvas.Left="10">
+        <GroupBox Header="Green Mode Actions" HorizontalAlignment="Left" Height="222" VerticalAlignment="Top" Width="354" FontSize="14" Canvas.Top="10" Canvas.Left="10">
             <WrapPanel HorizontalAlignment="Left" Height="183" Margin="10,10,-2,0" VerticalAlignment="Top" Width="334">
-                <Label Content="LShift Command:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Margin="0,0,8,0"/>
-                <ComboBox x:Name="CBlshift_command_a" HorizontalAlignment="Left" VerticalAlignment="Top" Width="196" FontSize="14" Margin="0,4,11,0" Panel.ZIndex="1"/>
-                <Label Content="RShift Command:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Margin="0,0,7,0"/>
-                <ComboBox x:Name="CBrshift_command_a" HorizontalAlignment="Left" VerticalAlignment="Top" Width="196" FontSize="14" Margin="0,4,11,0" Panel.ZIndex="2"/>
-                <Label Content="LAlt Command:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Margin="0,0,19,0"/>
-                <ComboBox x:Name="CBlalt_command_a" HorizontalAlignment="Left" VerticalAlignment="Top" Width="196" FontSize="14" Margin="0,4,11,0" Panel.ZIndex="3"/>
-                <Label Content="RAlt Command:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Margin="0,0,17,0"/>
-                <ComboBox x:Name="CBralt_command_a" HorizontalAlignment="Left" VerticalAlignment="Top" Width="196" FontSize="14" Margin="0,4,11,0" Panel.ZIndex="4"/>
-                <Label Content="LCtrl Command:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Margin="0,0,15,0"/>
-                <ComboBox x:Name="CBlctrl_command_a" HorizontalAlignment="Left" VerticalAlignment="Top" Width="196" FontSize="14" Margin="0,4,11,0" Panel.ZIndex="5"/>
-                <Label Content="RCtrl Command:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Margin="0,0,13,0"/>
-                <ComboBox x:Name="CBrctrl_command_a" HorizontalAlignment="Left" VerticalAlignment="Top" Width="196" FontSize="14" Margin="0,4,11,0" Panel.ZIndex="6"/>
+                <Label Content="LShift Action:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Margin="0,0,8,0"/>
+                <ComboBox x:Name="CBlshift_action_a" HorizontalAlignment="Left" VerticalAlignment="Top" Width="196" FontSize="14" Margin="0,4,11,0" Panel.ZIndex="1"/>
+                <Label Content="RShift Action:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Margin="0,0,7,0"/>
+                <ComboBox x:Name="CBrshift_action_a" HorizontalAlignment="Left" VerticalAlignment="Top" Width="196" FontSize="14" Margin="0,4,11,0" Panel.ZIndex="2"/>
+                <Label Content="LAlt Action:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Margin="0,0,19,0"/>
+                <ComboBox x:Name="CBlalt_action_a" HorizontalAlignment="Left" VerticalAlignment="Top" Width="196" FontSize="14" Margin="0,4,11,0" Panel.ZIndex="3"/>
+                <Label Content="RAlt Action:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Margin="0,0,17,0"/>
+                <ComboBox x:Name="CBralt_action_a" HorizontalAlignment="Left" VerticalAlignment="Top" Width="196" FontSize="14" Margin="0,4,11,0" Panel.ZIndex="4"/>
+                <Label Content="LCtrl Action:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Margin="0,0,15,0"/>
+                <ComboBox x:Name="CBlctrl_action_a" HorizontalAlignment="Left" VerticalAlignment="Top" Width="196" FontSize="14" Margin="0,4,11,0" Panel.ZIndex="5"/>
+                <Label Content="RCtrl Action:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Margin="0,0,13,0"/>
+                <ComboBox x:Name="CBrctrl_action_a" HorizontalAlignment="Left" VerticalAlignment="Top" Width="196" FontSize="14" Margin="0,4,11,0" Panel.ZIndex="6"/>
             </WrapPanel>
         </GroupBox>
-        <GroupBox Header="Blue Mode Commands" HorizontalAlignment="Left" Height="222" VerticalAlignment="Top" Width="354" FontSize="14" Canvas.Top="240" Canvas.Left="10">
+        <GroupBox Header="Blue Mode Actions" HorizontalAlignment="Left" Height="222" VerticalAlignment="Top" Width="354" FontSize="14" Canvas.Top="240" Canvas.Left="10">
             <WrapPanel HorizontalAlignment="Left" Height="183" Margin="10,10,-2,0" VerticalAlignment="Top" Width="334">
-                <Label Content="LShift Command:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Margin="0,0,8,0"/>
-                <ComboBox x:Name="CBlshift_command_b" HorizontalAlignment="Left" VerticalAlignment="Top" Width="196" FontSize="14" Margin="0,4,11,0" Panel.ZIndex="11"/>
-                <Label Content="RShift Command:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Margin="0,0,7,0"/>
-                <ComboBox x:Name="CBrshift_command_b" HorizontalAlignment="Left" VerticalAlignment="Top" Width="196" FontSize="14" Margin="0,4,11,0" Panel.ZIndex="12"/>
-                <Label Content="LAlt Command:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Margin="0,0,19,0"/>
-                <ComboBox x:Name="CBlalt_command_b" HorizontalAlignment="Left" VerticalAlignment="Top" Width="196" FontSize="14" Margin="0,4,11,0" Panel.ZIndex="13"/>
-                <Label Content="RAlt Command:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Margin="0,0,17,0"/>
-                <ComboBox x:Name="CBralt_command_b" HorizontalAlignment="Left" VerticalAlignment="Top" Width="196" FontSize="14" Margin="0,4,11,0" Panel.ZIndex="14"/>
-                <Label Content="LCtrl Command:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Margin="0,0,15,0"/>
-                <ComboBox x:Name="CBlctrl_command_b" HorizontalAlignment="Left" VerticalAlignment="Top" Width="196" FontSize="14" Margin="0,4,11,0" Panel.ZIndex="15"/>
-                <Label Content="RCtrl Command:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Margin="0,0,13,0"/>
-                <ComboBox x:Name="CBrctrl_command_b" HorizontalAlignment="Left" VerticalAlignment="Top" Width="196" FontSize="14" Margin="0,4,11,0" Panel.ZIndex="16"/>
+                <Label Content="LShift Action:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Margin="0,0,8,0"/>
+                <ComboBox x:Name="CBlshift_action_b" HorizontalAlignment="Left" VerticalAlignment="Top" Width="196" FontSize="14" Margin="0,4,11,0" Panel.ZIndex="11"/>
+                <Label Content="RShift Action:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Margin="0,0,7,0"/>
+                <ComboBox x:Name="CBrshift_action_b" HorizontalAlignment="Left" VerticalAlignment="Top" Width="196" FontSize="14" Margin="0,4,11,0" Panel.ZIndex="12"/>
+                <Label Content="LAlt Action:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Margin="0,0,19,0"/>
+                <ComboBox x:Name="CBlalt_action_b" HorizontalAlignment="Left" VerticalAlignment="Top" Width="196" FontSize="14" Margin="0,4,11,0" Panel.ZIndex="13"/>
+                <Label Content="RAlt Action:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Margin="0,0,17,0"/>
+                <ComboBox x:Name="CBralt_action_b" HorizontalAlignment="Left" VerticalAlignment="Top" Width="196" FontSize="14" Margin="0,4,11,0" Panel.ZIndex="14"/>
+                <Label Content="LCtrl Action:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Margin="0,0,15,0"/>
+                <ComboBox x:Name="CBlctrl_action_b" HorizontalAlignment="Left" VerticalAlignment="Top" Width="196" FontSize="14" Margin="0,4,11,0" Panel.ZIndex="15"/>
+                <Label Content="RCtrl Action:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Margin="0,0,13,0"/>
+                <ComboBox x:Name="CBrctrl_action_b" HorizontalAlignment="Left" VerticalAlignment="Top" Width="196" FontSize="14" Margin="0,4,11,0" Panel.ZIndex="16"/>
             </WrapPanel>
         </GroupBox>
         <Label Content="This program allows using a computer without a mouse." Canvas.Left="744" Canvas.Top="372"/>
-        <Label Content="Copyright © 2023 Mikołaj Magowski" Canvas.Left="744" Canvas.Top="402"/>
+        <Label Content="Copyright © 2024 Mikołaj Magowski" Canvas.Left="744" Canvas.Top="402"/>
     </Canvas>
 </Window>
