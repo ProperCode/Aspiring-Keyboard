@@ -43,7 +43,7 @@ namespace Aspiring_Keyboard
 			}
 		}
 		
-		public enum Command
+		public enum ActionX
 		{
 			left_click,
 			right_click,

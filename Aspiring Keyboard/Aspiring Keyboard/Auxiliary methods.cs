@@ -235,280 +235,280 @@ namespace Aspiring_Keyboard
         void set_values()
         {
             if (CBlshift_action_a.SelectedIndex == 0)
-                left_shift_action_a = Command.left_click;
+                left_shift_action_a = ActionX.left_click;
             else if (CBlshift_action_a.SelectedIndex == 1)
-                left_shift_action_a = Command.right_click;
+                left_shift_action_a = ActionX.right_click;
             else if (CBlshift_action_a.SelectedIndex == 2)
-                left_shift_action_a = Command.double_left_click;
+                left_shift_action_a = ActionX.double_left_click;
             else if (CBlshift_action_a.SelectedIndex == 3)
-                left_shift_action_a = Command.triple_left_click;
+                left_shift_action_a = ActionX.triple_left_click;
             else if (CBlshift_action_a.SelectedIndex == 4)
-                left_shift_action_a = Command.center_left_click;
+                left_shift_action_a = ActionX.center_left_click;
             else if (CBlshift_action_a.SelectedIndex == 5)
-                left_shift_action_a = Command.ctrl_left_click;
+                left_shift_action_a = ActionX.ctrl_left_click;
             else if (CBlshift_action_a.SelectedIndex == 6)
-                left_shift_action_a = Command.move_mouse;
+                left_shift_action_a = ActionX.move_mouse;
             else if (CBlshift_action_a.SelectedIndex == 7)
-                left_shift_action_a = Command.drag_and_drop;
+                left_shift_action_a = ActionX.drag_and_drop;
             else if (CBlshift_action_a.SelectedIndex == 8)
-                left_shift_action_a = Command.hold_left;
+                left_shift_action_a = ActionX.hold_left;
             else if (CBlshift_action_a.SelectedIndex == 9)
-                left_shift_action_a = Command.hold_right;
+                left_shift_action_a = ActionX.hold_right;
             else if (CBlshift_action_a.SelectedIndex == 0)
-                left_shift_action_a = Command.none;
+                left_shift_action_a = ActionX.none;
 
             if (CBrshift_action_a.SelectedIndex == 0)
-                right_shift_action_a = Command.left_click;
+                right_shift_action_a = ActionX.left_click;
             else if (CBrshift_action_a.SelectedIndex == 1)
-                right_shift_action_a = Command.right_click;
+                right_shift_action_a = ActionX.right_click;
             else if (CBrshift_action_a.SelectedIndex == 2)
-                right_shift_action_a = Command.double_left_click;
+                right_shift_action_a = ActionX.double_left_click;
             else if (CBrshift_action_a.SelectedIndex == 3)
-                right_shift_action_a = Command.triple_left_click;
+                right_shift_action_a = ActionX.triple_left_click;
             else if (CBrshift_action_a.SelectedIndex == 4)
-                right_shift_action_a = Command.center_left_click;
+                right_shift_action_a = ActionX.center_left_click;
             else if (CBrshift_action_a.SelectedIndex == 5)
-                right_shift_action_a = Command.ctrl_left_click;
+                right_shift_action_a = ActionX.ctrl_left_click;
             else if (CBrshift_action_a.SelectedIndex == 6)
-                right_shift_action_a = Command.move_mouse;
+                right_shift_action_a = ActionX.move_mouse;
             else if (CBrshift_action_a.SelectedIndex == 7)
-                right_shift_action_a = Command.drag_and_drop;
+                right_shift_action_a = ActionX.drag_and_drop;
             else if (CBrshift_action_a.SelectedIndex == 8)
-                right_shift_action_a = Command.hold_left;
+                right_shift_action_a = ActionX.hold_left;
             else if (CBrshift_action_a.SelectedIndex == 9)
-                right_shift_action_a = Command.hold_right;
+                right_shift_action_a = ActionX.hold_right;
             else if (CBrshift_action_a.SelectedIndex == 0)
-                right_shift_action_a = Command.none;
+                right_shift_action_a = ActionX.none;
 
             if (CBlshift_action_b.SelectedIndex == 0)
-                left_shift_action_b = Command.left_click;
+                left_shift_action_b = ActionX.left_click;
             else if (CBlshift_action_b.SelectedIndex == 1)
-                left_shift_action_b = Command.right_click;
+                left_shift_action_b = ActionX.right_click;
             else if (CBlshift_action_b.SelectedIndex == 2)
-                left_shift_action_b = Command.double_left_click;
+                left_shift_action_b = ActionX.double_left_click;
             else if (CBlshift_action_b.SelectedIndex == 3)
-                left_shift_action_b = Command.triple_left_click;
+                left_shift_action_b = ActionX.triple_left_click;
             else if (CBlshift_action_b.SelectedIndex == 4)
-                left_shift_action_b = Command.center_left_click;
+                left_shift_action_b = ActionX.center_left_click;
             else if (CBlshift_action_b.SelectedIndex == 5)
-                left_shift_action_b = Command.ctrl_left_click;
+                left_shift_action_b = ActionX.ctrl_left_click;
             else if (CBlshift_action_b.SelectedIndex == 6)
-                left_shift_action_b = Command.move_mouse;
+                left_shift_action_b = ActionX.move_mouse;
             else if (CBlshift_action_b.SelectedIndex == 7)
-                left_shift_action_b = Command.drag_and_drop;
+                left_shift_action_b = ActionX.drag_and_drop;
             else if (CBlshift_action_b.SelectedIndex == 8)
-                left_shift_action_b = Command.hold_left;
+                left_shift_action_b = ActionX.hold_left;
             else if (CBlshift_action_b.SelectedIndex == 9)
-                left_shift_action_b = Command.hold_right;
+                left_shift_action_b = ActionX.hold_right;
             else if (CBlshift_action_b.SelectedIndex == 0)
-                left_shift_action_b = Command.none;
+                left_shift_action_b = ActionX.none;
 
             if (CBrshift_action_b.SelectedIndex == 0)
-                right_shift_action_b = Command.left_click;
+                right_shift_action_b = ActionX.left_click;
             else if (CBrshift_action_b.SelectedIndex == 1)
-                right_shift_action_b = Command.right_click;
+                right_shift_action_b = ActionX.right_click;
             else if (CBrshift_action_b.SelectedIndex == 2)
-                right_shift_action_b = Command.double_left_click;
+                right_shift_action_b = ActionX.double_left_click;
             else if (CBrshift_action_b.SelectedIndex == 3)
-                right_shift_action_b = Command.triple_left_click;
+                right_shift_action_b = ActionX.triple_left_click;
             else if (CBrshift_action_b.SelectedIndex == 4)
-                right_shift_action_b = Command.center_left_click;
+                right_shift_action_b = ActionX.center_left_click;
             else if (CBrshift_action_b.SelectedIndex == 5)
-                right_shift_action_b = Command.ctrl_left_click;
+                right_shift_action_b = ActionX.ctrl_left_click;
             else if (CBrshift_action_b.SelectedIndex == 6)
-                right_shift_action_b = Command.move_mouse;
+                right_shift_action_b = ActionX.move_mouse;
             else if (CBrshift_action_b.SelectedIndex == 7)
-                right_shift_action_b = Command.drag_and_drop;
+                right_shift_action_b = ActionX.drag_and_drop;
             else if (CBrshift_action_b.SelectedIndex == 8)
-                right_shift_action_b = Command.hold_left;
+                right_shift_action_b = ActionX.hold_left;
             else if (CBrshift_action_b.SelectedIndex == 9)
-                right_shift_action_b = Command.hold_right;
+                right_shift_action_b = ActionX.hold_right;
             else if (CBrshift_action_b.SelectedIndex == 0)
-                right_shift_action_b = Command.none;
+                right_shift_action_b = ActionX.none;
 
             if (CBlalt_action_a.SelectedIndex == 0)
-                left_alt_action_a = Command.left_click;
+                left_alt_action_a = ActionX.left_click;
             else if (CBlalt_action_a.SelectedIndex == 1)
-                left_alt_action_a = Command.right_click;
+                left_alt_action_a = ActionX.right_click;
             else if (CBlalt_action_a.SelectedIndex == 2)
-                left_alt_action_a = Command.double_left_click;
+                left_alt_action_a = ActionX.double_left_click;
             else if (CBlalt_action_a.SelectedIndex == 3)
-                left_alt_action_a = Command.triple_left_click;
+                left_alt_action_a = ActionX.triple_left_click;
             else if (CBlalt_action_a.SelectedIndex == 4)
-                left_alt_action_a = Command.center_left_click;
+                left_alt_action_a = ActionX.center_left_click;
             else if (CBlalt_action_a.SelectedIndex == 5)
-                left_alt_action_a = Command.ctrl_left_click;
+                left_alt_action_a = ActionX.ctrl_left_click;
             else if (CBlalt_action_a.SelectedIndex == 6)
-                left_alt_action_a = Command.move_mouse;
+                left_alt_action_a = ActionX.move_mouse;
             else if (CBlalt_action_a.SelectedIndex == 7)
-                left_alt_action_a = Command.drag_and_drop;
+                left_alt_action_a = ActionX.drag_and_drop;
             else if (CBlalt_action_a.SelectedIndex == 8)
-                left_alt_action_a = Command.hold_left;
+                left_alt_action_a = ActionX.hold_left;
             else if (CBlalt_action_a.SelectedIndex == 9)
-                left_alt_action_a = Command.hold_right;
+                left_alt_action_a = ActionX.hold_right;
             else if (CBlalt_action_a.SelectedIndex == 0)
-                left_alt_action_a = Command.none;
+                left_alt_action_a = ActionX.none;
 
             if (CBralt_action_a.SelectedIndex == 0)
-                right_alt_action_a = Command.left_click;
+                right_alt_action_a = ActionX.left_click;
             else if (CBralt_action_a.SelectedIndex == 1)
-                right_alt_action_a = Command.right_click;
+                right_alt_action_a = ActionX.right_click;
             else if (CBralt_action_a.SelectedIndex == 2)
-                right_alt_action_a = Command.double_left_click;
+                right_alt_action_a = ActionX.double_left_click;
             else if (CBralt_action_a.SelectedIndex == 3)
-                right_alt_action_a = Command.triple_left_click;
+                right_alt_action_a = ActionX.triple_left_click;
             else if (CBralt_action_a.SelectedIndex == 4)
-                right_alt_action_a = Command.center_left_click;
+                right_alt_action_a = ActionX.center_left_click;
             else if (CBralt_action_a.SelectedIndex == 5)
-                right_alt_action_a = Command.ctrl_left_click;
+                right_alt_action_a = ActionX.ctrl_left_click;
             else if (CBralt_action_a.SelectedIndex == 6)
-                right_alt_action_a = Command.move_mouse;
+                right_alt_action_a = ActionX.move_mouse;
             else if (CBralt_action_a.SelectedIndex == 7)
-                right_alt_action_a = Command.drag_and_drop;
+                right_alt_action_a = ActionX.drag_and_drop;
             else if (CBralt_action_a.SelectedIndex == 8)
-                right_alt_action_a = Command.hold_left;
+                right_alt_action_a = ActionX.hold_left;
             else if (CBralt_action_a.SelectedIndex == 9)
-                right_alt_action_a = Command.hold_right;
+                right_alt_action_a = ActionX.hold_right;
             else if (CBralt_action_a.SelectedIndex == 0)
-                right_alt_action_a = Command.none;
+                right_alt_action_a = ActionX.none;
 
             if (CBlalt_action_b.SelectedIndex == 0)
-                left_alt_action_b = Command.left_click;
+                left_alt_action_b = ActionX.left_click;
             else if (CBlalt_action_b.SelectedIndex == 1)
-                left_alt_action_b = Command.right_click;
+                left_alt_action_b = ActionX.right_click;
             else if (CBlalt_action_b.SelectedIndex == 2)
-                left_alt_action_b = Command.double_left_click;
+                left_alt_action_b = ActionX.double_left_click;
             else if (CBlalt_action_b.SelectedIndex == 3)
-                left_alt_action_b = Command.triple_left_click;
+                left_alt_action_b = ActionX.triple_left_click;
             else if (CBlalt_action_b.SelectedIndex == 4)
-                left_alt_action_b = Command.center_left_click;
+                left_alt_action_b = ActionX.center_left_click;
             else if (CBlalt_action_b.SelectedIndex == 5)
-                left_alt_action_b = Command.ctrl_left_click;
+                left_alt_action_b = ActionX.ctrl_left_click;
             else if (CBlalt_action_b.SelectedIndex == 6)
-                left_alt_action_b = Command.move_mouse;
+                left_alt_action_b = ActionX.move_mouse;
             else if (CBlalt_action_b.SelectedIndex == 7)
-                left_alt_action_b = Command.drag_and_drop;
+                left_alt_action_b = ActionX.drag_and_drop;
             else if (CBlalt_action_b.SelectedIndex == 8)
-                left_alt_action_b = Command.hold_left;
+                left_alt_action_b = ActionX.hold_left;
             else if (CBlalt_action_b.SelectedIndex == 9)
-                left_alt_action_b = Command.hold_right;
+                left_alt_action_b = ActionX.hold_right;
             else if (CBlalt_action_b.SelectedIndex == 0)
-                left_alt_action_b = Command.none;
+                left_alt_action_b = ActionX.none;
 
             if (CBralt_action_b.SelectedIndex == 0)
-                right_alt_action_b = Command.left_click;
+                right_alt_action_b = ActionX.left_click;
             else if (CBralt_action_b.SelectedIndex == 1)
-                right_alt_action_b = Command.right_click;
+                right_alt_action_b = ActionX.right_click;
             else if (CBralt_action_b.SelectedIndex == 2)
-                right_alt_action_b = Command.double_left_click;
+                right_alt_action_b = ActionX.double_left_click;
             else if (CBralt_action_b.SelectedIndex == 3)
-                right_alt_action_b = Command.triple_left_click;
+                right_alt_action_b = ActionX.triple_left_click;
             else if (CBralt_action_b.SelectedIndex == 4)
-                right_alt_action_b = Command.center_left_click;
+                right_alt_action_b = ActionX.center_left_click;
             else if (CBralt_action_b.SelectedIndex == 5)
-                right_alt_action_b = Command.ctrl_left_click;
+                right_alt_action_b = ActionX.ctrl_left_click;
             else if (CBralt_action_b.SelectedIndex == 6)
-                right_alt_action_b = Command.move_mouse;
+                right_alt_action_b = ActionX.move_mouse;
             else if (CBralt_action_b.SelectedIndex == 7)
-                right_alt_action_b = Command.drag_and_drop;
+                right_alt_action_b = ActionX.drag_and_drop;
             else if (CBralt_action_b.SelectedIndex == 8)
-                right_alt_action_b = Command.hold_left;
+                right_alt_action_b = ActionX.hold_left;
             else if (CBralt_action_b.SelectedIndex == 9)
-                right_alt_action_b = Command.hold_right;
+                right_alt_action_b = ActionX.hold_right;
             else if (CBralt_action_b.SelectedIndex == 0)
-                right_alt_action_b = Command.none;
+                right_alt_action_b = ActionX.none;
 
             if (CBlctrl_action_a.SelectedIndex == 0)
-                left_ctrl_action_a = Command.left_click;
+                left_ctrl_action_a = ActionX.left_click;
             else if (CBlctrl_action_a.SelectedIndex == 1)
-                left_ctrl_action_a = Command.right_click;
+                left_ctrl_action_a = ActionX.right_click;
             else if (CBlctrl_action_a.SelectedIndex == 2)
-                left_ctrl_action_a = Command.double_left_click;
+                left_ctrl_action_a = ActionX.double_left_click;
             else if (CBlctrl_action_a.SelectedIndex == 3)
-                left_ctrl_action_a = Command.triple_left_click;
+                left_ctrl_action_a = ActionX.triple_left_click;
             else if (CBlctrl_action_a.SelectedIndex == 4)
-                left_ctrl_action_a = Command.center_left_click;
+                left_ctrl_action_a = ActionX.center_left_click;
             else if (CBlctrl_action_a.SelectedIndex == 5)
-                left_ctrl_action_a = Command.ctrl_left_click;
+                left_ctrl_action_a = ActionX.ctrl_left_click;
             else if (CBlctrl_action_a.SelectedIndex == 6)
-                left_ctrl_action_a = Command.move_mouse;
+                left_ctrl_action_a = ActionX.move_mouse;
             else if (CBlctrl_action_a.SelectedIndex == 7)
-                left_ctrl_action_a = Command.drag_and_drop;
+                left_ctrl_action_a = ActionX.drag_and_drop;
             else if (CBlctrl_action_a.SelectedIndex == 8)
-                left_ctrl_action_a = Command.hold_left;
+                left_ctrl_action_a = ActionX.hold_left;
             else if (CBlctrl_action_a.SelectedIndex == 9)
-                left_ctrl_action_a = Command.hold_right;
+                left_ctrl_action_a = ActionX.hold_right;
             else if (CBlctrl_action_a.SelectedIndex == 0)
-                left_ctrl_action_a = Command.none;
+                left_ctrl_action_a = ActionX.none;
 
             if (CBrctrl_action_a.SelectedIndex == 0)
-                right_ctrl_action_a = Command.left_click;
+                right_ctrl_action_a = ActionX.left_click;
             else if (CBrctrl_action_a.SelectedIndex == 1)
-                right_ctrl_action_a = Command.right_click;
+                right_ctrl_action_a = ActionX.right_click;
             else if (CBrctrl_action_a.SelectedIndex == 2)
-                right_ctrl_action_a = Command.double_left_click;
+                right_ctrl_action_a = ActionX.double_left_click;
             else if (CBrctrl_action_a.SelectedIndex == 3)
-                right_ctrl_action_a = Command.triple_left_click;
+                right_ctrl_action_a = ActionX.triple_left_click;
             else if (CBrctrl_action_a.SelectedIndex == 4)
-                right_ctrl_action_a = Command.center_left_click;
+                right_ctrl_action_a = ActionX.center_left_click;
             else if (CBrctrl_action_a.SelectedIndex == 5)
-                right_ctrl_action_a = Command.ctrl_left_click;
+                right_ctrl_action_a = ActionX.ctrl_left_click;
             else if (CBrctrl_action_a.SelectedIndex == 6)
-                right_ctrl_action_a = Command.move_mouse;
+                right_ctrl_action_a = ActionX.move_mouse;
             else if (CBrctrl_action_a.SelectedIndex == 7)
-                right_ctrl_action_a = Command.drag_and_drop;
+                right_ctrl_action_a = ActionX.drag_and_drop;
             else if (CBrctrl_action_a.SelectedIndex == 8)
-                right_ctrl_action_a = Command.hold_left;
+                right_ctrl_action_a = ActionX.hold_left;
             else if (CBrctrl_action_a.SelectedIndex == 9)
-                right_ctrl_action_a = Command.hold_right;
+                right_ctrl_action_a = ActionX.hold_right;
             else if (CBrctrl_action_a.SelectedIndex == 0)
-                right_ctrl_action_a = Command.none;
+                right_ctrl_action_a = ActionX.none;
 
             if (CBlctrl_action_b.SelectedIndex == 0)
-                left_ctrl_action_b = Command.left_click;
+                left_ctrl_action_b = ActionX.left_click;
             else if (CBlctrl_action_b.SelectedIndex == 1)
-                left_ctrl_action_b = Command.right_click;
+                left_ctrl_action_b = ActionX.right_click;
             else if (CBlctrl_action_b.SelectedIndex == 2)
-                left_ctrl_action_b = Command.double_left_click;
+                left_ctrl_action_b = ActionX.double_left_click;
             else if (CBlctrl_action_b.SelectedIndex == 3)
-                left_ctrl_action_b = Command.triple_left_click;
+                left_ctrl_action_b = ActionX.triple_left_click;
             else if (CBlctrl_action_b.SelectedIndex == 4)
-                left_ctrl_action_b = Command.center_left_click;
+                left_ctrl_action_b = ActionX.center_left_click;
             else if (CBlctrl_action_b.SelectedIndex == 5)
-                left_ctrl_action_b = Command.ctrl_left_click;
+                left_ctrl_action_b = ActionX.ctrl_left_click;
             else if (CBlctrl_action_b.SelectedIndex == 6)
-                left_ctrl_action_b = Command.move_mouse;
+                left_ctrl_action_b = ActionX.move_mouse;
             else if (CBlctrl_action_b.SelectedIndex == 7)
-                left_ctrl_action_b = Command.drag_and_drop;
+                left_ctrl_action_b = ActionX.drag_and_drop;
             else if (CBlctrl_action_b.SelectedIndex == 8)
-                left_ctrl_action_b = Command.hold_left;
+                left_ctrl_action_b = ActionX.hold_left;
             else if (CBlctrl_action_b.SelectedIndex == 9)
-                left_ctrl_action_b = Command.hold_right;
+                left_ctrl_action_b = ActionX.hold_right;
             else if (CBlctrl_action_b.SelectedIndex == 0)
-                left_ctrl_action_b = Command.none;
+                left_ctrl_action_b = ActionX.none;
 
             if (CBrctrl_action_b.SelectedIndex == 0)
-                right_ctrl_action_b = Command.left_click;
+                right_ctrl_action_b = ActionX.left_click;
             else if (CBrctrl_action_b.SelectedIndex == 1)
-                right_ctrl_action_b = Command.right_click;
+                right_ctrl_action_b = ActionX.right_click;
             else if (CBrctrl_action_b.SelectedIndex == 2)
-                right_ctrl_action_b = Command.double_left_click;
+                right_ctrl_action_b = ActionX.double_left_click;
             else if (CBrctrl_action_b.SelectedIndex == 3)
-                right_ctrl_action_b = Command.triple_left_click;
+                right_ctrl_action_b = ActionX.triple_left_click;
             else if (CBrctrl_action_b.SelectedIndex == 4)
-                right_ctrl_action_b = Command.center_left_click;
+                right_ctrl_action_b = ActionX.center_left_click;
             else if (CBrctrl_action_b.SelectedIndex == 5)
-                right_ctrl_action_b = Command.ctrl_left_click;
+                right_ctrl_action_b = ActionX.ctrl_left_click;
             else if (CBrctrl_action_b.SelectedIndex == 6)
-                right_ctrl_action_b = Command.move_mouse;
+                right_ctrl_action_b = ActionX.move_mouse;
             else if (CBrctrl_action_b.SelectedIndex == 7)
-                right_ctrl_action_b = Command.drag_and_drop;
+                right_ctrl_action_b = ActionX.drag_and_drop;
             else if (CBrctrl_action_b.SelectedIndex == 8)
-                right_ctrl_action_b = Command.hold_left;
+                right_ctrl_action_b = ActionX.hold_left;
             else if (CBrctrl_action_b.SelectedIndex == 9)
-                right_ctrl_action_b = Command.hold_right;
+                right_ctrl_action_b = ActionX.hold_right;
             else if (CBrctrl_action_b.SelectedIndex == 0)
-                right_ctrl_action_b = Command.none;
+                right_ctrl_action_b = ActionX.none;
 
             bool grid_size_changed = false;
             GridType prev_grid_type = grid_type;
@@ -669,13 +669,13 @@ namespace Aspiring_Keyboard
                 try
                 {
                     if (CBlshift_action_a.SelectedIndex == -1)
-                        throw new Exception("Left shift command in green mode was not selected.");
+                        throw new Exception("Left shift action in green mode was not selected.");
                     if (CBrshift_action_a.SelectedIndex == -1)
-                        throw new Exception("Right shift command in green mode was not selected.");
+                        throw new Exception("Right shift action in green mode was not selected.");
                     if (CBlshift_action_b.SelectedIndex == -1)
-                        throw new Exception("Left shift command in blue mode was not selected.");
+                        throw new Exception("Left shift action in blue mode was not selected.");
                     if (CBrshift_action_b.SelectedIndex == -1)
-                        throw new Exception("Right shift command in blue mode was not selected.");
+                        throw new Exception("Right shift action in blue mode was not selected.");
                     if (CBtype.SelectedIndex == -1)
                         throw new Exception("Mousegrid type was not selected.");
                     if (CBlines.SelectedIndex == -1)

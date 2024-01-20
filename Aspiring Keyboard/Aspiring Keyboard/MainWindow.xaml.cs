@@ -97,7 +97,7 @@ namespace Aspiring_Keyboard
 
         MouseGrid MW;
         bool grid_visible = false;
-        Command last_command = Command.none;
+        ActionX last_action = ActionX.none;
 
         List<Process_grid> grids = new List<Process_grid>();
         int grid_ind = 0;
@@ -108,21 +108,21 @@ namespace Aspiring_Keyboard
         bool green_mode = true;
         bool read_status = true;
 
-        Command left_shift_action_a = Command.none;
-        Command right_shift_action_a = Command.none;
-        Command left_alt_action_a = Command.none;
-        Command right_alt_action_a = Command.none;
-        Command left_ctrl_action_a = Command.none;
-        Command right_ctrl_action_a = Command.none;
+        ActionX left_shift_action_a = ActionX.none;
+        ActionX right_shift_action_a = ActionX.none;
+        ActionX left_alt_action_a = ActionX.none;
+        ActionX right_alt_action_a = ActionX.none;
+        ActionX left_ctrl_action_a = ActionX.none;
+        ActionX right_ctrl_action_a = ActionX.none;
 
-        Command left_shift_action_b = Command.none;
-        Command right_shift_action_b = Command.none;
-        Command left_alt_action_b = Command.none;
-        Command right_alt_action_b = Command.none;
-        Command left_ctrl_action_b = Command.none;
-        Command right_ctrl_action_b = Command.none;
+        ActionX left_shift_action_b = ActionX.none;
+        ActionX right_shift_action_b = ActionX.none;
+        ActionX left_alt_action_b = ActionX.none;
+        ActionX right_alt_action_b = ActionX.none;
+        ActionX left_ctrl_action_b = ActionX.none;
+        ActionX right_ctrl_action_b = ActionX.none;
 
-        Command command = Command.none;
+        ActionX action = ActionX.none;
 
         bool repeat_action_indefinitely = false;
         
@@ -168,37 +168,37 @@ namespace Aspiring_Keyboard
                 TBcontrol_keys.Text = "Pause Break - turn on/off"
                     + "\r\nScroll Lock - change mode"
                     + "\r\nLAlt + RAlt - release both mouse buttons"
-                    + "\r\nInsert - repeat last command"
+                    + "\r\nInsert - repeat last action"
                     + "\r\nCaps Lock - left click without losing focus"
                     + "\r\nLShift + RShift - browser forward button"
                     + "\r\nNum Lock - browser back button"
-                    + "\r\nLShift + Caps Lock - left shift command in infinity mode"
-                    + "\r\nRShift + Caps Lock - right shift command in infinity mode"
+                    + "\r\nLShift + Caps Lock - left shift action in infinity mode"
+                    + "\r\nRShift + Caps Lock - right shift action in infinity mode"
                     + "\r\nCaps Lock + Up/Down arrow - scroll up/down"
                     + "\r\nWhen mousegrid is visible:"
                     + "\r\n- Arrow keys - move mousegrid"
                     + "\r\n- Caps Lock  - change mousegrid movement mode"
-                    + "\r\n- Escape - cancel command and hide mousegrid";
+                    + "\r\n- Escape - cancel action and hide mousegrid";
 
                 foreach (GridType type in (GridType[])Enum.GetValues(typeof(GridType)))
                 {
                     CBtype.Items.Add(type.ToString().Replace("_", " ").FirstCharToUpper());
                 }
 
-                foreach (Command command in (Command[])Enum.GetValues(typeof(Command)))
+                foreach (ActionX action in (ActionX[])Enum.GetValues(typeof(ActionX)))
                 {
-                    CBlshift_action_a.Items.Add(command.ToString().Replace("_", " ").FirstCharToUpper());
-                    CBrshift_action_a.Items.Add(command.ToString().Replace("_", " ").FirstCharToUpper());
-                    CBlalt_action_a.Items.Add(command.ToString().Replace("_", " ").FirstCharToUpper());
-                    CBralt_action_a.Items.Add(command.ToString().Replace("_", " ").FirstCharToUpper());
-                    CBlctrl_action_a.Items.Add(command.ToString().Replace("_", " ").FirstCharToUpper());
-                    CBrctrl_action_a.Items.Add(command.ToString().Replace("_", " ").FirstCharToUpper());
-                    CBlshift_action_b.Items.Add(command.ToString().Replace("_", " ").FirstCharToUpper());
-                    CBrshift_action_b.Items.Add(command.ToString().Replace("_", " ").FirstCharToUpper());
-                    CBlalt_action_b.Items.Add(command.ToString().Replace("_", " ").FirstCharToUpper());
-                    CBralt_action_b.Items.Add(command.ToString().Replace("_", " ").FirstCharToUpper());
-                    CBlctrl_action_b.Items.Add(command.ToString().Replace("_", " ").FirstCharToUpper());
-                    CBrctrl_action_b.Items.Add(command.ToString().Replace("_", " ").FirstCharToUpper());
+                    CBlshift_action_a.Items.Add(action.ToString().Replace("_", " ").FirstCharToUpper());
+                    CBrshift_action_a.Items.Add(action.ToString().Replace("_", " ").FirstCharToUpper());
+                    CBlalt_action_a.Items.Add(action.ToString().Replace("_", " ").FirstCharToUpper());
+                    CBralt_action_a.Items.Add(action.ToString().Replace("_", " ").FirstCharToUpper());
+                    CBlctrl_action_a.Items.Add(action.ToString().Replace("_", " ").FirstCharToUpper());
+                    CBrctrl_action_a.Items.Add(action.ToString().Replace("_", " ").FirstCharToUpper());
+                    CBlshift_action_b.Items.Add(action.ToString().Replace("_", " ").FirstCharToUpper());
+                    CBrshift_action_b.Items.Add(action.ToString().Replace("_", " ").FirstCharToUpper());
+                    CBlalt_action_b.Items.Add(action.ToString().Replace("_", " ").FirstCharToUpper());
+                    CBralt_action_b.Items.Add(action.ToString().Replace("_", " ").FirstCharToUpper());
+                    CBlctrl_action_b.Items.Add(action.ToString().Replace("_", " ").FirstCharToUpper());
+                    CBrctrl_action_b.Items.Add(action.ToString().Replace("_", " ").FirstCharToUpper());
                 }
 
                 CBlines.Items.Add("None");
@@ -383,7 +383,7 @@ namespace Aspiring_Keyboard
 
                             if (read_status) ss.SpeakAsync("Back");
                         }
-                        else if (last_command != Command.none &&
+                        else if (last_action != ActionX.none &&
                             IsKeyPushedDown(System.Windows.Forms.Keys.Insert))
                         {
                             fix_very_rare_problem();
@@ -460,9 +460,9 @@ namespace Aspiring_Keyboard
                                 if (cancel == false)
                                 {
                                     if(green_mode)
-                                        command = left_shift_action_a;
+                                        action = left_shift_action_a;
                                     else
-                                        command = left_shift_action_b;
+                                        action = left_shift_action_b;
                                 }
                             }
                             else if (IsKeyPushedDown(System.Windows.Forms.Keys.RShiftKey))
@@ -522,9 +522,9 @@ namespace Aspiring_Keyboard
                                 if (cancel == false)
                                 {
                                     if (green_mode)
-                                        command = right_shift_action_a;
+                                        action = right_shift_action_a;
                                     else
-                                        command = right_shift_action_b;
+                                        action = right_shift_action_b;
                                 }
                             }
                             else if (IsKeyPushedDown(System.Windows.Forms.Keys.LMenu))
@@ -565,9 +565,9 @@ namespace Aspiring_Keyboard
                                 if (cancel == false)
                                 {
                                     if (green_mode)
-                                        command = left_alt_action_a;
+                                        action = left_alt_action_a;
                                     else
-                                        command = left_alt_action_b;
+                                        action = left_alt_action_b;
                                 }
                             }
                             else if (IsKeyPushedDown(System.Windows.Forms.Keys.RMenu))
@@ -610,9 +610,9 @@ namespace Aspiring_Keyboard
                                 if (cancel == false)
                                 {
                                     if (green_mode)
-                                        command = right_alt_action_a;
+                                        action = right_alt_action_a;
                                     else
-                                        command = right_alt_action_b;
+                                        action = right_alt_action_b;
                                 }
                             }
                             else if (IsKeyPushedDown(System.Windows.Forms.Keys.LControlKey))
@@ -644,9 +644,9 @@ namespace Aspiring_Keyboard
                                 if (cancel == false)
                                 {
                                     if (green_mode)
-                                        command = left_ctrl_action_a;
+                                        action = left_ctrl_action_a;
                                     else
-                                        command = left_ctrl_action_b;
+                                        action = left_ctrl_action_b;
                                 }
                             }
                             else if (IsKeyPushedDown(System.Windows.Forms.Keys.RControlKey))
@@ -678,16 +678,16 @@ namespace Aspiring_Keyboard
                                 if (cancel == false)
                                 {
                                     if (green_mode)
-                                        command = right_ctrl_action_a;
+                                        action = right_ctrl_action_a;
                                     else
-                                        command = right_ctrl_action_b;
+                                        action = right_ctrl_action_b;
                                 }
                             }
                             else if (IsKeyPushedDown(System.Windows.Forms.Keys.CapsLock))
                             {
                                 fix_very_rare_problem();
 
-                                command = Command.left_click;
+                                action = ActionX.left_click;
 
                                 while (IsKeyPushedDown(System.Windows.Forms.Keys.CapsLock))
                                 {
@@ -698,7 +698,7 @@ namespace Aspiring_Keyboard
                                             && sim.InputDeviceState.IsKeyDown(vkc))
                                         {
                                             sim.Mouse.VerticalScroll(4);
-                                            command = Command.scroll_up;
+                                            action = ActionX.scroll_up;
                                             while (IsKeyPushedDown(System.Windows.Forms.Keys.Up))
                                                 Thread.Sleep(10);
                                         }
@@ -706,7 +706,7 @@ namespace Aspiring_Keyboard
                                             && sim.InputDeviceState.IsKeyDown(vkc))
                                         {
                                             sim.Mouse.VerticalScroll(-4);
-                                            command = Command.scroll_down;
+                                            action = ActionX.scroll_down;
                                             while (IsKeyPushedDown(System.Windows.Forms.Keys.Down))
                                                 Thread.Sleep(10);
                                         }
@@ -715,7 +715,7 @@ namespace Aspiring_Keyboard
                                             && sim.InputDeviceState.IsKeyDown(vkc))
                                         {
                                             sim.Mouse.HorizontalScroll(-300);
-                                            command = Command.scroll_left;
+                                            action = ActionX.scroll_left;
                                             while (IsKeyPushedDown(System.Windows.Forms.Keys.Left))
                                                 Thread.Sleep(10);
                                         }
@@ -723,7 +723,7 @@ namespace Aspiring_Keyboard
                                             && sim.InputDeviceState.IsKeyDown(vkc))
                                         {
                                             sim.Mouse.HorizontalScroll(300);
-                                            command = Command.scroll_right;
+                                            action = ActionX.scroll_right;
                                             while (IsKeyPushedDown(System.Windows.Forms.Keys.Right))
                                                 Thread.Sleep(10);
                                         }
@@ -740,7 +740,7 @@ namespace Aspiring_Keyboard
                                     Thread.Sleep(10);
                                 }
 
-                                if (command == Command.left_click)
+                                if (action == ActionX.left_click)
                                 {
                                     dont_lose_focus = true;
                                 }
@@ -751,19 +751,19 @@ namespace Aspiring_Keyboard
 
                                 if (read_status)
                                 {
-                                    if (command == Command.left_click)
+                                    if (action == ActionX.left_click)
                                     {
                                         ss.SpeakAsync("focus preserved");
                                     }
                                 }
 
-                                if (command != Command.left_click)
-                                    command = Command.none;
+                                if (action != ActionX.left_click)
+                                    action = ActionX.none;
                             }
 
                             do
                             {
-                                if (command != Command.none && cancel == false)
+                                if (action != ActionX.none && cancel == false)
                                 {
                                     adv_mouse(false, dont_lose_focus);
 
@@ -1002,15 +1002,20 @@ namespace Aspiring_Keyboard
         int last_x = 0, last_y = 0;
         int execution_nr = 0;
 
+        private void Bhomepage_Click(object sender, RoutedEventArgs e)
+        {
+            Process.Start("https://github.com/ProperCode/Aspiring-Keyboard");
+        }
+
         void adv_mouse(bool repeat_last_action = false, bool dont_lose_focus = false)
         {
             if (repeat_last_action == false)
             {
                 IntPtr handle2 = GetForegroundWindow();
-                last_command = command;
+                last_action = action;
 
                 int d = 1;
-                if (command == Command.drag_and_drop)
+                if (action == ActionX.drag_and_drop)
                     d = 0;
 
                 for (; d < 2; d++)
@@ -1113,35 +1118,35 @@ namespace Aspiring_Keyboard
                         if (repeat_action_indefinitely)
                             status = "indefinite ";
 
-                        if (command == Command.drag_and_drop && d == 0)
+                        if (action == ActionX.drag_and_drop && d == 0)
                         {
                             status += "drag";
                         }
-                        else if (command == Command.double_left_click)
+                        else if (action == ActionX.double_left_click)
                         {
                             status += "double";
                         }
-                        else if (command == Command.triple_left_click)
+                        else if (action == ActionX.triple_left_click)
                         {
                             status += "triple";
                         }
-                        else if (command == Command.center_left_click)
+                        else if (action == ActionX.center_left_click)
                         {
                             status += "center";
                         }
-                        else if (command == Command.hold_left)
+                        else if (action == ActionX.hold_left)
                         {
                             status += "hold left";
                         }
-                        else if (command == Command.hold_right)
+                        else if (action == ActionX.hold_right)
                         {
                             status += "hold right";
                         }
-                        else if (command == Command.move_mouse)
+                        else if (action == ActionX.move_mouse)
                         {
                             status += "move mouse";
                         }
-                        else if (command == Command.right_click)
+                        else if (action == ActionX.right_click)
                         {
                             status += "right click";
                         }
@@ -1448,49 +1453,49 @@ namespace Aspiring_Keyboard
                             last_x = x;
                             last_y = y;
 
-                            if (command == Command.left_click)
+                            if (action == ActionX.left_click)
                             {
                                 LMBClick(x, y);
                             }
-                            else if (command == Command.right_click)
+                            else if (action == ActionX.right_click)
                             {
                                 RMBClick(x, y);
                             }
-                            else if (command == Command.double_left_click)
+                            else if (action == ActionX.double_left_click)
                             {
                                 DLMBClick(x, y);
                             }
-                            else if (command == Command.triple_left_click)
+                            else if (action == ActionX.triple_left_click)
                             {
                                 LMBClick(x, y);
                                 LMBClick(x, y);
                                 LMBClick(x, y);
                             }
-                            else if (command == Command.center_left_click)
+                            else if (action == ActionX.center_left_click)
                             {
                                 LMBClick((int)(screen_width / 2), (int)(screen_height / 2));
                             }
-                            else if (command == Command.ctrl_left_click)
+                            else if (action == ActionX.ctrl_left_click)
                             {
                                 sim.Keyboard.KeyDown(VirtualKeyCode.CONTROL);
                                 LMBClick(x, y);
                                 sim.Keyboard.KeyUp(VirtualKeyCode.CONTROL);
                             }
-                            else if (command == Command.move_mouse)
+                            else if (action == ActionX.move_mouse)
                             {
                                 real_mouse_move(x, y);
                             }
-                            else if (command == Command.hold_left)
+                            else if (action == ActionX.hold_left)
                             {
                                 if (read_status) ss.SpeakAsync("holding left");
                                 LMBHold(x, y);
                             }
-                            else if (command == Command.hold_right)
+                            else if (action == ActionX.hold_right)
                             {
                                 if (read_status) ss.SpeakAsync("holding right");
                                 RMBHold(x, y);
                             }
-                            else if (command == Command.drag_and_drop)
+                            else if (action == ActionX.drag_and_drop)
                             {
                                 if (d == 0)
                                 {
@@ -1518,51 +1523,51 @@ namespace Aspiring_Keyboard
             {
                 int x = last_x;
                 int y = last_y;
-                command = last_command;
+                action = last_action;
 
-                if (command == Command.left_click)
+                if (action == ActionX.left_click)
                 {
                     LMBClick(x, y);
                 }
-                else if (command == Command.right_click)
+                else if (action == ActionX.right_click)
                 {
                     RMBClick(x, y);
                 }
-                else if (command == Command.double_left_click)
+                else if (action == ActionX.double_left_click)
                 {
                     DLMBClick(x, y);
                 }
-                else if (command == Command.triple_left_click)
+                else if (action == ActionX.triple_left_click)
                 {
                     LMBClick(x, y);
                     LMBClick(x, y);
                     LMBClick(x, y);
                 }
-                else if (command == Command.center_left_click)
+                else if (action == ActionX.center_left_click)
                 {
                     LMBClick((int)(screen_width / 2), (int)(screen_height / 2));
                 }
-                else if (command == Command.ctrl_left_click)
+                else if (action == ActionX.ctrl_left_click)
                 {
                     sim.Keyboard.KeyDown(VirtualKeyCode.CONTROL);
                     LMBClick(x, y);
                     sim.Keyboard.KeyUp(VirtualKeyCode.CONTROL);
                 }
-                else if (command == Command.move_mouse)
+                else if (action == ActionX.move_mouse)
                 {
                     real_mouse_move(x, y);
                 }
-                else if (command == Command.hold_left)
+                else if (action == ActionX.hold_left)
                 {
                     if (read_status) ss.SpeakAsync("holding left");
                     LMBHold(x, y);
                 }
-                else if (command == Command.hold_right)
+                else if (action == ActionX.hold_right)
                 {
                     if (read_status) ss.SpeakAsync("holding right");
                     RMBHold(x, y);
                 }
-                else if (command == Command.drag_and_drop)
+                else if (action == ActionX.drag_and_drop)
                 {
                     move_mouse(drag_x, drag_y);
                     LMBHold(drag_x, drag_y);
@@ -1576,7 +1581,7 @@ namespace Aspiring_Keyboard
 
             if (repeat_action_indefinitely == false)
             {
-                command = Command.none;
+                action = ActionX.none;
                 execution_nr = 0;
             }
             else
