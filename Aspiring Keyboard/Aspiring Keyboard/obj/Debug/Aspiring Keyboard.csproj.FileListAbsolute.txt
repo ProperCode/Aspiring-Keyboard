@@ -15,3 +15,7 @@ C:\Users\m\Documents\Visual Studio 2022\Projects\Aspiring Keyboard\Aspiring Keyb
 C:\Users\m\Documents\Visual Studio 2022\Projects\Aspiring Keyboard\Aspiring Keyboard\obj\Debug\Aspiring Keyboard.csproj.CoreCompileInputs.cache
 C:\Users\m\Documents\Visual Studio 2022\Projects\Aspiring Keyboard\Aspiring Keyboard\obj\Debug\Aspiring Keyboard.exe
 C:\Users\m\Documents\Visual Studio 2022\Projects\Aspiring Keyboard\Aspiring Keyboard\obj\Debug\Aspiring Keyboard.pdb
+C:\Users\m\Documents\Visual Studio 2022\Projects\Aspiring Keyboard\Aspiring Keyboard\obj\Debug\WindowAbout.g.cs
+C:\Users\m\Documents\Visual Studio 2022\Projects\Aspiring Keyboard\Aspiring Keyboard\obj\Debug\WindowAbout.baml
+C:\Users\m\Documents\Visual Studio 2022\Projects\Aspiring Keyboard\Aspiring Keyboard\obj\Debug\WindowEULA.g.cs
+C:\Users\m\Documents\Visual Studio 2022\Projects\Aspiring Keyboard\Aspiring Keyboard\obj\Debug\WindowEULA.baml

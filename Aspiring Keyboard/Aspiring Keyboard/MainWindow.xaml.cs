@@ -11,6 +11,7 @@ using System.Windows.Threading;
 using WindowsInput;
 using WindowsInput.Native;
 using System.Speech.Synthesis;
+using System.Net;
 
 //resolved difficult issue: something sometimes messes up mousegrid and it doesn't appear
 
@@ -21,18 +22,33 @@ namespace Aspiring_Keyboard
         const bool check_if_already_running = true;
 
         const string prog_name = "Aspiring Keyboard";
-        const string prog_version = "1.0-Alpha.1";
+        const string prog_version = "1.0";
+        const string url_latest_version = "https://raw.githubusercontent.com/ProperCode/Aspiring-Keyboard/main/other/latest_version.txt";
+        const string url_homepage = "github.com/ProperCode/Aspiring-Keyboard";
+        string latest_version = "";
         const string copyright_text = "Copyright © 2024 Mikołaj Magowski. All rights reserved.";
         const string filename_settings = "settings_ak.txt";
         const string grids_foldername = "grids";
         const bool resized_grid = true;
         const bool movable_grid = true;
-        
+
+        const int default_desired_figures_nr = 2704;
+        const string default_color_bg_str = "-1973791"; //light grey
+        const string default_color_font_str = "-16777216"; //black
+        string default_ss_voice = "";
+        const int default_ss_volume = 100;
+
         bool enabled = true;
 
         const string icon_red = "pack://application:,,,/Aspiring Keyboard;component/images/ak red.ico";
         const string icon_green = "pack://application:,,,/Aspiring Keyboard;component/images/ak green.ico";
         const string icon_blue = "pack://application:,,,/Aspiring Keyboard;component/images/ak blue.ico";
+
+        const string folder_name_grid_hexagonal = "hexagonal";
+        const string folder_name_grid_square = "square";
+        const string folder_name_grid_horizontal = "square_horizontal";
+        const string folder_name_grid_vertical = "square_vertical";
+        const string folder_name_grid_combined = "square_combined";
 
         string users_directory_path
             = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
@@ -57,8 +73,8 @@ namespace Aspiring_Keyboard
         List<Grid_Symbol> grid_alphabet = new List<Grid_Symbol>();
 
         int grid_symbols_limit = 1;//50-58 is recommended
-        int max_figures_nr = 1;
-        int desired_figures_nr = 1;
+        int max_figures_nr = 2704;
+        int desired_figures_nr = 2704;
         GridType grid_type = GridType.hexagonal;
         bool smart_grid = true;
         double offset = 0.25;
@@ -67,11 +83,15 @@ namespace Aspiring_Keyboard
         int offset_x = 0; //grid offset
         int offset_y = 0;
         int grid_lines = 0; //0-2 (0 - no lines, 1 - dotted lines, 2 - normal lines)
-        
-        Color color2 = Color.FromRgb(0, 0, 0); //font color
-        //Color color1 = Color.FromRgb(255, 255, 255);
-        Color color1 = Color.FromRgb(225, 225, 225); //bg color
 
+        Color color_font;// = Color.FromRgb(0, 0, 0); //font color
+        //Color color_bg = Color.FromRgb(255, 255, 255);
+        Color color_bg;// = Color.FromRgb(225, 225, 225); //bg color
+
+        string color_bg_str; //light grey
+        string color_font_str; //black        
+
+        const int max_font_size = 400;
         int font_size = 12;
         //bool auto_grid_font_size = true; //bad idea
         FontFamily font_family = new FontFamily("Verdana");
@@ -103,10 +123,23 @@ namespace Aspiring_Keyboard
         int grid_ind = 0;
         int prev_installed_apps_count = -1;
 
+        string[] keyboard_layouts = { "Any", "US English / US International" };
+        string keyboard_layout;
+
+        //Used by speech synthesis:
+        List<string> ss_voices_priority_list = new List<string>() { "Zira", "Susan", "Hazel", "Linda",
+            "Catherine", "Heera", "Sean" };
+        //Zira - US, Susan/Hazel - UK, Linda - Canada, Catherine - Australia, Heera - India, Sean - Ireland
+        IReadOnlyCollection<InstalledVoice> installed_voices;
+
+        string ss_voice;
+        int ss_volume;
+        bool read_status = true;
+        bool auto_updates = false;
+
         SpeechSynthesizer ss = new SpeechSynthesizer();
 
-        bool green_mode = true;
-        bool read_status = true;
+        bool green_mode = true;        
 
         ActionX left_shift_action_a = ActionX.none;
         ActionX right_shift_action_a = ActionX.none;
@@ -125,7 +158,13 @@ namespace Aspiring_Keyboard
         ActionX action = ActionX.none;
 
         bool repeat_action_indefinitely = false;
-        
+
+        WindowAbout WA = new WindowAbout();
+
+        System.Windows.Forms.MenuItem mi_switch_mode;
+        System.Windows.Forms.MenuItem mi_toggle;
+        System.Windows.Forms.MenuItem mi_exit;
+
         public MainWindow()
         {
             try
@@ -152,6 +191,30 @@ namespace Aspiring_Keyboard
 
                 iconStream.Close();
 
+                System.Windows.Forms.ContextMenu cm = new System.Windows.Forms.ContextMenu();
+                mi_switch_mode = new System.Windows.Forms.MenuItem();
+                mi_toggle = new System.Windows.Forms.MenuItem();
+                mi_exit = new System.Windows.Forms.MenuItem();
+
+                // Initialize contextMenu1
+                cm.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] { mi_switch_mode });
+                cm.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] { mi_toggle });
+                cm.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] { mi_exit });
+
+                mi_switch_mode.Index = 0;
+                mi_switch_mode.Text = "Switch mode";
+                mi_switch_mode.Click += new System.EventHandler(mi_switch_mode_Click);
+
+                mi_toggle.Index = 1;
+                mi_toggle.Text = "Toggle";
+                mi_toggle.Click += new System.EventHandler(mi_toggle_Click);
+
+                mi_exit.Index = 2;
+                mi_exit.Text = "Exit";
+                mi_exit.Click += new System.EventHandler(mi_exit_Click);
+
+                ni.ContextMenu = cm;
+
                 if (check_if_already_running)
                 {
                     is_program_already_running();
@@ -167,9 +230,9 @@ namespace Aspiring_Keyboard
 
                 TBcontrol_keys.Text = "Pause Break - turn on/off"
                     + "\r\nScroll Lock - change mode"
-                    + "\r\nLAlt + RAlt - release both mouse buttons"
-                    + "\r\nInsert - repeat last action"
                     + "\r\nCaps Lock - left click without losing focus"
+                    + "\r\nInsert - repeat last action"
+                    + "\r\nLAlt + RAlt - release both mouse buttons"
                     + "\r\nLShift + RShift - browser forward button"
                     + "\r\nNum Lock - browser back button"
                     + "\r\nLShift + Caps Lock - left shift action in infinity mode"
@@ -179,6 +242,18 @@ namespace Aspiring_Keyboard
                     + "\r\n- Arrow keys - move mousegrid"
                     + "\r\n- Caps Lock  - change mousegrid movement mode"
                     + "\r\n- Escape - cancel action and hide mousegrid";
+
+                installed_voices = ss.GetInstalledVoices();
+
+                foreach (string kl in keyboard_layouts)
+                {
+                    CBkeyboard_layout.Items.Add(kl);
+                }
+
+                foreach (InstalledVoice iv in installed_voices)
+                {
+                    CBss_voices.Items.Add(iv.VoiceInfo.Name);
+                }
 
                 foreach (GridType type in (GridType[])Enum.GetValues(typeof(GridType)))
                 {
@@ -203,12 +278,7 @@ namespace Aspiring_Keyboard
 
                 CBlines.Items.Add("None");
                 CBlines.Items.Add("Dotted");
-                CBlines.Items.Add("Solid");
-
-                create_normal_grid_alphabet();
-                grid_symbols_limit = grid_alphabet.Count;
-
-                max_figures_nr = (int)Math.Pow((double)grid_symbols_limit, 2);
+                CBlines.Items.Add("Solid");                
             }
             catch (Exception ex)
             {
@@ -249,6 +319,17 @@ namespace Aspiring_Keyboard
                     }
                 }
 
+                if (keyboard_layout == "US English / US International")
+                    create_grid_alphabet_for_US_kl();
+                else
+                    create_grid_alphabet_for_any_kl();
+
+                grid_symbols_limit = grid_alphabet.Count;
+                max_figures_nr = (int)Math.Pow((double)grid_symbols_limit, 2);
+
+                if (int.Parse(TBdesired_figures_nr.Text) > max_figures_nr)
+                    TBdesired_figures_nr.Text = max_figures_nr.ToString();
+
                 Create_Grid();
 
                 if (smart_grid)
@@ -262,6 +343,12 @@ namespace Aspiring_Keyboard
                 if (read_status) ss.SpeakAsync("Green mode enabled");
 
                 CBlshift_action_a.Focus();
+
+                if(auto_updates)
+                    update_app_if_necessary();
+
+                //hiding for now, because of bizarre connection problems
+                CHBcheck_for_updates.Visibility = Visibility.Hidden;
             }
             catch (Exception ex)
             {
@@ -381,7 +468,7 @@ namespace Aspiring_Keyboard
                             sim.Keyboard.KeyPress(VirtualKeyCode.BROWSER_BACK);
                             //sim.Mouse.VerticalScroll(-40);
 
-                            if (read_status) ss.SpeakAsync("Back");
+                            if (read_status) ss.SpeakAsync("Back"); 
                         }
                         else if (last_action != ActionX.none &&
                             IsKeyPushedDown(System.Windows.Forms.Keys.Insert))
@@ -432,7 +519,11 @@ namespace Aspiring_Keyboard
 
                                         if (read_status) ss.SpeakAsync("Forward");
 
-                                        break;
+                                        while (IsKeyPushedDown(System.Windows.Forms.Keys.LShiftKey)
+                                            || IsKeyPushedDown(System.Windows.Forms.Keys.RShiftKey))
+                                        {
+                                            Thread.Sleep(10);
+                                        }
                                     }
                                     else if (IsKeyPushedDown(System.Windows.Forms.Keys.CapsLock))
                                     {
@@ -494,7 +585,11 @@ namespace Aspiring_Keyboard
 
                                         if (read_status) ss.SpeakAsync("Forward");
 
-                                        break;
+                                        while (IsKeyPushedDown(System.Windows.Forms.Keys.LShiftKey)
+                                            || IsKeyPushedDown(System.Windows.Forms.Keys.RShiftKey))
+                                        {
+                                            Thread.Sleep(10);
+                                        }
                                     }
                                     else if (IsKeyPushedDown(System.Windows.Forms.Keys.CapsLock))
                                     {
@@ -551,6 +646,14 @@ namespace Aspiring_Keyboard
                                         release_buttons();
 
                                         if (read_status) ss.SpeakAsync("Mouse buttons released.");
+
+                                        while (IsKeyPushedDown(System.Windows.Forms.Keys.LMenu)
+                                            || IsKeyPushedDown(System.Windows.Forms.Keys.RMenu))
+                                        {
+                                            Thread.Sleep(10);
+                                        }
+
+                                        break;
                                     }
 
                                     Thread.Sleep(10);
@@ -596,6 +699,14 @@ namespace Aspiring_Keyboard
                                         release_buttons();
 
                                         if (read_status) ss.SpeakAsync("Mouse buttons released.");
+
+                                        while (IsKeyPushedDown(System.Windows.Forms.Keys.LMenu)
+                                            || IsKeyPushedDown(System.Windows.Forms.Keys.RMenu))
+                                        {
+                                            Thread.Sleep(10);
+                                        }
+
+                                        break;
                                     }
 
                                     Thread.Sleep(10);
@@ -698,7 +809,7 @@ namespace Aspiring_Keyboard
                                             && sim.InputDeviceState.IsKeyDown(vkc))
                                         {
                                             sim.Mouse.VerticalScroll(4);
-                                            action = ActionX.scroll_up;
+                                            action = ActionX.none;
                                             while (IsKeyPushedDown(System.Windows.Forms.Keys.Up))
                                                 Thread.Sleep(10);
                                         }
@@ -706,7 +817,7 @@ namespace Aspiring_Keyboard
                                             && sim.InputDeviceState.IsKeyDown(vkc))
                                         {
                                             sim.Mouse.VerticalScroll(-4);
-                                            action = ActionX.scroll_down;
+                                            action = ActionX.none;
                                             while (IsKeyPushedDown(System.Windows.Forms.Keys.Down))
                                                 Thread.Sleep(10);
                                         }
@@ -763,7 +874,15 @@ namespace Aspiring_Keyboard
 
                             do
                             {
-                                if (action != ActionX.none && cancel == false)
+                                if (action == ActionX.center_left_click)
+                                {
+                                    if (read_status) ss.SpeakAsync("center");
+
+                                    LMBClick((int)(screen_width / 2), (int)(screen_height / 2));
+
+                                    action = ActionX.none;
+                                }
+                                else if (action != ActionX.none && cancel == false)
                                 {
                                     adv_mouse(false, dont_lose_focus);
 
@@ -813,46 +932,6 @@ namespace Aspiring_Keyboard
             {
                 sim.Keyboard.KeyUp(VirtualKeyCode.BROWSER_FORWARD);
             }
-        }
-
-        void close_that()
-        {
-            keybd_event(VK_MENU, 0, KEYEVENTF_KEYDOWN, 0);
-            keybd_event(VK_F4, 0, KEYEVENTF_KEYDOWN, 0);
-            Thread.Sleep(75);
-            keybd_event(VK_F4, 0, KEYEVENTF_KEYUP, 0);
-            keybd_event(VK_MENU, 0, KEYEVENTF_KEYUP, 0);
-
-            // admin req
-            /*IntPtr handle = GetForegroundWindow();
-
-            Process[] arr = Process.GetProcesses();
-            Process process = null;
-
-            try
-            {
-                foreach (Process p in arr)
-                {
-                    IntPtr h = p.MainWindowHandle;
-
-                    if (h == handle)
-                    {
-                        process = p;
-                        process.CloseMainWindow();
-                        break;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                try
-                {
-                    if (process != null)
-                        process.Kill(); //kill nie zawsze zadziała - może wystąpić odmowa dostępu
-                }
-                catch (Exception ex2) { }
-            }
-            */
         }
 
         void is_program_already_running()
@@ -993,8 +1072,8 @@ namespace Aspiring_Keyboard
                 //you can easily see this windows by pressing  windows key + tab
                 MW.Close();
             }
-            MW = new MouseGrid(grid_width, grid_height, grid_lines, grid_type, font_family, font_size, color1,
-                color2, rows_nr, cols_nr, figure_width, figure_height, grids[0].elements);
+            MW = new MouseGrid(grid_width, grid_height, grid_lines, grid_type, font_family, font_size, 
+                color_bg, color_font, rows_nr, cols_nr, figure_width, figure_height, grids[0].elements);
             //MW.regenerate_grid_symbols();
         }
 
@@ -1130,10 +1209,6 @@ namespace Aspiring_Keyboard
                         {
                             status += "triple";
                         }
-                        else if (action == ActionX.center_left_click)
-                        {
-                            status += "center";
-                        }
                         else if (action == ActionX.hold_left)
                         {
                             status += "hold left";
@@ -1153,7 +1228,7 @@ namespace Aspiring_Keyboard
 
                         if (read_status) ss.SpeakAsync(status);
                     }
-                    
+
                     Thread.Sleep(50);
 
                     //This 2nd activate is sometimes needed:
@@ -1168,7 +1243,7 @@ namespace Aspiring_Keyboard
                     bool cancel = false;
                     offset = np_offset;
 
-                    while (figure_str.Length < 2 && cancel == false)
+                    while (figure_str.Length < 2 && cancel == false && action != ActionX.center_left_click)
                     {
                         if (IsKeyPushedDown(System.Windows.Forms.Keys.Escape))
                         {
@@ -1357,14 +1432,12 @@ namespace Aspiring_Keyboard
 
                             if (smart_grid)
                             {
-                                grids[grid_ind].elements[i].count++;
-
                                 int ind = -1;
 
-                                int score = get_symbsols_score(grids[grid_ind].elements[i].symbols[0],
+                                int score = get_symbols_score(grids[grid_ind].elements[i].symbols[0],
                                     grids[grid_ind].elements[i].symbols[1]);
 
-                                ind = find_lowest_index_with_lower_count(grid_ind,
+                                ind = find_index_with_lower_count(grid_ind,
                                     grids[grid_ind].elements[i].count, score);
 
                                 if (ind != -1)
@@ -1378,6 +1451,8 @@ namespace Aspiring_Keyboard
                                     grids[grid_ind].elements[i].count = count;
                                     grids[grid_ind].elements[i].symbols = symbols;
                                 }
+
+                                grids[grid_ind].elements[i].count++;
                             }
 
                             //delayed Hide, because Mousegrid must be shown when figures content is updated
@@ -1470,10 +1545,6 @@ namespace Aspiring_Keyboard
                                 LMBClick(x, y);
                                 LMBClick(x, y);
                                 LMBClick(x, y);
-                            }
-                            else if (action == ActionX.center_left_click)
-                            {
-                                LMBClick((int)(screen_width / 2), (int)(screen_height / 2));
                             }
                             else if (action == ActionX.ctrl_left_click)
                             {
@@ -1590,7 +1661,7 @@ namespace Aspiring_Keyboard
             }
         }
 
-        int get_symbsols_score(char s1, char s2)
+        int get_symbols_score(char s1, char s2)
         {
             int score;
             int ind1, ind2;
@@ -1598,20 +1669,36 @@ namespace Aspiring_Keyboard
             ind1 = get_index_by_symbol(s1);
             ind2 = get_index_by_symbol(s2);
 
-            if (ind1 <= 26)
-                score = ind1;
-            else
-                score = ind1 * 10;
+            if (keyboard_layout == "Any")
+            {
+                if (ind1 <= 25)
+                    score = ind1;
+                else
+                    score = ind1 * 10;
 
-            if (ind2 <= 26)
-                score += ind2;
+                if (ind2 <= 25)
+                    score += ind2;
+                else
+                    score += ind2 * 10;
+            }
             else
-                score += ind2 * 10;
+            {
+                if (ind1 <= 24)
+                    score = ind1;
+                else
+                    score = ind1 * 10;
+
+                if (ind2 <= 24)
+                    score += ind2;
+                else
+                    score += ind2 * 10;
+            }
 
             return score;
         }
 
-        int find_lowest_index_with_lower_count(int grid_ind, uint count, int best_score)
+        //find index with lower count and best score (for that count)
+        int find_index_with_lower_count(int grid_ind, uint count, int best_score)
         {
             int ind = -1;
             int score;
@@ -1619,9 +1706,9 @@ namespace Aspiring_Keyboard
 
             for (int i = 0; i < grids[grid_ind].elements.Count; i++)
             {
-                if (grids[grid_ind].elements[i].count < count)
+                if (grids[grid_ind].elements[i].count <= count)
                 {
-                    score = get_symbsols_score(grids[grid_ind].elements[i].symbols[0],
+                    score = get_symbols_score(grids[grid_ind].elements[i].symbols[0],
                         grids[grid_ind].elements[i].symbols[1]);
 
                     if (score < best_score)
@@ -1652,7 +1739,15 @@ namespace Aspiring_Keyboard
         {
             FileStream fs = null;
             StreamWriter sw = null;
-            string folder_path = System.IO.Path.Combine(saving_folder_path, grids_foldername);
+
+            string type_name = get_grid_folder_name_by_type(grid_type);
+            string kl_name = "Any"; //kl = keyboard layout
+
+            if (keyboard_layout.Substring(0, 2) == "US")
+                kl_name = "US";
+
+            string folder_path = Path.Combine(new string[] { System.IO.Path.Combine(saving_folder_path, 
+                grids_foldername), kl_name, type_name, desired_figures_nr.ToString()});
 
             try
             {
@@ -1698,7 +1793,15 @@ namespace Aspiring_Keyboard
         {
             FileStream fs = null;
             StreamReader sr = null;
-            string folder_path = System.IO.Path.Combine(saving_folder_path, grids_foldername);
+
+            string type_name = get_grid_folder_name_by_type(grid_type);
+            string kl_name = "Any"; //kl = keyboard layout
+
+            if (keyboard_layout.Substring(0, 2) == "US")
+                kl_name = "US";
+
+            string folder_path = Path.Combine(new string[] { System.IO.Path.Combine(saving_folder_path,
+                grids_foldername), kl_name, type_name, desired_figures_nr.ToString()});            
 
             try
             {
@@ -1787,6 +1890,21 @@ namespace Aspiring_Keyboard
                 }
                 catch (Exception ex2) { }
             }
+        }        
+
+        string get_grid_folder_name_by_type(GridType gt)
+        {
+            if (gt == GridType.hexagonal)
+                return folder_name_grid_hexagonal;
+            else if (gt == GridType.square)
+                return folder_name_grid_square;
+            else if (gt == GridType.square_combined_precision)
+                return folder_name_grid_combined;
+            else if (gt == GridType.square_horizontal_precision)
+                return folder_name_grid_horizontal;
+            else if (gt == GridType.square_vertical_precision)
+                return folder_name_grid_vertical;
+            else return null;
         }
     }
 }

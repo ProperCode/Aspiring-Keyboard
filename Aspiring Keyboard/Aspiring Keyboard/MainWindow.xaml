@@ -5,67 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Aspiring_Keyboard"
         mc:Ignorable="d" x:Name="W"
-        Title="Aspiring Keyboard" Height="590.026" Width="1120" FontSize="14" 
+        Title="Aspiring Keyboard" Height="633.026" Width="1104" FontSize="14" 
         WindowStartupLocation="Manual" Closing="Window_Closing" 
         ResizeMode="CanMinimize" Loaded="Window_Loaded" Icon="images/ak green.ico" StateChanged="W_StateChanged">
     <Canvas Margin="0,0,0,0">
-        <GroupBox Header="Mousegrid Settings" HorizontalAlignment="Left" Height="245" VerticalAlignment="Top" Width="354" FontSize="14" Canvas.Left="374" Canvas.Top="10">
-            <WrapPanel HorizontalAlignment="Left" Height="235" Margin="10,10,-2,0" VerticalAlignment="Top" Width="334">
-                <Label Content="Type:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Margin="0,0,80,0"/>
-                <ComboBox x:Name="CBtype" HorizontalAlignment="Left" VerticalAlignment="Top" Width="196" FontSize="14" Margin="2,4,11,0" Panel.ZIndex="21" SelectionChanged="CBtype_SelectionChanged"/>
-                <Label Content="Lines:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14"/>
-                <ComboBox x:Name="CBlines" HorizontalAlignment="Left" VerticalAlignment="Top" Width="196" FontSize="14" Margin="80,4,11,0" Panel.ZIndex="22"/>
-                <Label Content="Desired figures nr:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14"/>
-                <TextBox x:Name="TBdesired_figures_nr" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="33" VerticalAlignment="Top" Width="196" FontSize="14" Margin="2,4,0,0" Panel.ZIndex="23"/>
-                <Label Content="Background color:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14"/>
-                <TextBox x:Name="TBbackground_color" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="-44555" VerticalAlignment="Top" Width="196" FontSize="14" Margin="2,4,0,0" Panel.ZIndex="24" PreviewMouseUp="TBbackground_color_PreviewMouseUp"/>
-                <Label Content="Font color:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14"/>
-                <TextBox x:Name="TBfont_color" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="-55" VerticalAlignment="Top" Width="196" FontSize="14" Margin="48,4,0,0" Panel.ZIndex="25" PreviewMouseUp="TBfont_color_PreviewMouseUp"/>
-                <Label Content="Font size:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14"/>
-                <TextBox x:Name="TBfont_size" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="11" VerticalAlignment="Top" Width="196" FontSize="14" Margin="55,4,0,0" Panel.ZIndex="26"/>
-                <CheckBox x:Name="CHBsmart_mousegrid" Content="Smart mousegrid" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Margin="5,8,0,0" Panel.ZIndex="27" Checked="CHBsmart_mousegrid_Checked"/>
-            </WrapPanel>
-        </GroupBox>
-        <GroupBox Header="Other Settings" Height="163" Canvas.Left="374" Canvas.Top="260" Width="354" FontSize="14">
-            <WrapPanel Margin="10,10,0,0" HorizontalAlignment="Left" Width="306" Height="119" VerticalAlignment="Top">
-                <CheckBox x:Name="CHBrun_at_startup" Content="Run when computers start" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Margin="0,10,11,0" Panel.ZIndex="31" Checked="CHBrun_at_startup_Checked"/>
-                <CheckBox x:Name="CHBstart_minimized" Content="Start minimized" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Margin="0,10,33,0" Panel.ZIndex="32" Checked="CHBstart_minimized_Checked"/>
-                <CheckBox x:Name="CHBminimize_to_tray" Content="Minimize to system tray" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Margin="0,10,55,0" Panel.ZIndex="33" Checked="CHBminimize_to_tray_Checked"/>
-                <CheckBox x:Name="CHBread_status" Content="Read status" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Margin="0,10,22,0" Panel.ZIndex="34" Checked="CHBread_status_Checked"/>
-            </WrapPanel>
-        </GroupBox>
-        <Button x:Name="Bsave_settings" Content="Save Settings" Canvas.Left="10" Canvas.Top="497" 
-                Width="130" FontSize="16" Height="38" Panel.ZIndex="41" Click="Bsave_settings_Click"
-                Foreground="Black">
-            <Button.Background>
-                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
-                    <GradientStop Color="White"/>
-                    <GradientStop Color="#FFCDCDCD" Offset="1"/>
-                </LinearGradientBrush>
-            </Button.Background>
-        </Button>
-        <Button x:Name="Brestore_default_settings" Content="Restore Default" Canvas.Left="598" Canvas.Top="497" Width="130" FontSize="16" Height="38" Click="Brestore_default_settings_Click" Panel.ZIndex="42">
-            <Button.Background>
-                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
-                    <GradientStop Color="White"/>
-                    <GradientStop Color="#FFCDCDCD" Offset="1"/>
-                </LinearGradientBrush>
-            </Button.Background>
-        </Button>
-        <Button x:Name="Bhomepage" Content="Visit Homepage" Canvas.Left="960" Canvas.Top="497" Width="130" FontSize="16" Height="38" Click="Bhomepage_Click" Panel.ZIndex="42">
-            <Button.Background>
-                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
-                    <GradientStop Color="White"/>
-                    <GradientStop Color="#FFCDCDCD" Offset="1"/>
-                </LinearGradientBrush>
-            </Button.Background>
-        </Button>
-        <GroupBox Header="Other Control Keys" Height="348" Canvas.Left="740" Canvas.Top="10" Width="354">
-            <WrapPanel HorizontalAlignment="Left" Height="326" Margin="10,10,-2,0" VerticalAlignment="Top" Width="334">
-                <TextBox x:Name="TBcontrol_keys" Text="11" Width="320" Height="300" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" Margin="0,0,0,0" Panel.ZIndex="99"/>
-            </WrapPanel>
-        </GroupBox>
-        <GroupBox Header="Green Mode Actions" HorizontalAlignment="Left" Height="222" VerticalAlignment="Top" Width="354" FontSize="14" Canvas.Top="10" Canvas.Left="10">
+        <!-- Menu -->
+        <Menu x:Name="Mmain" Width="1104" Height="26" Background="#FFEAEAEA"
+              VerticalAlignment="Top" FontSize="14" Padding="0,2,2,0">
+            <MenuItem x:Name="MIfile" Header="File">
+                <MenuItem x:Name="MIexit" Header="Exit" Background="#FFEAEAEA" Click="MIexit_Click"/>
+            </MenuItem>
+            <MenuItem x:Name="MIhelp" Header="Help">
+                <MenuItem x:Name="MIuser_guide" Header="User Guide"  Background="#FFEAEAEA" 
+                          Click="MIuser_guide_Click"/>
+                <MenuItem x:Name="MIuseful_key_combinations" Header="Useful Windows Key Combinations" 
+                          Background="#FFEAEAEA" Click="MIuseful_key_combinations_Click"/>
+            </MenuItem>
+            <MenuItem x:Name="MIabout" Header="About" Click="MIabout_Click">
+            </MenuItem>
+        </Menu>
+        <GroupBox Header="Green Mode Actions" HorizontalAlignment="Left" Height="222" VerticalAlignment="Top"
+                  Width="338" FontSize="14" Canvas.Top="36" Canvas.Left="10">
             <WrapPanel HorizontalAlignment="Left" Height="183" Margin="10,10,-2,0" VerticalAlignment="Top" Width="334">
                 <Label Content="LShift Action:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Margin="0,0,8,0"/>
                 <ComboBox x:Name="CBlshift_action_a" HorizontalAlignment="Left" VerticalAlignment="Top" Width="196" FontSize="14" Margin="1,4,11,0" Panel.ZIndex="1"/>
@@ -81,7 +41,8 @@
                 <ComboBox x:Name="CBrctrl_action_a" HorizontalAlignment="Left" VerticalAlignment="Top" Width="196" FontSize="14" Margin="1,4,11,0" Panel.ZIndex="6"/>
             </WrapPanel>
         </GroupBox>
-        <GroupBox Header="Blue Mode Actions" HorizontalAlignment="Left" Height="222" VerticalAlignment="Top" Width="354" FontSize="14" Canvas.Top="240" Canvas.Left="10">
+        <GroupBox Header="Blue Mode Actions" HorizontalAlignment="Left" Height="224" VerticalAlignment="Top"
+                  Width="338" FontSize="14" Canvas.Top="263" Canvas.Left="10">
             <WrapPanel HorizontalAlignment="Left" Height="183" Margin="10,10,-2,0" VerticalAlignment="Top" Width="334">
                 <Label Content="LShift Action:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Margin="0,0,8,0"/>
                 <ComboBox x:Name="CBlshift_action_b" HorizontalAlignment="Left" VerticalAlignment="Top" Width="196" FontSize="14" Margin="1,4,11,0" Panel.ZIndex="11"/>
@@ -97,6 +58,79 @@
                 <ComboBox x:Name="CBrctrl_action_b" HorizontalAlignment="Left" VerticalAlignment="Top" Width="196" FontSize="14" Margin="1,4,11,0" Panel.ZIndex="16"/>
             </WrapPanel>
         </GroupBox>
-        <Label Content="Copyright © 2024 Mikołaj Magowski" Canvas.Left="744" Canvas.Top="370"/>
+        <GroupBox Header="Mousegrid Settings" HorizontalAlignment="Left" Height="245" VerticalAlignment="Top" 
+                  Width="354" FontSize="14" Canvas.Left="358" Canvas.Top="36">
+            <WrapPanel HorizontalAlignment="Left" Height="235" Margin="10,10,-2,0" VerticalAlignment="Top" Width="334">
+                <Label Content="Type:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Margin="0,0,80,0"/>
+                <ComboBox x:Name="CBtype" HorizontalAlignment="Left" VerticalAlignment="Top" Width="196" FontSize="14" Margin="2,4,11,0" Panel.ZIndex="21" SelectionChanged="CBtype_SelectionChanged"/>
+                <Label Content="Lines:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14"/>
+                <ComboBox x:Name="CBlines" HorizontalAlignment="Left" VerticalAlignment="Top" Width="196" FontSize="14" Margin="80,4,11,0" Panel.ZIndex="22"/>
+                <Label Content="Desired figures nr:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14"/>
+                <TextBox x:Name="TBdesired_figures_nr" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="33" VerticalAlignment="Top" Width="196" FontSize="14" Margin="2,4,0,0" Panel.ZIndex="23"/>
+                <Label Content="Background color:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14"/>
+                <TextBox x:Name="TBbackground_color" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="196" FontSize="14" Margin="2,4,0,0" Panel.ZIndex="24" PreviewMouseUp="TBbackground_color_PreviewMouseUp"/>
+                <Label Content="Font color:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14"/>
+                <TextBox x:Name="TBfont_color" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="196" FontSize="14" Margin="48,4,0,0" Panel.ZIndex="25" PreviewMouseUp="TBfont_color_PreviewMouseUp"/>
+                <Label Content="Font size:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14"/>
+                <TextBox x:Name="TBfont_size" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="11" VerticalAlignment="Top" Width="196" FontSize="14" Margin="55,4,0,0" Panel.ZIndex="26"/>
+                <CheckBox x:Name="CHBsmart_mousegrid" Content="Smart mousegrid" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Margin="5,8,0,0" Panel.ZIndex="27" Checked="CHBsmart_mousegrid_Checked"/>
+            </WrapPanel>
+        </GroupBox>
+        <GroupBox Header="Other Settings" Height="190" Canvas.Left="358" Canvas.Top="286" Width="354" FontSize="14">
+            <WrapPanel Margin="10,10,0,0" HorizontalAlignment="Left" Width="326" Height="149" VerticalAlignment="Top">
+                <Label Content="Keyboard layout:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14"
+                       Margin="0,0,0,0"/>
+                <ComboBox x:Name="CBkeyboard_layout" HorizontalAlignment="Left" VerticalAlignment="Top" Width="205"
+                          FontSize="14" Margin="2,4,0,0" Panel.ZIndex="41" 
+                          SelectionChanged="CBkeyboard_layout_SelectionChanged"/>
+                <CheckBox x:Name="CHBrun_at_startup" Content="Run when computers start" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Margin="0,10,11,0" Panel.ZIndex="43" Checked="CHBrun_at_startup_Checked"/>
+                <CheckBox x:Name="CHBstart_minimized" Content="Start minimized" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Margin="0,10,33,0" Panel.ZIndex="44" Checked="CHBstart_minimized_Checked"/>
+                <CheckBox x:Name="CHBminimize_to_tray" Content="Minimize to system tray" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Margin="0,10,55,0" Panel.ZIndex="45" Checked="CHBminimize_to_tray_Checked"/>
+                <CheckBox x:Name="CHBcheck_for_updates" Content="Check for updates automatically" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Margin="0,10,52,0" Panel.ZIndex="46" Checked="CHBcheck_for_updates_Checked"/>
+            </WrapPanel>
+        </GroupBox>
+        <GroupBox Header="Speech Synthesis Settings" HorizontalAlignment="Left" Height="135" 
+                              VerticalAlignment="Top" Width="355" FontSize="14" Canvas.Left="724" Canvas.Top="36">
+            <WrapPanel HorizontalAlignment="Left" Height="100" Margin="10,10,-2,0" 
+                                   VerticalAlignment="Top" Width="334">
+                <Label Content="Voice:" HorizontalAlignment="Left" VerticalAlignment="Top"
+                                   FontSize="14" Margin="0,1,0,0"/>
+                <ComboBox x:Name="CBss_voices" HorizontalAlignment="Left" VerticalAlignment="Top"
+                                      Width="200" FontSize="14" Margin="40,4,40,0" Panel.ZIndex="51"/>
+                <Label Content="Volume [%]:" HorizontalAlignment="Left" 
+                                   VerticalAlignment="Top" FontSize="14" Canvas.Top="75" Width="85"
+                                   Margin="0,1,0,0"/>
+                <TextBox x:Name="TBss_volume" HorizontalAlignment="Left" Height="23" 
+                                     TextWrapping="Wrap" Text="44" VerticalAlignment="Top" Width="200" 
+                                     FontSize="14" Margin="1,5,0,0" Panel.ZIndex="52"/>
+                <CheckBox x:Name="CHBread_status" Content="Read aloud status" HorizontalAlignment="Left" 
+                          VerticalAlignment="Top" FontSize="14" Margin="0,10,22,0" Panel.ZIndex="53" 
+                          Checked="CHBread_status_Checked"/>
+            </WrapPanel>
+        </GroupBox>
+        <GroupBox Header="Other Control Keys" Height="348" Canvas.Left="724" Canvas.Top="176" Width="354">
+            <WrapPanel HorizontalAlignment="Left" Height="326" Margin="10,10,-2,0" VerticalAlignment="Top" Width="334">
+                <TextBox x:Name="TBcontrol_keys" Text="11" Width="320" Height="302" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" Margin="0,0,0,0" Panel.ZIndex="61"/>
+            </WrapPanel>
+        </GroupBox>
+        <Button x:Name="Bsave_settings" Content="Save Settings" Canvas.Left="10" Canvas.Top="540" 
+                Width="130" FontSize="16" Height="38" Panel.ZIndex="71" Click="Bsave_settings_Click"
+                Foreground="Black">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="White"/>
+                    <GradientStop Color="#FFCDCDCD" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button x:Name="Brestore_default_settings" Content="Restore Default" Canvas.Left="948" Canvas.Top="540"
+                Width="130" FontSize="16" Height="38" Click="Brestore_default_settings_Click" Panel.ZIndex="72">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="White"/>
+                    <GradientStop Color="#FFCDCDCD" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
     </Canvas>
 </Window>

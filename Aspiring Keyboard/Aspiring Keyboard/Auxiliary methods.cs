@@ -1,13 +1,17 @@
-﻿//highest error nr: AM010
+﻿//highest error nr: AM016
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Net;
 using System.Runtime.InteropServices;
+using System.Speech.Synthesis;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Threading;
 
 namespace Aspiring_Keyboard
 {
@@ -58,22 +62,79 @@ namespace Aspiring_Keyboard
 
             CBlshift_action_b.SelectedItem = "Left click";
             CBrshift_action_b.SelectedItem = "Ctrl left click";
-            CBlalt_action_b.SelectedItem = "Drag and drop";
-            CBralt_action_b.SelectedItem = "Right click";
+            CBlalt_action_b.SelectedItem = "Hold left";
+            CBralt_action_b.SelectedItem = "Hold right";
             CBlctrl_action_b.SelectedItem = "Double left click";
             CBrctrl_action_b.SelectedItem = "Move mouse";
 
-            CBtype.SelectedItem = "Square combined precision";
+            CBtype.SelectedItem = "Square horizontal precision";
             CBlines.SelectedItem = "None";
-            TBdesired_figures_nr.Text = max_figures_nr.ToString();
-            TBbackground_color.Text = "-1973791";
-            TBfont_color.Text = "-16777216";
+            TBdesired_figures_nr.Text = default_desired_figures_nr.ToString();
+            
+            color_bg_str = default_color_bg_str;
+            color_font_str = default_color_font_str;
+
+            int argb = Convert.ToInt32(color_bg_str);
+
+            byte[] values = BitConverter.GetBytes(argb);
+
+            byte a = values[3];
+            byte r = values[2];
+            byte g = values[1];
+            byte b = values[0];
+
+            TBbackground_color.Background = new SolidColorBrush(Color.FromArgb(a, r, g, b));
+
+            argb = Convert.ToInt32(color_font_str);
+
+            values = BitConverter.GetBytes(argb);
+
+            a = values[3];
+            r = values[2];
+            g = values[1];
+            b = values[0];
+
+            TBfont_color.Background = new SolidColorBrush(Color.FromArgb(a, r, g, b));
+
             TBfont_size.Text = "12";
             CHBsmart_mousegrid.IsChecked = true;
+
+            CBkeyboard_layout.SelectedIndex = 0;
 
             CHBrun_at_startup.IsChecked = false;
             CHBstart_minimized.IsChecked = false;
             CHBminimize_to_tray.IsChecked = false;
+            CHBcheck_for_updates.IsChecked = false;
+            
+            bool found = false;
+            for (int i = 0; i < ss_voices_priority_list.Count && found == false; i++)
+            {
+                foreach (InstalledVoice iv in installed_voices)
+                {
+                    if (iv.VoiceInfo.Name.Contains(ss_voices_priority_list[i]))
+                    {
+                        default_ss_voice = iv.VoiceInfo.Name;
+                        found = true;
+                        break;
+                    }
+                }
+            }
+
+            if (CBss_voices.Items.Count > 0)
+            {
+                if (default_ss_voice == "")
+                {
+                    CBss_voices.SelectedIndex = 0;
+                    default_ss_voice = CBss_voices.SelectedItem.ToString();
+                }
+                else
+                {
+                    CBss_voices.SelectedItem = default_ss_voice;
+                }
+            }
+            ss_voice = default_ss_voice;
+
+            TBss_volume.Text = default_ss_volume.ToString();
             CHBread_status.IsChecked = true;
         }
 
@@ -115,6 +176,111 @@ namespace Aspiring_Keyboard
             }
         }
 
+        void mi_switch_mode_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                fix_very_rare_problem();
+                string icon;
+
+                if (green_mode)
+                {
+                    green_mode = false;
+                    icon = icon_blue;
+
+                    if (read_status) ss.SpeakAsync("Blue mode");
+                }
+                else
+                {
+                    green_mode = true;
+                    icon = icon_green;
+
+                    if (read_status) ss.SpeakAsync("Green mode");
+                }
+
+                this.Dispatcher.Invoke(DispatcherPriority.Send, new Action(() =>
+                {
+                    Stream iconStream = System.Windows.Application.GetResourceStream(
+                    new Uri(icon)).Stream;
+
+                    // Create a BitmapSource  
+                    BitmapImage bitmap = new BitmapImage();
+                    bitmap.BeginInit();
+                    bitmap.UriSource = new Uri(icon);
+                    bitmap.EndInit();
+
+                    this.Icon = bitmap;
+                    ni.Icon = new System.Drawing.Icon(iconStream);
+
+                    iconStream.Close();
+                }));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error AM014", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        void mi_toggle_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                fix_very_rare_problem();
+                string icon;
+
+                if (enabled)
+                {
+                    enabled = false;
+                    if (read_status) ss.SpeakAsync("disabled");
+
+                    icon = icon_red;
+                }
+                else
+                {
+                    enabled = true;
+                    if (read_status) ss.SpeakAsync("enabled");
+
+                    if (green_mode)
+                        icon = icon_green;
+                    else
+                        icon = icon_blue;
+                }
+
+                this.Dispatcher.Invoke(DispatcherPriority.Send, new Action(() =>
+                {
+                    Stream iconStream = System.Windows.Application.GetResourceStream(
+                    new Uri(icon)).Stream;
+
+                    // Create a BitmapSource  
+                    BitmapImage bitmap = new BitmapImage();
+                    bitmap.BeginInit();
+                    bitmap.UriSource = new Uri(icon);
+                    bitmap.EndInit();
+
+                    this.Icon = bitmap;
+                    ni.Icon = new System.Drawing.Icon(iconStream);
+
+                    iconStream.Close();
+                }));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error AM015", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        void mi_exit_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Window_Closing(null, null);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error AM016", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             try
@@ -145,14 +311,61 @@ namespace Aspiring_Keyboard
             }
         }
 
-        private void TBbackground_color_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+        void update_app_if_necessary()
+        {
+            try
+            {
+                string content;
+                MyWebClient wc = new MyWebClient();
+                content = wc.DownloadString(url_latest_version);
+
+                latest_version = content.Replace("\r\n", "").Trim();
+            }
+            catch (WebException we)
+            {
+                latest_version = "unknown";
+            }
+
+            bool update_available = false;
+
+            if (latest_version != "unknown" &&
+                int.Parse(latest_version.Replace(".", "")) > int.Parse(prog_version.Replace(".", "")))
+            {
+                update_available = true;
+            }
+
+            if ((bool)CHBcheck_for_updates.IsChecked && update_available)
+            {
+                MessageBoxResult dialogResult = System.Windows.MessageBox.Show("A new program version" +
+                    " is available. Do you want to download it now?",
+                //    " is available. Do you want to perform an automatic update now?",
+                    "New Version Available", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+                if (dialogResult == MessageBoxResult.Yes)
+                {
+                    //Open download page
+                    Process.Start("https://" + url_homepage);
+                }
+            }
+        }
+
+        void TBbackground_color_PreviewMouseUp(object sender, MouseButtonEventArgs e)
         {
             try
             {
                 System.Windows.Forms.DialogResult dr = colorDialog1.ShowDialog();
                 if (dr == System.Windows.Forms.DialogResult.OK)
                 {
-                    TBbackground_color.Text = colorDialog1.Color.ToArgb().ToString();
+                    int argb = Convert.ToInt32(colorDialog1.Color.ToArgb().ToString());
+
+                    byte[] values = BitConverter.GetBytes(argb);
+
+                    byte a = values[3];
+                    byte r = values[2];
+                    byte g = values[1];
+                    byte b = values[0];
+
+                    TBbackground_color.Background = new SolidColorBrush(Color.FromArgb(a, r, g, b));
                 }
             }
             catch (Exception ex)
@@ -168,7 +381,16 @@ namespace Aspiring_Keyboard
                 System.Windows.Forms.DialogResult dr = colorDialog2.ShowDialog();
                 if (dr == System.Windows.Forms.DialogResult.OK)
                 {
-                    TBfont_color.Text = colorDialog2.Color.ToArgb().ToString();
+                    int argb = Convert.ToInt32(colorDialog2.Color.ToArgb().ToString());
+
+                    byte[] values = BitConverter.GetBytes(argb);
+
+                    byte a = values[3];
+                    byte r = values[2];
+                    byte g = values[1];
+                    byte b = values[0];
+
+                    TBfont_color.Background = new SolidColorBrush(Color.FromArgb(a, r, g, b));
                 }
             }
             catch (Exception ex)
@@ -190,6 +412,19 @@ namespace Aspiring_Keyboard
             }
         }
 
+        private void CBkeyboard_layout_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            if (CBkeyboard_layout.SelectedItem.ToString() == "US English / US International")
+                create_grid_alphabet_for_US_kl();
+            else
+                create_grid_alphabet_for_any_kl();
+
+            grid_symbols_limit = grid_alphabet.Count;
+            max_figures_nr = (int)Math.Pow((double)grid_symbols_limit, 2);
+
+            TBdesired_figures_nr.Text = max_figures_nr.ToString();
+        }
+
         private void CHBsmart_mousegrid_Checked(object sender, RoutedEventArgs e)
         { /* needed for proper loading */ }
 
@@ -203,6 +438,9 @@ namespace Aspiring_Keyboard
         { /* needed for proper loading */ }
 
         private void CHBread_status_Checked(object sender, RoutedEventArgs e)
+        { /* needed for proper loading */ }
+
+        private void CHBcheck_for_updates_Checked(object sender, RoutedEventArgs e)
         { /* needed for proper loading */ }
 
         private void W_StateChanged(object sender, EventArgs e)
@@ -220,16 +458,69 @@ namespace Aspiring_Keyboard
             save_settings();
 
             Mouse.OverrideCursor = null;
+
+            if (auto_updates)
+                update_app_if_necessary();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void MIexit_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start("User Guide.pdf");
+            Window_Closing(null, null);
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        private void MIuser_guide_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start("Mousegrid Alphabet.pdf");
+            try
+            {
+                Process.Start("User Guide.pdf");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error AM011", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void MIuseful_key_combinations_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Process.Start("Useful Windows Key Combinations.pdf");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error AM012", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void MIabout_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                string content;
+                MyWebClient wc = new MyWebClient();
+                content = wc.DownloadString(url_latest_version);
+
+                latest_version = content.Replace("\r\n", "").Trim();
+            }
+            catch (WebException we)
+            {
+                latest_version = "unknown";
+            }
+
+            try
+            {
+                WA.Lprogram_name.Content = prog_name;
+                WA.Llatest_version.Content = "Latest version: " + latest_version;
+                WA.Linstalled_version.Content = "Installed version: " + prog_version;
+                WA.Lhomepage.Content = url_homepage;
+                WA.Lcopyright.Content = copyright_text;
+
+                WA.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error AM013", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         void set_values()
@@ -254,7 +545,7 @@ namespace Aspiring_Keyboard
                 left_shift_action_a = ActionX.hold_left;
             else if (CBlshift_action_a.SelectedIndex == 9)
                 left_shift_action_a = ActionX.hold_right;
-            else if (CBlshift_action_a.SelectedIndex == 0)
+            else if (CBlshift_action_a.SelectedIndex == 10)
                 left_shift_action_a = ActionX.none;
 
             if (CBrshift_action_a.SelectedIndex == 0)
@@ -277,7 +568,7 @@ namespace Aspiring_Keyboard
                 right_shift_action_a = ActionX.hold_left;
             else if (CBrshift_action_a.SelectedIndex == 9)
                 right_shift_action_a = ActionX.hold_right;
-            else if (CBrshift_action_a.SelectedIndex == 0)
+            else if (CBrshift_action_a.SelectedIndex == 10)
                 right_shift_action_a = ActionX.none;
 
             if (CBlshift_action_b.SelectedIndex == 0)
@@ -300,7 +591,7 @@ namespace Aspiring_Keyboard
                 left_shift_action_b = ActionX.hold_left;
             else if (CBlshift_action_b.SelectedIndex == 9)
                 left_shift_action_b = ActionX.hold_right;
-            else if (CBlshift_action_b.SelectedIndex == 0)
+            else if (CBlshift_action_b.SelectedIndex == 10)
                 left_shift_action_b = ActionX.none;
 
             if (CBrshift_action_b.SelectedIndex == 0)
@@ -323,7 +614,7 @@ namespace Aspiring_Keyboard
                 right_shift_action_b = ActionX.hold_left;
             else if (CBrshift_action_b.SelectedIndex == 9)
                 right_shift_action_b = ActionX.hold_right;
-            else if (CBrshift_action_b.SelectedIndex == 0)
+            else if (CBrshift_action_b.SelectedIndex == 10)
                 right_shift_action_b = ActionX.none;
 
             if (CBlalt_action_a.SelectedIndex == 0)
@@ -346,7 +637,7 @@ namespace Aspiring_Keyboard
                 left_alt_action_a = ActionX.hold_left;
             else if (CBlalt_action_a.SelectedIndex == 9)
                 left_alt_action_a = ActionX.hold_right;
-            else if (CBlalt_action_a.SelectedIndex == 0)
+            else if (CBlalt_action_a.SelectedIndex == 10)
                 left_alt_action_a = ActionX.none;
 
             if (CBralt_action_a.SelectedIndex == 0)
@@ -369,7 +660,7 @@ namespace Aspiring_Keyboard
                 right_alt_action_a = ActionX.hold_left;
             else if (CBralt_action_a.SelectedIndex == 9)
                 right_alt_action_a = ActionX.hold_right;
-            else if (CBralt_action_a.SelectedIndex == 0)
+            else if (CBralt_action_a.SelectedIndex == 10)
                 right_alt_action_a = ActionX.none;
 
             if (CBlalt_action_b.SelectedIndex == 0)
@@ -392,7 +683,7 @@ namespace Aspiring_Keyboard
                 left_alt_action_b = ActionX.hold_left;
             else if (CBlalt_action_b.SelectedIndex == 9)
                 left_alt_action_b = ActionX.hold_right;
-            else if (CBlalt_action_b.SelectedIndex == 0)
+            else if (CBlalt_action_b.SelectedIndex == 10)
                 left_alt_action_b = ActionX.none;
 
             if (CBralt_action_b.SelectedIndex == 0)
@@ -415,7 +706,7 @@ namespace Aspiring_Keyboard
                 right_alt_action_b = ActionX.hold_left;
             else if (CBralt_action_b.SelectedIndex == 9)
                 right_alt_action_b = ActionX.hold_right;
-            else if (CBralt_action_b.SelectedIndex == 0)
+            else if (CBralt_action_b.SelectedIndex == 10)
                 right_alt_action_b = ActionX.none;
 
             if (CBlctrl_action_a.SelectedIndex == 0)
@@ -438,7 +729,7 @@ namespace Aspiring_Keyboard
                 left_ctrl_action_a = ActionX.hold_left;
             else if (CBlctrl_action_a.SelectedIndex == 9)
                 left_ctrl_action_a = ActionX.hold_right;
-            else if (CBlctrl_action_a.SelectedIndex == 0)
+            else if (CBlctrl_action_a.SelectedIndex == 10)
                 left_ctrl_action_a = ActionX.none;
 
             if (CBrctrl_action_a.SelectedIndex == 0)
@@ -461,7 +752,7 @@ namespace Aspiring_Keyboard
                 right_ctrl_action_a = ActionX.hold_left;
             else if (CBrctrl_action_a.SelectedIndex == 9)
                 right_ctrl_action_a = ActionX.hold_right;
-            else if (CBrctrl_action_a.SelectedIndex == 0)
+            else if (CBrctrl_action_a.SelectedIndex == 10)
                 right_ctrl_action_a = ActionX.none;
 
             if (CBlctrl_action_b.SelectedIndex == 0)
@@ -484,7 +775,7 @@ namespace Aspiring_Keyboard
                 left_ctrl_action_b = ActionX.hold_left;
             else if (CBlctrl_action_b.SelectedIndex == 9)
                 left_ctrl_action_b = ActionX.hold_right;
-            else if (CBlctrl_action_b.SelectedIndex == 0)
+            else if (CBlctrl_action_b.SelectedIndex == 10)
                 left_ctrl_action_b = ActionX.none;
 
             if (CBrctrl_action_b.SelectedIndex == 0)
@@ -507,7 +798,7 @@ namespace Aspiring_Keyboard
                 right_ctrl_action_b = ActionX.hold_left;
             else if (CBrctrl_action_b.SelectedIndex == 9)
                 right_ctrl_action_b = ActionX.hold_right;
-            else if (CBrctrl_action_b.SelectedIndex == 0)
+            else if (CBrctrl_action_b.SelectedIndex == 10)
                 right_ctrl_action_b = ActionX.none;
 
             bool grid_size_changed = false;
@@ -536,30 +827,52 @@ namespace Aspiring_Keyboard
             desired_figures_nr = int.Parse(TBdesired_figures_nr.Text);
             font_size = int.Parse(TBfont_size.Text);
 
-            int argb = Convert.ToInt32(TBbackground_color.Text);
+            if (saving_enabled == false)
+            {
+                int argb = Convert.ToInt32(color_bg_str);
 
-            byte[] values = BitConverter.GetBytes(argb);
+                byte[] values = BitConverter.GetBytes(argb);
 
-            byte a = values[3];
-            byte r = values[2];
-            byte g = values[1];
-            byte b = values[0];
+                byte a = values[3];
+                byte r = values[2];
+                byte g = values[1];
+                byte b = values[0];
 
-            color1 = Color.FromArgb(a, r, g, b);
+                TBbackground_color.Background = new SolidColorBrush(Color.FromArgb(a, r, g, b));
+                color_bg = Color.FromArgb(a, r, g, b);
 
-            argb = Convert.ToInt32(TBfont_color.Text);
+                argb = Convert.ToInt32(color_font_str);
 
-            values = BitConverter.GetBytes(argb);
+                values = BitConverter.GetBytes(argb);
 
-            a = values[3];
-            r = values[2];
-            g = values[1];
-            b = values[0];
+                a = values[3];
+                r = values[2];
+                g = values[1];
+                b = values[0];
 
-            color2 = Color.FromArgb(a, r, g, b);
+                TBfont_color.Background = new SolidColorBrush(Color.FromArgb(a, r, g, b));
+                color_font = Color.FromArgb(a, r, g, b);
+            }
+            else
+            {
+                SolidColorBrush scb = (SolidColorBrush)TBbackground_color.Background;
+                System.Drawing.Color color =
+                    System.Drawing.Color.FromArgb(scb.Color.A, scb.Color.R, scb.Color.G, scb.Color.B);
+                color_bg_str = color.ToArgb().ToString();
+                color_bg = Color.FromArgb(scb.Color.A, scb.Color.R, scb.Color.G, scb.Color.B);
+
+                scb = (SolidColorBrush)TBfont_color.Background;
+                color =
+                    System.Drawing.Color.FromArgb(scb.Color.A, scb.Color.R, scb.Color.G, scb.Color.B);
+                color_font_str = color.ToArgb().ToString();
+                color_font = Color.FromArgb(scb.Color.A, scb.Color.R, scb.Color.G, scb.Color.B);
+            }
 
             bool prev_smart_grid = smart_grid; 
             smart_grid = (bool)CHBsmart_mousegrid.IsChecked;
+
+            string prev_keyboard_layout = keyboard_layout;
+            keyboard_layout = CBkeyboard_layout.SelectedItem.ToString();
 
             //need a .bat file to start an .exe file for some reasons
             Microsoft.Win32.RegistryKey rkApp = Microsoft.Win32.Registry.CurrentUser
@@ -578,13 +891,37 @@ namespace Aspiring_Keyboard
                 rkApp.DeleteValue(prog_name, false);
             }
 
-            if ((grid_size_changed || prev_smart_grid != smart_grid) && THRmonitor != null) //we don't want this executed when settings are being loaded
+            auto_updates = (bool)CHBcheck_for_updates.IsChecked;
+
+            if (CBss_voices.Items.Count > 0)
+                ss_voice = CBss_voices.SelectedItem.ToString();
+            if (ss_voice != "")
+                ss.SelectVoice(ss_voice);
+
+            ss_volume = int.Parse(TBss_volume.Text);
+            ss.Volume = ss_volume;
+            read_status = (bool)CHBread_status.IsChecked;
+
+            if (((grid_size_changed || prev_smart_grid != smart_grid)
+                || (prev_keyboard_layout != keyboard_layout)) 
+                && THRmonitor != null) //we don't want this executed when settings are being loaded
             {
                 thread_suspend1 = true;
                 while (thread_suspended1 == false)
                 {
                     Thread.Sleep(10); //wait for thread to finish its jobs
                 }
+
+                if (keyboard_layout == "US English / US International")
+                    create_grid_alphabet_for_US_kl();
+                else
+                    create_grid_alphabet_for_any_kl();
+
+                grid_symbols_limit = grid_alphabet.Count;
+                max_figures_nr = (int)Math.Pow((double)grid_symbols_limit, 2);
+
+                if (int.Parse(TBdesired_figures_nr.Text) > max_figures_nr)
+                    TBdesired_figures_nr.Text = max_figures_nr.ToString();
 
                 Create_Grid();
 
@@ -606,7 +943,7 @@ namespace Aspiring_Keyboard
                     MW.Close();
                 }
                 MW = new MouseGrid(grid_width, grid_height, grid_lines, grid_type, font_family,
-                    font_size, color1, color2, rows_nr, cols_nr, figure_width, figure_height,
+                    font_size, color_bg, color_font, rows_nr, cols_nr, figure_width, figure_height,
                     grids[0].elements);
             }
 
@@ -686,16 +1023,22 @@ namespace Aspiring_Keyboard
                         throw new Exception("Desired figures number must be between 5 and "
                             + max_figures_nr + ".");
 
-                    if (int.Parse(TBbackground_color.Text) < -16777216
-                        || int.Parse(TBbackground_color.Text) > -1)
-                        throw new Exception("Mousegrid size must be between -16777216 and -1.");
+                    int trash;
+                    if (int.TryParse(TBfont_size.Text, out trash) == false
+                        || int.Parse(TBfont_size.Text) < 1
+                        || int.Parse(TBfont_size.Text) > max_font_size)
+                        throw new Exception("Mousegrid font size must be between 1 and "
+                            + max_font_size + ".");
 
-                    if (int.Parse(TBfont_color.Text) < -16777216
-                        || int.Parse(TBfont_color.Text) > -1)
-                        throw new Exception("Mousegrid size must be between -16777216 and -1.");
-
-                    if (int.Parse(TBfont_size.Text) < 1)
-                        throw new Exception("Mousegrid font size must be greater than 0.");
+                    if (CBss_voices.SelectedIndex == -1 && (bool)CHBread_status.IsChecked)
+                        throw new Exception("Speech synthesis voice must be selected when" +
+                            " \"Read status\" is checked.");
+                                        
+                    if (int.TryParse(TBss_volume.Text, out trash) == false
+                        || int.Parse(TBss_volume.Text) < 0
+                        || int.Parse(TBss_volume.Text) > 100)
+                        throw new Exception("Speech synthesis volume" +
+                            " must be between 0 and 100");
 
                     string file_path = System.IO.Path.Combine(saving_folder_path, filename_settings);
 
@@ -732,9 +1075,14 @@ namespace Aspiring_Keyboard
                     sw.WriteLine(TBfont_size.Text);
                     sw.WriteLine(CHBsmart_mousegrid.IsChecked);
 
+                    sw.WriteLine(CBkeyboard_layout.SelectedIndex);
+                    sw.WriteLine(CHBcheck_for_updates.IsChecked);
                     sw.WriteLine(CHBrun_at_startup.IsChecked);
                     sw.WriteLine(CHBstart_minimized.IsChecked);
                     sw.WriteLine(CHBminimize_to_tray.IsChecked);
+
+                    sw.WriteLine(CBss_voices.SelectedIndex);
+                    sw.WriteLine(TBss_volume.Text);
                     sw.WriteLine(CHBread_status.IsChecked);
 
                     sw.Close();
@@ -792,17 +1140,24 @@ namespace Aspiring_Keyboard
                     TBfont_size.Text = sr.ReadLine();
                     CHBsmart_mousegrid.IsChecked = smart_grid = bool.Parse(sr.ReadLine());
 
+                    CBkeyboard_layout.SelectedIndex = int.Parse(sr.ReadLine());
+                    CHBcheck_for_updates.IsChecked = bool.Parse(sr.ReadLine());
                     CHBrun_at_startup.IsChecked = bool.Parse(sr.ReadLine());
                     CHBstart_minimized.IsChecked = bool.Parse(sr.ReadLine());
                     CHBminimize_to_tray.IsChecked = bool.Parse(sr.ReadLine());
+
+                    CBss_voices.SelectedIndex = int.Parse(sr.ReadLine());
+                    TBss_volume.Text = sr.ReadLine();
                     CHBread_status.IsChecked = bool.Parse(sr.ReadLine());
 
                     //Checkboxes Checked and Unchecked events work only after form is loaded
                     //so they have to be called manually in order to load save data properly
+                    CHBcheck_for_updates_Checked(new object(), new RoutedEventArgs());
                     CHBsmart_mousegrid_Checked(new object(), new RoutedEventArgs());
                     CHBrun_at_startup_Checked(new object(), new RoutedEventArgs());
                     CHBstart_minimized_Checked(new object(), new RoutedEventArgs());
                     CHBminimize_to_tray_Checked(new object(), new RoutedEventArgs());
+                    
                     CHBread_status_Checked(new object(), new RoutedEventArgs());
 
                     set_values();
@@ -831,25 +1186,29 @@ namespace Aspiring_Keyboard
         {
             try
             {
+                if (ss_volume > 100 || ss_volume < 0)
+                {
+                    ss_volume = 100;
+                    TBss_volume.Text = ss_volume.ToString();
+                }
                 if (desired_figures_nr > max_figures_nr)
                 {
                     desired_figures_nr = max_figures_nr;
                     TBdesired_figures_nr.Text = desired_figures_nr.ToString();
                 }
-                if (int.Parse(TBbackground_color.Text) < -16777216
-                            || int.Parse(TBbackground_color.Text) > -1)
+                if (int.Parse(color_bg_str) < -16777216
+                            || int.Parse(color_bg_str) > -1)
                 {
-                    TBbackground_color.Text = "-1973791";
-                    color1 = Color.FromRgb(225, 225, 225); //bg color
+                    color_bg_str = "-1973791";
+                    color_bg = Color.FromRgb(225, 225, 225); //bg color
                 }
-
-                if (int.Parse(TBfont_color.Text) < -16777216
-                    || int.Parse(TBfont_color.Text) > -1)
+                if (int.Parse(color_font_str) < -16777216
+                    || int.Parse(color_font_str) > -1)
                 {
-                    TBfont_color.Text = "-16777216";
-                    color2 = Color.FromRgb(0, 0, 0); //font color
+                    color_font_str = "-16777216";
+                    color_font = Color.FromRgb(0, 0, 0); //font color
                 }
-                if (font_size < 1)
+                if (font_size < 1 || font_size > max_font_size)
                 {
                     font_size = 12;
                     TBfont_size.Text = font_size.ToString();
@@ -858,6 +1217,16 @@ namespace Aspiring_Keyboard
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error AM010", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private class MyWebClient : WebClient
+        {
+            protected override WebRequest GetWebRequest(Uri uri)
+            {
+                WebRequest w = base.GetWebRequest(uri);
+                w.Timeout = 3000;
+                return w;
             }
         }
     }

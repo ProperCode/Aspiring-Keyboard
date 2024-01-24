@@ -71,8 +71,14 @@
     <Compile Include="MouseGrid.xaml.cs">
       <DependentUpon>MouseGrid.xaml</DependentUpon>
     </Compile>
-    <Compile Include="WI.cs" />
-    <Compile Include="WIn.cs" />
+    <Compile Include="WindowAbout.xaml.cs">
+      <DependentUpon>WindowAbout.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowEULA.xaml.cs">
+      <DependentUpon>WindowEULA.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowsInput2.cs" />
+    <Compile Include="WindowsInputNative2.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -89,6 +95,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="MouseGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowAbout.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowEULA.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
