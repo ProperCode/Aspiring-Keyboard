@@ -1,10 +1,6 @@
 # Aspiring Keyboard
 Aspiring Keyboard is a Windows app which allows using a computer without a mouse.
 
-Currently supports only: US English keyboard layout and US International keyboard layout
-
-Typing a string inside a mousegrid figure moves the mouse cursor to the center of that string and performs mouse action that was chosen earlier.
-
 What are the benefits of using Aspiring Keyboard?
 - Complete many types of tasks faster than by using a mouse and keyboard in a traditional way*.
 - No need to move your hand between keyboard and mouse.
