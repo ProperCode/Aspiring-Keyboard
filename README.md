@@ -20,5 +20,5 @@ If you wish to report a bug or send feedback, you can do so by sending me an e-m
 Please provide as much information as possible and provide screenshot(s) if applicable.
 
 ## My Other Open Source Projects
-[Clickless Mouse](https://github.com/ProperCode/clickless-mouse)<br/>
+[Clickless Mouse](https://github.com/ProperCode/clickless-mouse)<br/><br/>
 [Work by Speech](https://github.com/ProperCode/Work-by-Speech)<br/>
