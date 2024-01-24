@@ -10,3 +10,7 @@ What are the benefits of using Aspiring Keyboard?
 *- you must be able to touch type and you should know the most important [Windows Key Combinations](https://github.com/ProperCode/Aspiring-Keyboard/blob/main/other/Useful%20Windows%20Key%20Combinations.pdf) to use Aspiring Keyboard in the best way possible.
 
 Aspiring Keyboard can be also useful when you forget to take a mouse with your laptop or in case of mouse failure.
+
+## Screenshot
+
+![alt text](https://raw.githubusercontent.com/ProperCode/Aspiring-Keyboard/main/other/Aspiring_Keyboard_v.1.0.jpg)
