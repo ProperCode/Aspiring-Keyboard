@@ -1,7 +1,7 @@
 # Aspiring Keyboard
 
 ## Download
-[Download latest version](https://github.com/ProperCode/Work-by-Speech/releases)<br/>
+[Download latest version](https://github.com/ProperCode/Aspiring-Keyboard/releases)<br/>
 
 ## Description
 Aspiring Keyboard is a Windows app which allows using a computer without a mouse.
