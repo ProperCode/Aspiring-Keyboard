@@ -18,7 +18,7 @@ Aspiring Keyboard can be also useful when you forget to take a mouse with your l
 
 ## Screenshot
 
-![alt text](https://raw.githubusercontent.com/ProperCode/Aspiring-Keyboard/main/other/Aspiring_Keyboard_v.1.0.jpg)
+![alt text](https://raw.githubusercontent.com/ProperCode/Aspiring-Keyboard/main/other/Aspiring_Keyboard_v.1.1.jpg)
 
 ## Bug Report and Feedback
 If you wish to report a bug or send feedback, you can do so by sending me an e-mail: ![alt text](https://raw.githubusercontent.com/ProperCode/clickless-mouse/master/other/images/email.jpg) .
