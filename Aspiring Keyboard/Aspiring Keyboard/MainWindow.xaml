@@ -23,6 +23,8 @@
             </MenuItem>
             <MenuItem x:Name="MIabout" Header="About" Click="MIabout_Click">
             </MenuItem>
+            <MenuItem x:Name="MIchangelog" Header="Changelog" Click="MIchangelog_Click">
+            </MenuItem>
         </Menu>
         <GroupBox Header="Green Mode Actions" HorizontalAlignment="Left" Height="222" VerticalAlignment="Top"
                   Width="338" FontSize="14" Canvas.Top="36" Canvas.Left="10">

@@ -74,6 +74,9 @@
     <Compile Include="WindowAbout.xaml.cs">
       <DependentUpon>WindowAbout.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WindowChangelog.xaml.cs">
+      <DependentUpon>WindowChangelog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WindowEULA.xaml.cs">
       <DependentUpon>WindowEULA.xaml</DependentUpon>
     </Compile>
@@ -99,6 +102,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="WindowAbout.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowChangelog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

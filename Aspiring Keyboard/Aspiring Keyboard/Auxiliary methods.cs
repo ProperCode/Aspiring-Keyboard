@@ -1,4 +1,4 @@
-﻿//highest error nr: AM016
+﻿//highest error nr: AM017
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -509,13 +509,17 @@ namespace Aspiring_Keyboard
 
             try
             {
-                WA.Lprogram_name.Content = prog_name;
-                WA.Llatest_version.Content = "Latest version: " + latest_version;
-                WA.Linstalled_version.Content = "Installed version: " + prog_version;
-                WA.Lhomepage.Content = url_homepage;
-                WA.Lcopyright.Content = copyright_text;
+                WindowAbout w = new WindowAbout();
 
-                WA.Show();
+                w.Lprogram_name.Content = prog_name;
+                w.Llatest_version.Content = "Latest version: " + latest_version;
+                w.Linstalled_version.Content = "Installed version: " + prog_version;
+                w.Lhomepage.Content = url_homepage;
+                w.Lcopyright.Content = copyright_text;
+
+                w.Owner = Application.Current.MainWindow;
+                w.ShowInTaskbar = false;
+                w.ShowDialog();
             }
             catch (Exception ex)
             {
@@ -523,8 +527,29 @@ namespace Aspiring_Keyboard
             }
         }
 
+        private void MIchangelog_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                WindowChangelog w = new WindowChangelog();
+                w.Owner = Application.Current.MainWindow;
+                w.ShowInTaskbar = false;
+                w.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error AM017", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
         void set_values()
         {
+            if (saving_enabled)
+            {
+                if (smart_grid && desired_figures_nr >= 5)
+                    save_grids();
+            }
+
             if (CBlshift_action_a.SelectedIndex == 0)
                 left_shift_action_a = ActionX.left_click;
             else if (CBlshift_action_a.SelectedIndex == 1)
@@ -902,8 +927,8 @@ namespace Aspiring_Keyboard
             ss.Volume = ss_volume;
             read_status = (bool)CHBread_status.IsChecked;
 
-            if (((grid_size_changed || prev_smart_grid != smart_grid)
-                || (prev_keyboard_layout != keyboard_layout)) 
+            if ((grid_size_changed || prev_smart_grid != smart_grid
+                || prev_keyboard_layout != keyboard_layout)
                 && THRmonitor != null) //we don't want this executed when settings are being loaded
             {
                 thread_suspend1 = true;
@@ -925,7 +950,7 @@ namespace Aspiring_Keyboard
 
                 Create_Grid();
 
-                if (smart_grid && prev_smart_grid == false)
+                if (smart_grid)
                 {
                     load_grids();
                 }
@@ -939,7 +964,7 @@ namespace Aspiring_Keyboard
                 {
                     //need to close mousegrid window or there will be 1 more window every time you change
                     //mousegrid settings that require mousegrid regeneration
-                    //you can easily see this windows by pressing  windows key + tab
+                    //you can easily see these windows by pressing  windows key + tab
                     MW.Close();
                 }
                 MW = new MouseGrid(grid_width, grid_height, grid_lines, grid_type, font_family,
@@ -1018,12 +1043,13 @@ namespace Aspiring_Keyboard
                     if (CBlines.SelectedIndex == -1)
                         throw new Exception("Mousegrid lines were not selected.");
 
-                    if (int.Parse(TBdesired_figures_nr.Text) < 5
+                    int trash;
+                    if (int.TryParse(TBdesired_figures_nr.Text, out trash) == false
+                        || int.Parse(TBdesired_figures_nr.Text) < 5
                         || int.Parse(TBdesired_figures_nr.Text) > max_figures_nr)
                         throw new Exception("Desired figures number must be between 5 and "
                             + max_figures_nr + ".");
 
-                    int trash;
                     if (int.TryParse(TBfont_size.Text, out trash) == false
                         || int.Parse(TBfont_size.Text) < 1
                         || int.Parse(TBfont_size.Text) > max_font_size)
@@ -1224,6 +1250,9 @@ namespace Aspiring_Keyboard
         {
             protected override WebRequest GetWebRequest(Uri uri)
             {
+                ServicePointManager.Expect100Continue = true;
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
                 WebRequest w = base.GetWebRequest(uri);
                 w.Timeout = 3000;
                 return w;

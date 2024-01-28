@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\m\Documents\Visual Studio 2022\Projects\Aspiring Keyboard\Aspiring Keyboard\App.xaml
-4-60214290
+5-2048357530
 
-151280395623
+16-588806021
 161902275166
-MainWindow.xaml;MouseGrid.xaml;WindowAbout.xaml;WindowEULA.xaml;
+MainWindow.xaml;MouseGrid.xaml;WindowAbout.xaml;WindowChangelog.xaml;WindowEULA.xaml;
 
-False
+True
 
