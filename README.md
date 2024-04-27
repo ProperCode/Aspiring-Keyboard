@@ -22,6 +22,7 @@ Aspiring Keyboard can be also useful when you forget to take a mouse with your l
 ![alt text](https://raw.githubusercontent.com/ProperCode/Aspiring-Keyboard/main/other/Aspiring_Keyboard_v.1.1.jpg)
 
 ## Awards
+[![Uptodown Clean Award](https://raw.githubusercontent.com/ProperCode/Aspiring-Keyboard/master/other/awards/certified-free.png)](https://aspiring-keyboard.en.uptodown.com/windows)
 [![Updatestar Clean Award](https://raw.githubusercontent.com/ProperCode/Aspiring-Keyboard/master/other/awards/updatestar.com.jpg)](https://www.updatestar.com/virus-report/aspiring-keyboard/5263701)
 [![Majorgeeks Award](https://raw.githubusercontent.com/ProperCode/Aspiring-Keyboard/master/other/awards/majorgeektested.gif)](https://www.majorgeeks.com/files/details/aspiring_keyboard.html)
 [![File Transit 5/5 Award](https://raw.githubusercontent.com/ProperCode/Aspiring-Keyboard/master/other/awards/filetransit_5of5.gif)](https://www.filetransit.com/view.php?id=454548)
