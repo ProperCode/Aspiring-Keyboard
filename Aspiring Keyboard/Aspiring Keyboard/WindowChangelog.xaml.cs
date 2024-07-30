@@ -17,6 +17,8 @@ namespace Aspiring_Keyboard
                 TB.IsReadOnly = true;
 
                 TB.Text = "All notable changes to Aspiring Keyboard will be documented here."
+                + "\n\n[1.2] - July 30 , 2024:"
+                + "\n- Fixed settings saving and loading."
                 + "\n\n[1.1] - Januray 28, 2024:"
                 + "\n- Fixed minor bugs.";
             }

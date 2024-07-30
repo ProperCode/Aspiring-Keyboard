@@ -22,7 +22,7 @@ namespace Aspiring_Keyboard
         const bool check_if_already_running = true;
 
         const string prog_name = "Aspiring Keyboard";
-        const string prog_version = "1.1";
+        const string prog_version = "1.2";
         const string url_latest_version = "https://raw.githubusercontent.com/ProperCode/Aspiring-Keyboard/main/other/latest_version.txt";
         const string url_homepage = "github.com/ProperCode/Aspiring-Keyboard";
         string latest_version = "";

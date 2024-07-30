@@ -44,5 +44,13 @@ namespace Aspiring_Keyboard
         {
             Mouse.OverrideCursor = null;
         }
+
+        private void Bchangelog_Click(object sender, RoutedEventArgs e)
+        {
+            WindowChangelog w = new WindowChangelog();
+            w.Owner = Application.Current.MainWindow;
+            w.ShowInTaskbar = false;
+            w.Show();
+        }
     }
 }

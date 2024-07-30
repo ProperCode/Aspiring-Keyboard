@@ -45,6 +45,8 @@ namespace Aspiring_Keyboard
         System.Windows.Forms.ColorDialog colorDialog1 = new System.Windows.Forms.ColorDialog();
         System.Windows.Forms.ColorDialog colorDialog2 = new System.Windows.Forms.ColorDialog();
 
+        bool loading = false;
+
         public int GetWindowsScaling()
         {
             return (int)(100 * System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width
@@ -84,7 +86,7 @@ namespace Aspiring_Keyboard
             byte b = values[0];
 
             TBbackground_color.Background = new SolidColorBrush(Color.FromArgb(a, r, g, b));
-
+            
             argb = Convert.ToInt32(color_font_str);
 
             values = BitConverter.GetBytes(argb);
@@ -95,7 +97,7 @@ namespace Aspiring_Keyboard
             b = values[0];
 
             TBfont_color.Background = new SolidColorBrush(Color.FromArgb(a, r, g, b));
-
+            
             TBfont_size.Text = "12";
             CHBsmart_mousegrid.IsChecked = true;
 
@@ -357,6 +359,7 @@ namespace Aspiring_Keyboard
                 if (dr == System.Windows.Forms.DialogResult.OK)
                 {
                     int argb = Convert.ToInt32(colorDialog1.Color.ToArgb().ToString());
+                    color_bg_str = argb.ToString();
 
                     byte[] values = BitConverter.GetBytes(argb);
 
@@ -382,6 +385,7 @@ namespace Aspiring_Keyboard
                 if (dr == System.Windows.Forms.DialogResult.OK)
                 {
                     int argb = Convert.ToInt32(colorDialog2.Color.ToArgb().ToString());
+                    color_font_str = argb.ToString();
 
                     byte[] values = BitConverter.GetBytes(argb);
 
@@ -391,6 +395,7 @@ namespace Aspiring_Keyboard
                     byte b = values[0];
 
                     TBfont_color.Background = new SolidColorBrush(Color.FromArgb(a, r, g, b));
+                    color_font = Color.FromArgb(a, r, g, b);
                 }
             }
             catch (Exception ex)
@@ -414,15 +419,18 @@ namespace Aspiring_Keyboard
 
         private void CBkeyboard_layout_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
-            if (CBkeyboard_layout.SelectedItem.ToString() == "US English / US International")
-                create_grid_alphabet_for_US_kl();
-            else
-                create_grid_alphabet_for_any_kl();
+            if (loading == false)
+            {
+                if (CBkeyboard_layout.SelectedItem.ToString() == "US English / US International")
+                    create_grid_alphabet_for_US_kl();
+                else
+                    create_grid_alphabet_for_any_kl();
 
-            grid_symbols_limit = grid_alphabet.Count;
-            max_figures_nr = (int)Math.Pow((double)grid_symbols_limit, 2);
+                grid_symbols_limit = grid_alphabet.Count;
+                max_figures_nr = (int)Math.Pow((double)grid_symbols_limit, 2);
 
-            TBdesired_figures_nr.Text = max_figures_nr.ToString();
+                TBdesired_figures_nr.Text = max_figures_nr.ToString();
+            }
         }
 
         private void CHBsmart_mousegrid_Checked(object sender, RoutedEventArgs e)
@@ -1096,8 +1104,8 @@ namespace Aspiring_Keyboard
                     sw.WriteLine(CBtype.SelectedIndex);
                     sw.WriteLine(CBlines.SelectedIndex);
                     sw.WriteLine(TBdesired_figures_nr.Text);
-                    sw.WriteLine(TBbackground_color.Text);
-                    sw.WriteLine(TBfont_color.Text);
+                    sw.WriteLine(color_bg_str);
+                    sw.WriteLine(color_font_str);
                     sw.WriteLine(TBfont_size.Text);
                     sw.WriteLine(CHBsmart_mousegrid.IsChecked);
 
@@ -1138,6 +1146,8 @@ namespace Aspiring_Keyboard
 
             try
             {
+                loading = true;
+
                 if (File.Exists(file_path))
                 {
                     fs = new FileStream(file_path, FileMode.Open, FileAccess.Read);
@@ -1161,8 +1171,8 @@ namespace Aspiring_Keyboard
                     CBtype.SelectedIndex = int.Parse(sr.ReadLine());
                     CBlines.SelectedIndex = int.Parse(sr.ReadLine());
                     TBdesired_figures_nr.Text = sr.ReadLine();
-                    TBbackground_color.Text = sr.ReadLine();
-                    TBfont_color.Text = sr.ReadLine();
+                    color_bg_str = sr.ReadLine();
+                    color_font_str = sr.ReadLine();
                     TBfont_size.Text = sr.ReadLine();
                     CHBsmart_mousegrid.IsChecked = smart_grid = bool.Parse(sr.ReadLine());
 
@@ -1183,7 +1193,7 @@ namespace Aspiring_Keyboard
                     CHBrun_at_startup_Checked(new object(), new RoutedEventArgs());
                     CHBstart_minimized_Checked(new object(), new RoutedEventArgs());
                     CHBminimize_to_tray_Checked(new object(), new RoutedEventArgs());
-                    
+
                     CHBread_status_Checked(new object(), new RoutedEventArgs());
 
                     set_values();
@@ -1205,6 +1215,10 @@ namespace Aspiring_Keyboard
                         fs.Close();
                 }
                 catch (Exception ex2) { }
+            }
+            finally
+            {
+                loading = false;
             }
         }
 
