@@ -1,18 +1,14 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "E:\\Informatyka\\[MOJE]\\_Projekty Desktop\\_Aspiring Keyboard\\[GITHUB]\\Aspiring Keyboard\\",
+  "WorkspaceRootPath": "C:\\Users\\mikol\\Documents\\Visual Studio 2022\\Projects\\Aspiring Keyboard\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E838B6FF-73BD-42DA-966A-B1DD6E73D48F}|Aspiring Keyboard\\Aspiring Keyboard.csproj|e:\\informatyka\\[moje]\\_projekty desktop\\_aspiring keyboard\\[github]\\aspiring keyboard\\aspiring keyboard\\windowchangelog.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
-      "RelativeMoniker": "D:0:0:{E838B6FF-73BD-42DA-966A-B1DD6E73D48F}|Aspiring Keyboard\\Aspiring Keyboard.csproj|solutionrelative:aspiring keyboard\\windowchangelog.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E838B6FF-73BD-42DA-966A-B1DD6E73D48F}|Aspiring Keyboard\\Aspiring Keyboard.csproj|E:\\Informatyka\\[MOJE]\\_Projekty Desktop\\_Aspiring Keyboard\\[GITHUB]\\Aspiring Keyboard\\aspiring keyboard\\mainwindow.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
+      "AbsoluteMoniker": "D:0:0:{E838B6FF-73BD-42DA-966A-B1DD6E73D48F}|Aspiring Keyboard\\Aspiring Keyboard.csproj|C:\\Users\\mikol\\Documents\\Visual Studio 2022\\Projects\\Aspiring Keyboard\\aspiring keyboard\\mainwindow.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
       "RelativeMoniker": "D:0:0:{E838B6FF-73BD-42DA-966A-B1DD6E73D48F}|Aspiring Keyboard\\Aspiring Keyboard.csproj|solutionrelative:aspiring keyboard\\mainwindow.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E838B6FF-73BD-42DA-966A-B1DD6E73D48F}|Aspiring Keyboard\\Aspiring Keyboard.csproj|E:\\Informatyka\\[MOJE]\\_Projekty Desktop\\_Aspiring Keyboard\\[GITHUB]\\Aspiring Keyboard\\Aspiring Keyboard\\MainWindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{E838B6FF-73BD-42DA-966A-B1DD6E73D48F}|Aspiring Keyboard\\Aspiring Keyboard.csproj|solutionrelative:Aspiring Keyboard\\MainWindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{E838B6FF-73BD-42DA-966A-B1DD6E73D48F}|Aspiring Keyboard\\Aspiring Keyboard.csproj|C:\\Users\\mikol\\Documents\\Visual Studio 2022\\Projects\\Aspiring Keyboard\\aspiring keyboard\\windowchangelog.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
+      "RelativeMoniker": "D:0:0:{E838B6FF-73BD-42DA-966A-B1DD6E73D48F}|Aspiring Keyboard\\Aspiring Keyboard.csproj|solutionrelative:aspiring keyboard\\windowchangelog.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,43 +18,33 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "WindowChangelog.xaml.cs",
-              "DocumentMoniker": "E:\\Informatyka\\[MOJE]\\_Projekty Desktop\\_Aspiring Keyboard\\[GITHUB]\\Aspiring Keyboard\\Aspiring Keyboard\\WindowChangelog.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\mikol\\Documents\\Visual Studio 2022\\Projects\\Aspiring Keyboard\\Aspiring Keyboard\\WindowChangelog.xaml.cs",
               "RelativeDocumentMoniker": "Aspiring Keyboard\\WindowChangelog.xaml.cs",
-              "ToolTip": "E:\\Informatyka\\[MOJE]\\_Projekty Desktop\\_Aspiring Keyboard\\[GITHUB]\\Aspiring Keyboard\\Aspiring Keyboard\\WindowChangelog.xaml.cs",
+              "ToolTip": "C:\\Users\\mikol\\Documents\\Visual Studio 2022\\Projects\\Aspiring Keyboard\\Aspiring Keyboard\\WindowChangelog.xaml.cs",
               "RelativeToolTip": "Aspiring Keyboard\\WindowChangelog.xaml.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAmAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAAqAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-30T15:34:24.732Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "E:\\Informatyka\\[MOJE]\\_Projekty Desktop\\_Aspiring Keyboard\\[GITHUB]\\Aspiring Keyboard\\Aspiring Keyboard\\MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\mikol\\Documents\\Visual Studio 2022\\Projects\\Aspiring Keyboard\\Aspiring Keyboard\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "Aspiring Keyboard\\MainWindow.xaml.cs",
-              "ToolTip": "E:\\Informatyka\\[MOJE]\\_Projekty Desktop\\_Aspiring Keyboard\\[GITHUB]\\Aspiring Keyboard\\Aspiring Keyboard\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\mikol\\Documents\\Visual Studio 2022\\Projects\\Aspiring Keyboard\\Aspiring Keyboard\\MainWindow.xaml.cs",
               "RelativeToolTip": "Aspiring Keyboard\\MainWindow.xaml.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAABAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-30T14:54:47.09Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "MainWindow.xaml",
-              "DocumentMoniker": "E:\\Informatyka\\[MOJE]\\_Projekty Desktop\\_Aspiring Keyboard\\[GITHUB]\\Aspiring Keyboard\\Aspiring Keyboard\\MainWindow.xaml",
-              "RelativeDocumentMoniker": "Aspiring Keyboard\\MainWindow.xaml",
-              "ToolTip": "E:\\Informatyka\\[MOJE]\\_Projekty Desktop\\_Aspiring Keyboard\\[GITHUB]\\Aspiring Keyboard\\Aspiring Keyboard\\MainWindow.xaml",
-              "RelativeToolTip": "Aspiring Keyboard\\MainWindow.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-07-30T14:54:47.105Z"
+              "WhenOpened": "2024-07-30T14:54:47.09Z",
+              "EditorCaption": ""
             }
           ]
         }

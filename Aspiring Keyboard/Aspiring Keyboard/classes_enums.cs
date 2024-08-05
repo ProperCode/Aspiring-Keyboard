@@ -55,6 +55,8 @@ namespace Aspiring_Keyboard
 			drag_and_drop,
 			hold_left,
 			hold_right,
+            release_left,
+            release_right,
             none
 		}
 

@@ -46,17 +46,5 @@ namespace Aspiring_Keyboard
                     sim.Keyboard.KeyUp(vkc);
             }
         }
-
-        void release_buttons()
-        {
-            if (sim.InputDeviceState.IsKeyDown(VirtualKeyCode.LBUTTON))
-            {
-                left_up();
-            }
-            if (sim.InputDeviceState.IsKeyDown(VirtualKeyCode.RBUTTON))
-            {
-                right_up();
-            }
-        }
     }
 }

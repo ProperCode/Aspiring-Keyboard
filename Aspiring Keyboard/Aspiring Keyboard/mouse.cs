@@ -248,5 +248,21 @@ namespace Aspiring_Keyboard
             }
             while (stopwatch.ElapsedMilliseconds < time);
         }
+
+        void release_LMB()
+        {
+            //if (sim.InputDeviceState.IsKeyDown(VirtualKeyCode.LBUTTON)) //not working in Windows 11
+            {
+                left_up();
+            }
+        }
+
+        void release_RMB()
+        {
+            //if (sim.InputDeviceState.IsKeyDown(VirtualKeyCode.RBUTTON)) //not working in Windows 11
+            {
+                right_up();
+            }
+        }
     }
 }

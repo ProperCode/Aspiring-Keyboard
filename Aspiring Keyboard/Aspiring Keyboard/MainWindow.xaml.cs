@@ -11,9 +11,8 @@ using System.Windows.Threading;
 using WindowsInput;
 using WindowsInput.Native;
 using System.Speech.Synthesis;
-using System.Net;
 
-//resolved difficult issue: something sometimes messes up mousegrid and it doesn't appear
+//resolved difficult issue: something sometimes messed up mousegrid and it would not appear
 
 namespace Aspiring_Keyboard
 {
@@ -22,7 +21,7 @@ namespace Aspiring_Keyboard
         const bool check_if_already_running = true;
 
         const string prog_name = "Aspiring Keyboard";
-        const string prog_version = "1.2";
+        const string prog_version = "1.3";
         const string url_latest_version = "https://raw.githubusercontent.com/ProperCode/Aspiring-Keyboard/main/other/latest_version.txt";
         const string url_homepage = "github.com/ProperCode/Aspiring-Keyboard";
         string latest_version = "";
@@ -220,7 +219,7 @@ namespace Aspiring_Keyboard
 
                 InitializeComponent();
 
-                this.Title = prog_name + " v." + prog_version;
+                this.Title = prog_name;
                 //Lprogram_name.Content = prog_name;
                 //Linstalled_version.Content = "Installed version: " + prog_version;
                 //Lhomepage.Content = "Homepage: " + Middle_Man.url_homepage;
@@ -230,7 +229,7 @@ namespace Aspiring_Keyboard
                     + "\r\nScroll Lock - change mode"
                     + "\r\nCaps Lock - left click without losing focus"
                     + "\r\nInsert - repeat last action"
-                    + "\r\nLAlt + RAlt - release both mouse buttons"
+                    + "\r\nLAlt + RAlt - release left mouse button"
                     + "\r\nLShift + RShift - browser forward button"
                     + "\r\nNum Lock - browser back button"
                     + "\r\nLShift + Caps Lock - left shift action in infinity mode"
@@ -638,9 +637,9 @@ namespace Aspiring_Keyboard
 
                                     if (IsKeyPushedDown(System.Windows.Forms.Keys.RMenu))
                                     {
-                                        release_buttons();
+                                        release_LMB();
 
-                                        if (read_status) ss.SpeakAsync("Mouse buttons released.");
+                                        if (read_status) ss.SpeakAsync("Left released.");
 
                                         while (IsKeyPushedDown(System.Windows.Forms.Keys.LMenu)
                                             || IsKeyPushedDown(System.Windows.Forms.Keys.RMenu))
@@ -691,9 +690,9 @@ namespace Aspiring_Keyboard
 
                                     if (IsKeyPushedDown(System.Windows.Forms.Keys.LMenu))
                                     {
-                                        release_buttons();
+                                        release_LMB();
 
-                                        if (read_status) ss.SpeakAsync("Mouse buttons released.");
+                                        if (read_status) ss.SpeakAsync("Left released.");
 
                                         while (IsKeyPushedDown(System.Windows.Forms.Keys.LMenu)
                                             || IsKeyPushedDown(System.Windows.Forms.Keys.RMenu))
@@ -874,6 +873,22 @@ namespace Aspiring_Keyboard
                                     if (read_status) ss.SpeakAsync("center");
 
                                     LMBClick((int)(screen_width / 2), (int)(screen_height / 2));
+
+                                    action = ActionX.none;
+                                }
+                                else if (action == ActionX.release_left)
+                                {
+                                    if (read_status) ss.SpeakAsync("left released");
+
+                                    left_up();
+
+                                    action = ActionX.none;
+                                }
+                                else if (action == ActionX.release_right)
+                                {
+                                    if (read_status) ss.SpeakAsync("right released");
+
+                                    right_up();
 
                                     action = ActionX.none;
                                 }
@@ -1238,7 +1253,7 @@ namespace Aspiring_Keyboard
                     bool cancel = false;
                     offset = np_offset;
 
-                    while (figure_str.Length < 2 && cancel == false && action != ActionX.center_left_click)
+                    while (figure_str.Length < 2 && cancel == false)
                     {
                         if (IsKeyPushedDown(System.Windows.Forms.Keys.Escape))
                         {
@@ -1608,10 +1623,6 @@ namespace Aspiring_Keyboard
                     LMBClick(x, y);
                     LMBClick(x, y);
                     LMBClick(x, y);
-                }
-                else if (action == ActionX.center_left_click)
-                {
-                    LMBClick((int)(screen_width / 2), (int)(screen_height / 2));
                 }
                 else if (action == ActionX.ctrl_left_click)
                 {

@@ -65,7 +65,7 @@ namespace Aspiring_Keyboard
             CBlshift_action_b.SelectedItem = "Left click";
             CBrshift_action_b.SelectedItem = "Ctrl left click";
             CBlalt_action_b.SelectedItem = "Hold left";
-            CBralt_action_b.SelectedItem = "Hold right";
+            CBralt_action_b.SelectedItem = "Release left";
             CBlctrl_action_b.SelectedItem = "Double left click";
             CBrctrl_action_b.SelectedItem = "Move mouse";
 
@@ -101,7 +101,7 @@ namespace Aspiring_Keyboard
             TBfont_size.Text = "12";
             CHBsmart_mousegrid.IsChecked = true;
 
-            CBkeyboard_layout.SelectedIndex = 0;
+            CBkeyboard_layout.SelectedIndex = 0; //Any layout
 
             CHBrun_at_startup.IsChecked = false;
             CHBstart_minimized.IsChecked = false;
@@ -579,6 +579,10 @@ namespace Aspiring_Keyboard
             else if (CBlshift_action_a.SelectedIndex == 9)
                 left_shift_action_a = ActionX.hold_right;
             else if (CBlshift_action_a.SelectedIndex == 10)
+                left_shift_action_a = ActionX.release_left;
+            else if (CBlshift_action_a.SelectedIndex == 11)
+                left_shift_action_a = ActionX.release_right;
+            else if (CBlshift_action_a.SelectedIndex == 12)
                 left_shift_action_a = ActionX.none;
 
             if (CBrshift_action_a.SelectedIndex == 0)
@@ -602,6 +606,10 @@ namespace Aspiring_Keyboard
             else if (CBrshift_action_a.SelectedIndex == 9)
                 right_shift_action_a = ActionX.hold_right;
             else if (CBrshift_action_a.SelectedIndex == 10)
+                right_shift_action_a = ActionX.release_left;
+            else if (CBrshift_action_a.SelectedIndex == 11)
+                right_shift_action_a = ActionX.release_right;
+            else if (CBrshift_action_a.SelectedIndex == 12)
                 right_shift_action_a = ActionX.none;
 
             if (CBlshift_action_b.SelectedIndex == 0)
@@ -625,6 +633,10 @@ namespace Aspiring_Keyboard
             else if (CBlshift_action_b.SelectedIndex == 9)
                 left_shift_action_b = ActionX.hold_right;
             else if (CBlshift_action_b.SelectedIndex == 10)
+                left_shift_action_b = ActionX.release_left;
+            else if (CBlshift_action_b.SelectedIndex == 11)
+                left_shift_action_b = ActionX.release_right;
+            else if (CBlshift_action_b.SelectedIndex == 12)
                 left_shift_action_b = ActionX.none;
 
             if (CBrshift_action_b.SelectedIndex == 0)
@@ -648,6 +660,10 @@ namespace Aspiring_Keyboard
             else if (CBrshift_action_b.SelectedIndex == 9)
                 right_shift_action_b = ActionX.hold_right;
             else if (CBrshift_action_b.SelectedIndex == 10)
+                right_shift_action_b = ActionX.release_left;
+            else if (CBrshift_action_b.SelectedIndex == 11)
+                right_shift_action_b = ActionX.release_right;
+            else if (CBrshift_action_b.SelectedIndex == 12)
                 right_shift_action_b = ActionX.none;
 
             if (CBlalt_action_a.SelectedIndex == 0)
@@ -671,6 +687,10 @@ namespace Aspiring_Keyboard
             else if (CBlalt_action_a.SelectedIndex == 9)
                 left_alt_action_a = ActionX.hold_right;
             else if (CBlalt_action_a.SelectedIndex == 10)
+                left_alt_action_a = ActionX.release_left;
+            else if (CBlalt_action_a.SelectedIndex == 11)
+                left_alt_action_a = ActionX.release_right;
+            else if (CBlalt_action_a.SelectedIndex == 12)
                 left_alt_action_a = ActionX.none;
 
             if (CBralt_action_a.SelectedIndex == 0)
@@ -694,6 +714,10 @@ namespace Aspiring_Keyboard
             else if (CBralt_action_a.SelectedIndex == 9)
                 right_alt_action_a = ActionX.hold_right;
             else if (CBralt_action_a.SelectedIndex == 10)
+                right_alt_action_a = ActionX.release_left;
+            else if (CBralt_action_a.SelectedIndex == 11)
+                right_alt_action_a = ActionX.release_right;
+            else if (CBralt_action_a.SelectedIndex == 12)
                 right_alt_action_a = ActionX.none;
 
             if (CBlalt_action_b.SelectedIndex == 0)
@@ -717,6 +741,10 @@ namespace Aspiring_Keyboard
             else if (CBlalt_action_b.SelectedIndex == 9)
                 left_alt_action_b = ActionX.hold_right;
             else if (CBlalt_action_b.SelectedIndex == 10)
+                left_alt_action_b = ActionX.release_left;
+            else if (CBlalt_action_b.SelectedIndex == 11)
+                left_alt_action_b = ActionX.release_right;
+            else if (CBlalt_action_b.SelectedIndex == 12)
                 left_alt_action_b = ActionX.none;
 
             if (CBralt_action_b.SelectedIndex == 0)
@@ -740,6 +768,10 @@ namespace Aspiring_Keyboard
             else if (CBralt_action_b.SelectedIndex == 9)
                 right_alt_action_b = ActionX.hold_right;
             else if (CBralt_action_b.SelectedIndex == 10)
+                right_alt_action_b = ActionX.release_left;
+            else if (CBralt_action_b.SelectedIndex == 11)
+                right_alt_action_b = ActionX.release_right;
+            else if (CBralt_action_b.SelectedIndex == 12)
                 right_alt_action_b = ActionX.none;
 
             if (CBlctrl_action_a.SelectedIndex == 0)
@@ -763,6 +795,10 @@ namespace Aspiring_Keyboard
             else if (CBlctrl_action_a.SelectedIndex == 9)
                 left_ctrl_action_a = ActionX.hold_right;
             else if (CBlctrl_action_a.SelectedIndex == 10)
+                left_ctrl_action_a = ActionX.release_left;
+            else if (CBlctrl_action_a.SelectedIndex == 11)
+                left_ctrl_action_a = ActionX.release_right;
+            else if (CBlctrl_action_a.SelectedIndex == 12)
                 left_ctrl_action_a = ActionX.none;
 
             if (CBrctrl_action_a.SelectedIndex == 0)
@@ -786,6 +822,10 @@ namespace Aspiring_Keyboard
             else if (CBrctrl_action_a.SelectedIndex == 9)
                 right_ctrl_action_a = ActionX.hold_right;
             else if (CBrctrl_action_a.SelectedIndex == 10)
+                right_ctrl_action_a = ActionX.release_left;
+            else if (CBrctrl_action_a.SelectedIndex == 11)
+                right_ctrl_action_a = ActionX.release_right;
+            else if (CBrctrl_action_a.SelectedIndex == 12)
                 right_ctrl_action_a = ActionX.none;
 
             if (CBlctrl_action_b.SelectedIndex == 0)
@@ -809,6 +849,10 @@ namespace Aspiring_Keyboard
             else if (CBlctrl_action_b.SelectedIndex == 9)
                 left_ctrl_action_b = ActionX.hold_right;
             else if (CBlctrl_action_b.SelectedIndex == 10)
+                left_ctrl_action_b = ActionX.release_left;
+            else if (CBlctrl_action_b.SelectedIndex == 11)
+                left_ctrl_action_b = ActionX.release_right;
+            else if (CBlctrl_action_b.SelectedIndex == 12)
                 left_ctrl_action_b = ActionX.none;
 
             if (CBrctrl_action_b.SelectedIndex == 0)
@@ -832,6 +876,10 @@ namespace Aspiring_Keyboard
             else if (CBrctrl_action_b.SelectedIndex == 9)
                 right_ctrl_action_b = ActionX.hold_right;
             else if (CBrctrl_action_b.SelectedIndex == 10)
+                right_ctrl_action_b = ActionX.release_left;
+            else if (CBrctrl_action_b.SelectedIndex == 11)
+                right_ctrl_action_b = ActionX.release_right;
+            else if (CBrctrl_action_b.SelectedIndex == 12)
                 right_ctrl_action_b = ActionX.none;
 
             bool grid_size_changed = false;
@@ -1055,7 +1103,7 @@ namespace Aspiring_Keyboard
                     if (int.TryParse(TBdesired_figures_nr.Text, out trash) == false
                         || int.Parse(TBdesired_figures_nr.Text) < 5
                         || int.Parse(TBdesired_figures_nr.Text) > max_figures_nr)
-                        throw new Exception("Desired figures number must be between 5 and "
+                        throw new Exception("Desired figures number for current keyboard layout must be between 5 and "
                             + max_figures_nr + ".");
 
                     if (int.TryParse(TBfont_size.Text, out trash) == false
@@ -1177,6 +1225,15 @@ namespace Aspiring_Keyboard
                     CHBsmart_mousegrid.IsChecked = smart_grid = bool.Parse(sr.ReadLine());
 
                     CBkeyboard_layout.SelectedIndex = int.Parse(sr.ReadLine());
+
+                    if (CBkeyboard_layout.SelectedItem.ToString() == "US English / US International")
+                        create_grid_alphabet_for_US_kl();
+                    else
+                        create_grid_alphabet_for_any_kl();
+
+                    grid_symbols_limit = grid_alphabet.Count;
+                    max_figures_nr = (int)Math.Pow((double)grid_symbols_limit, 2);
+
                     CHBcheck_for_updates.IsChecked = bool.Parse(sr.ReadLine());
                     CHBrun_at_startup.IsChecked = bool.Parse(sr.ReadLine());
                     CHBstart_minimized.IsChecked = bool.Parse(sr.ReadLine());
