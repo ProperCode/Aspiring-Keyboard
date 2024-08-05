@@ -19,7 +19,7 @@ Aspiring Keyboard can be also useful when you forget to take a mouse with your l
 
 ## Screenshot
 
-![alt text](https://raw.githubusercontent.com/ProperCode/Aspiring-Keyboard/main/other/Aspiring_Keyboard_v.1.1.jpg)
+![alt text](https://raw.githubusercontent.com/ProperCode/Aspiring-Keyboard/main/other/Aspiring_Keyboard.jpg)
 
 ## Awards
 [![Softpedia Clean Award](https://raw.githubusercontent.com/ProperCode/Aspiring-Keyboard/master/other/awards/softpedia_100_free.png)](https://www.softpedia.com/get/System/OS-Enhancements/Aspiring-Keyboard.shtml#status)
