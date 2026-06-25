@@ -30,8 +30,9 @@ Aspiring Keyboard can be also useful when you forget to take a mouse with your l
 [![File Transit 5/5 Award](https://raw.githubusercontent.com/ProperCode/Aspiring-Keyboard/master/other/awards/filetransit_5of5.gif)](https://www.filetransit.com/view.php?id=454548)
 
 ## Bug Report and Feedback
-If you wish to report a bug or send feedback, you can do so by sending me an e-mail: ![alt text](https://raw.githubusercontent.com/ProperCode/clickless-mouse/master/other/images/email.jpg) .
-Please include as much information as possible and provide screenshot(s) if applicable.
+If you wish to report a bug or send feedback use this links:<br/><br/>
+[Report a bug](https://github.com/ProperCode/Aspiring-Keyboard/issues)<br/><br/>
+[Send feedback](https://github.com/ProperCode/Aspiring-Keyboard/discussions)
 
 ## My Other Open Source Projects
 [Clickless Mouse](https://github.com/ProperCode/clickless-mouse)<br/><br/>
