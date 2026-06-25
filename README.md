@@ -30,7 +30,7 @@ Aspiring Keyboard can be also useful when you forget to take a mouse with your l
 [![File Transit 5/5 Award](https://raw.githubusercontent.com/ProperCode/Aspiring-Keyboard/master/other/awards/filetransit_5of5.gif)](https://www.filetransit.com/view.php?id=454548)
 
 ## Bug Report and Feedback
-If you wish to report a bug or send feedback use this links:<br/><br/>
+If you wish to report a bug or send feedback use these links:<br/><br/>
 [Report a bug](https://github.com/ProperCode/Aspiring-Keyboard/issues)<br/><br/>
 [Send feedback](https://github.com/ProperCode/Aspiring-Keyboard/discussions)
 
