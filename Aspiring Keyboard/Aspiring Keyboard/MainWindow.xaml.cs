@@ -21,17 +21,17 @@ namespace Aspiring_Keyboard
         const bool check_if_already_running = true;
 
         const string prog_name = "Aspiring Keyboard";
-        const string prog_version = "1.3";
+        const string prog_version = "1.4";
         const string url_latest_version = "https://raw.githubusercontent.com/ProperCode/Aspiring-Keyboard/main/other/latest_version.txt";
         const string url_homepage = "github.com/ProperCode/Aspiring-Keyboard";
         string latest_version = "";
-        const string copyright_text = "Copyright © 2024 Mikołaj Magowski. All rights reserved.";
+        const string copyright_text = "Copyright © 2024 - 2026 Mikołaj Magowski. All rights reserved.";
         const string filename_settings = "settings_ak.txt";
-        const string grids_foldername = "grids";
+        const string grids_foldername = "grids2";
         const bool resized_grid = true;
         const bool movable_grid = true;
 
-        const int default_desired_figures_nr = 2704;
+        const int default_desired_figures_nr = 2500;
         const string default_color_bg_str = "-1973791"; //light grey
         const string default_color_font_str = "-16777216"; //black
         string default_ss_voice = "";
@@ -72,8 +72,8 @@ namespace Aspiring_Keyboard
         List<Grid_Symbol> grid_alphabet = new List<Grid_Symbol>();
 
         int grid_symbols_limit = 1;//50-58 is recommended
-        int max_figures_nr = 2704;
-        int desired_figures_nr = 2704;
+        int max_figures_nr = 2500;
+        int desired_figures_nr = 2500;
         GridType grid_type = GridType.hexagonal;
         bool smart_grid = true;
         double offset = 0.25;
@@ -225,11 +225,11 @@ namespace Aspiring_Keyboard
                 //Lhomepage.Content = "Homepage: " + Middle_Man.url_homepage;
                 //Lcopyright.Content = copyright_text;
 
+                TBcontrol_keys.IsReadOnly = true;
                 TBcontrol_keys.Text = "Pause Break - turn on/off"
                     + "\r\nScroll Lock - change mode"
                     + "\r\nCaps Lock - left click without losing focus"
                     + "\r\nInsert - repeat last action"
-                    + "\r\nLAlt + RAlt - release left mouse button"
                     + "\r\nLShift + RShift - browser forward button"
                     + "\r\nNum Lock - browser back button"
                     + "\r\nLShift + Caps Lock - left shift action in infinity mode"
@@ -296,7 +296,7 @@ namespace Aspiring_Keyboard
 
                 if (loading_error)
                 {
-                    MessageBox.Show("Loading error was detected. All settings" +
+                    MessageBox.Show("Loading error was detected. All settings " +
                         "will be restored to default and saved.", "Warning",
                         MessageBoxButton.OK, MessageBoxImage.Warning);
                     restore_default_settings();
@@ -391,7 +391,7 @@ namespace Aspiring_Keyboard
                             Stream iconStream = System.Windows.Application.GetResourceStream(
                             new Uri(icon)).Stream;
 
-                            // Create a BitmapSource  
+                            // Create a BitmapSource
                             BitmapImage bitmap = new BitmapImage();
                             bitmap.BeginInit();
                             bitmap.UriSource = new Uri(icon);
@@ -635,21 +635,6 @@ namespace Aspiring_Keyboard
                                         }
                                     }
 
-                                    if (IsKeyPushedDown(System.Windows.Forms.Keys.RMenu))
-                                    {
-                                        release_LMB();
-
-                                        if (read_status) ss.SpeakAsync("Left released.");
-
-                                        while (IsKeyPushedDown(System.Windows.Forms.Keys.LMenu)
-                                            || IsKeyPushedDown(System.Windows.Forms.Keys.RMenu))
-                                        {
-                                            Thread.Sleep(10);
-                                        }
-
-                                        break;
-                                    }
-
                                     Thread.Sleep(10);
                                 }
 
@@ -686,21 +671,6 @@ namespace Aspiring_Keyboard
                                             //MessageBox.Show(vkc.ToString());
                                             break;
                                         }
-                                    }
-
-                                    if (IsKeyPushedDown(System.Windows.Forms.Keys.LMenu))
-                                    {
-                                        release_LMB();
-
-                                        if (read_status) ss.SpeakAsync("Left released.");
-
-                                        while (IsKeyPushedDown(System.Windows.Forms.Keys.LMenu)
-                                            || IsKeyPushedDown(System.Windows.Forms.Keys.RMenu))
-                                        {
-                                            Thread.Sleep(10);
-                                        }
-
-                                        break;
                                     }
 
                                     Thread.Sleep(10);
@@ -868,15 +838,7 @@ namespace Aspiring_Keyboard
 
                             do
                             {
-                                if (action == ActionX.center_left_click)
-                                {
-                                    if (read_status) ss.SpeakAsync("center");
-
-                                    LMBClick((int)(screen_width / 2), (int)(screen_height / 2));
-
-                                    action = ActionX.none;
-                                }
-                                else if (action == ActionX.release_left)
+                                if (action == ActionX.release_LMB)
                                 {
                                     if (read_status) ss.SpeakAsync("left released");
 
@@ -884,7 +846,7 @@ namespace Aspiring_Keyboard
 
                                     action = ActionX.none;
                                 }
-                                else if (action == ActionX.release_right)
+                                else if (action == ActionX.release_RMB)
                                 {
                                     if (read_status) ss.SpeakAsync("right released");
 
@@ -1207,7 +1169,15 @@ namespace Aspiring_Keyboard
                         if (repeat_action_indefinitely)
                             status = "indefinite ";
 
-                        if (action == ActionX.drag_and_drop && d == 0)
+                        if (action == ActionX.left_click)
+                        {
+                            status += "left click";
+                        }
+                        else if (action == ActionX.ctrl_left_click)
+                        {
+                            status += "control left click";
+                        }
+                        else if (action == ActionX.drag_and_drop && d == 0)
                         {
                             status += "drag";
                         }
@@ -1219,11 +1189,11 @@ namespace Aspiring_Keyboard
                         {
                             status += "triple";
                         }
-                        else if (action == ActionX.hold_left)
+                        else if (action == ActionX.hold_LMB)
                         {
                             status += "hold left";
                         }
-                        else if (action == ActionX.hold_right)
+                        else if (action == ActionX.hold_RMB)
                         {
                             status += "hold right";
                         }
@@ -1566,12 +1536,12 @@ namespace Aspiring_Keyboard
                             {
                                 real_mouse_move(x, y);
                             }
-                            else if (action == ActionX.hold_left)
+                            else if (action == ActionX.hold_LMB)
                             {
                                 if (read_status) ss.SpeakAsync("holding left");
                                 LMBHold(x, y);
                             }
-                            else if (action == ActionX.hold_right)
+                            else if (action == ActionX.hold_RMB)
                             {
                                 if (read_status) ss.SpeakAsync("holding right");
                                 RMBHold(x, y);
@@ -1634,12 +1604,12 @@ namespace Aspiring_Keyboard
                 {
                     real_mouse_move(x, y);
                 }
-                else if (action == ActionX.hold_left)
+                else if (action == ActionX.hold_LMB)
                 {
                     if (read_status) ss.SpeakAsync("holding left");
                     LMBHold(x, y);
                 }
-                else if (action == ActionX.hold_right)
+                else if (action == ActionX.hold_RMB)
                 {
                     if (read_status) ss.SpeakAsync("holding right");
                     RMBHold(x, y);
@@ -1668,6 +1638,42 @@ namespace Aspiring_Keyboard
         }
 
         int get_symbols_score(char s1, char s2)
+        {
+            int score;
+            int ind1, ind2;
+
+            ind1 = get_index_by_symbol(s1);
+            ind2 = get_index_by_symbol(s2);
+
+            if (keyboard_layout == "Any")
+            {
+                if (ind1 <= 25)
+                    score = ind1;
+                else
+                    score = ind1 * 10;
+
+                if (ind2 <= 25)
+                    score += ind2;
+                else
+                    score += ind2 * 10;
+            }
+            else
+            {
+                if (ind1 <= 24)
+                    score = ind1;
+                else
+                    score = ind1 * 10;
+
+                if (ind2 <= 24)
+                    score += ind2;
+                else
+                    score += ind2 * 10;
+            }
+
+            return score;
+        }
+
+        int get_symbols_score2(char s1, char s2)
         {
             int score;
             int ind1, ind2;

@@ -16,7 +16,12 @@ namespace Aspiring_Keyboard
 
                 TB.IsReadOnly = true;
 
-                TB.Text = "All notable changes to Aspiring Keyboard will be documented here."
+                TB.Text = "[1.4] - July 24, 2026:"
+                + "\n- Changed default desired figures number to 2500."
+                + "\n- Improved Smart Mousegrid."
+                + "\n- Removed 2 characters from Mousegrid alphabet for any keyboard layout."
+                + "\n- Removed Center Left Click action."
+                + "\n- Removed LAlt + RAlt hotkey."
                 + "\n\n[1.3] - August 5, 2024:"
                 + "\n- Added separate mouse buttons releasing."
                 + "\n- Changed LAlt + RAlt combination."

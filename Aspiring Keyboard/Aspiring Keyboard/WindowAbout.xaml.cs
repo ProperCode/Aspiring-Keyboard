@@ -18,21 +18,35 @@ namespace Aspiring_Keyboard
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error WC001", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(ex.Message, "Error WA001", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
         private void Beula_Click(object sender, RoutedEventArgs e)
         {
-            WindowEULA w = new WindowEULA();
-            w.Owner = Application.Current.MainWindow;
-            w.ShowInTaskbar = false;
-            w.ShowDialog();
+            try
+            {
+                WindowEULA w = new WindowEULA();
+                w.Owner = Application.Current.MainWindow;
+                w.ShowInTaskbar = false;
+                w.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error WA002", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void Lhomepage_PreviewMouseUp(object sender, MouseButtonEventArgs e)
         {
-            Process.Start("https://" + Lhomepage.Content.ToString());
+            try
+            {
+                Process.Start("https://" + Lhomepage.Content.ToString());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error WA003", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void Lhomepage_MouseEnter(object sender, MouseEventArgs e)
@@ -47,10 +61,29 @@ namespace Aspiring_Keyboard
 
         private void Bchangelog_Click(object sender, RoutedEventArgs e)
         {
-            WindowChangelog w = new WindowChangelog();
-            w.Owner = Application.Current.MainWindow;
-            w.ShowInTaskbar = false;
-            w.Show();
+            try
+            {
+                WindowChangelog w = new WindowChangelog();
+                w.Owner = Application.Current.MainWindow;
+                w.ShowInTaskbar = false;
+                w.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error WA004", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void Bthird_party_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Process.Start("License\\Windows Input Simulator License.txt");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error WA005", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

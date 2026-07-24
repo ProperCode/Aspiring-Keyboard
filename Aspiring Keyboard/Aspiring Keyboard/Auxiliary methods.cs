@@ -64,8 +64,8 @@ namespace Aspiring_Keyboard
 
             CBlshift_action_b.SelectedItem = "Left click";
             CBrshift_action_b.SelectedItem = "Ctrl left click";
-            CBlalt_action_b.SelectedItem = "Hold left";
-            CBralt_action_b.SelectedItem = "Release left";
+            CBlalt_action_b.SelectedItem = "Hold LMB";
+            CBralt_action_b.SelectedItem = "Release LMB";
             CBlctrl_action_b.SelectedItem = "Double left click";
             CBrctrl_action_b.SelectedItem = "Move mouse";
 
@@ -480,7 +480,7 @@ namespace Aspiring_Keyboard
         {
             try
             {
-                Process.Start("User Guide.pdf");
+                Process.Start("Help\\User Guide.pdf");
             }
             catch (Exception ex)
             {
@@ -492,7 +492,7 @@ namespace Aspiring_Keyboard
         {
             try
             {
-                Process.Start("Useful Windows Key Combinations.pdf");
+                Process.Start("Help\\Useful Windows Key Combinations.pdf");
             }
             catch (Exception ex)
             {
@@ -567,22 +567,20 @@ namespace Aspiring_Keyboard
             else if (CBlshift_action_a.SelectedIndex == 3)
                 left_shift_action_a = ActionX.triple_left_click;
             else if (CBlshift_action_a.SelectedIndex == 4)
-                left_shift_action_a = ActionX.center_left_click;
-            else if (CBlshift_action_a.SelectedIndex == 5)
                 left_shift_action_a = ActionX.ctrl_left_click;
-            else if (CBlshift_action_a.SelectedIndex == 6)
+            else if (CBlshift_action_a.SelectedIndex == 5)
                 left_shift_action_a = ActionX.move_mouse;
-            else if (CBlshift_action_a.SelectedIndex == 7)
+            else if (CBlshift_action_a.SelectedIndex == 6)
                 left_shift_action_a = ActionX.drag_and_drop;
+            else if (CBlshift_action_a.SelectedIndex == 7)
+                left_shift_action_a = ActionX.hold_LMB;
             else if (CBlshift_action_a.SelectedIndex == 8)
-                left_shift_action_a = ActionX.hold_left;
+                left_shift_action_a = ActionX.hold_RMB;
             else if (CBlshift_action_a.SelectedIndex == 9)
-                left_shift_action_a = ActionX.hold_right;
+                left_shift_action_a = ActionX.release_LMB;
             else if (CBlshift_action_a.SelectedIndex == 10)
-                left_shift_action_a = ActionX.release_left;
+                left_shift_action_a = ActionX.release_RMB;
             else if (CBlshift_action_a.SelectedIndex == 11)
-                left_shift_action_a = ActionX.release_right;
-            else if (CBlshift_action_a.SelectedIndex == 12)
                 left_shift_action_a = ActionX.none;
 
             if (CBrshift_action_a.SelectedIndex == 0)
@@ -594,22 +592,20 @@ namespace Aspiring_Keyboard
             else if (CBrshift_action_a.SelectedIndex == 3)
                 right_shift_action_a = ActionX.triple_left_click;
             else if (CBrshift_action_a.SelectedIndex == 4)
-                right_shift_action_a = ActionX.center_left_click;
-            else if (CBrshift_action_a.SelectedIndex == 5)
                 right_shift_action_a = ActionX.ctrl_left_click;
-            else if (CBrshift_action_a.SelectedIndex == 6)
+            else if (CBrshift_action_a.SelectedIndex == 5)
                 right_shift_action_a = ActionX.move_mouse;
-            else if (CBrshift_action_a.SelectedIndex == 7)
+            else if (CBrshift_action_a.SelectedIndex == 6)
                 right_shift_action_a = ActionX.drag_and_drop;
+            else if (CBrshift_action_a.SelectedIndex == 7)
+                right_shift_action_a = ActionX.hold_LMB;
             else if (CBrshift_action_a.SelectedIndex == 8)
-                right_shift_action_a = ActionX.hold_left;
+                right_shift_action_a = ActionX.hold_RMB;
             else if (CBrshift_action_a.SelectedIndex == 9)
-                right_shift_action_a = ActionX.hold_right;
+                right_shift_action_a = ActionX.release_LMB;
             else if (CBrshift_action_a.SelectedIndex == 10)
-                right_shift_action_a = ActionX.release_left;
+                right_shift_action_a = ActionX.release_RMB;
             else if (CBrshift_action_a.SelectedIndex == 11)
-                right_shift_action_a = ActionX.release_right;
-            else if (CBrshift_action_a.SelectedIndex == 12)
                 right_shift_action_a = ActionX.none;
 
             if (CBlshift_action_b.SelectedIndex == 0)
@@ -621,22 +617,20 @@ namespace Aspiring_Keyboard
             else if (CBlshift_action_b.SelectedIndex == 3)
                 left_shift_action_b = ActionX.triple_left_click;
             else if (CBlshift_action_b.SelectedIndex == 4)
-                left_shift_action_b = ActionX.center_left_click;
-            else if (CBlshift_action_b.SelectedIndex == 5)
                 left_shift_action_b = ActionX.ctrl_left_click;
-            else if (CBlshift_action_b.SelectedIndex == 6)
+            else if (CBlshift_action_b.SelectedIndex == 5)
                 left_shift_action_b = ActionX.move_mouse;
-            else if (CBlshift_action_b.SelectedIndex == 7)
+            else if (CBlshift_action_b.SelectedIndex == 6)
                 left_shift_action_b = ActionX.drag_and_drop;
+            else if (CBlshift_action_b.SelectedIndex == 7)
+                left_shift_action_b = ActionX.hold_LMB;
             else if (CBlshift_action_b.SelectedIndex == 8)
-                left_shift_action_b = ActionX.hold_left;
+                left_shift_action_b = ActionX.hold_RMB;
             else if (CBlshift_action_b.SelectedIndex == 9)
-                left_shift_action_b = ActionX.hold_right;
+                left_shift_action_b = ActionX.release_LMB;
             else if (CBlshift_action_b.SelectedIndex == 10)
-                left_shift_action_b = ActionX.release_left;
+                left_shift_action_b = ActionX.release_RMB;
             else if (CBlshift_action_b.SelectedIndex == 11)
-                left_shift_action_b = ActionX.release_right;
-            else if (CBlshift_action_b.SelectedIndex == 12)
                 left_shift_action_b = ActionX.none;
 
             if (CBrshift_action_b.SelectedIndex == 0)
@@ -648,22 +642,20 @@ namespace Aspiring_Keyboard
             else if (CBrshift_action_b.SelectedIndex == 3)
                 right_shift_action_b = ActionX.triple_left_click;
             else if (CBrshift_action_b.SelectedIndex == 4)
-                right_shift_action_b = ActionX.center_left_click;
-            else if (CBrshift_action_b.SelectedIndex == 5)
                 right_shift_action_b = ActionX.ctrl_left_click;
-            else if (CBrshift_action_b.SelectedIndex == 6)
+            else if (CBrshift_action_b.SelectedIndex == 5)
                 right_shift_action_b = ActionX.move_mouse;
-            else if (CBrshift_action_b.SelectedIndex == 7)
+            else if (CBrshift_action_b.SelectedIndex == 6)
                 right_shift_action_b = ActionX.drag_and_drop;
+            else if (CBrshift_action_b.SelectedIndex == 7)
+                right_shift_action_b = ActionX.hold_LMB;
             else if (CBrshift_action_b.SelectedIndex == 8)
-                right_shift_action_b = ActionX.hold_left;
+                right_shift_action_b = ActionX.hold_RMB;
             else if (CBrshift_action_b.SelectedIndex == 9)
-                right_shift_action_b = ActionX.hold_right;
+                right_shift_action_b = ActionX.release_LMB;
             else if (CBrshift_action_b.SelectedIndex == 10)
-                right_shift_action_b = ActionX.release_left;
+                right_shift_action_b = ActionX.release_RMB;
             else if (CBrshift_action_b.SelectedIndex == 11)
-                right_shift_action_b = ActionX.release_right;
-            else if (CBrshift_action_b.SelectedIndex == 12)
                 right_shift_action_b = ActionX.none;
 
             if (CBlalt_action_a.SelectedIndex == 0)
@@ -675,22 +667,20 @@ namespace Aspiring_Keyboard
             else if (CBlalt_action_a.SelectedIndex == 3)
                 left_alt_action_a = ActionX.triple_left_click;
             else if (CBlalt_action_a.SelectedIndex == 4)
-                left_alt_action_a = ActionX.center_left_click;
-            else if (CBlalt_action_a.SelectedIndex == 5)
                 left_alt_action_a = ActionX.ctrl_left_click;
-            else if (CBlalt_action_a.SelectedIndex == 6)
+            else if (CBlalt_action_a.SelectedIndex == 5)
                 left_alt_action_a = ActionX.move_mouse;
-            else if (CBlalt_action_a.SelectedIndex == 7)
+            else if (CBlalt_action_a.SelectedIndex == 6)
                 left_alt_action_a = ActionX.drag_and_drop;
+            else if (CBlalt_action_a.SelectedIndex == 7)
+                left_alt_action_a = ActionX.hold_LMB;
             else if (CBlalt_action_a.SelectedIndex == 8)
-                left_alt_action_a = ActionX.hold_left;
+                left_alt_action_a = ActionX.hold_RMB;
             else if (CBlalt_action_a.SelectedIndex == 9)
-                left_alt_action_a = ActionX.hold_right;
+                left_alt_action_a = ActionX.release_LMB;
             else if (CBlalt_action_a.SelectedIndex == 10)
-                left_alt_action_a = ActionX.release_left;
+                left_alt_action_a = ActionX.release_RMB;
             else if (CBlalt_action_a.SelectedIndex == 11)
-                left_alt_action_a = ActionX.release_right;
-            else if (CBlalt_action_a.SelectedIndex == 12)
                 left_alt_action_a = ActionX.none;
 
             if (CBralt_action_a.SelectedIndex == 0)
@@ -702,22 +692,20 @@ namespace Aspiring_Keyboard
             else if (CBralt_action_a.SelectedIndex == 3)
                 right_alt_action_a = ActionX.triple_left_click;
             else if (CBralt_action_a.SelectedIndex == 4)
-                right_alt_action_a = ActionX.center_left_click;
-            else if (CBralt_action_a.SelectedIndex == 5)
                 right_alt_action_a = ActionX.ctrl_left_click;
-            else if (CBralt_action_a.SelectedIndex == 6)
+            else if (CBralt_action_a.SelectedIndex == 5)
                 right_alt_action_a = ActionX.move_mouse;
-            else if (CBralt_action_a.SelectedIndex == 7)
+            else if (CBralt_action_a.SelectedIndex == 6)
                 right_alt_action_a = ActionX.drag_and_drop;
+            else if (CBralt_action_a.SelectedIndex == 7)
+                right_alt_action_a = ActionX.hold_LMB;
             else if (CBralt_action_a.SelectedIndex == 8)
-                right_alt_action_a = ActionX.hold_left;
+                right_alt_action_a = ActionX.hold_RMB;
             else if (CBralt_action_a.SelectedIndex == 9)
-                right_alt_action_a = ActionX.hold_right;
+                right_alt_action_a = ActionX.release_LMB;
             else if (CBralt_action_a.SelectedIndex == 10)
-                right_alt_action_a = ActionX.release_left;
+                right_alt_action_a = ActionX.release_RMB;
             else if (CBralt_action_a.SelectedIndex == 11)
-                right_alt_action_a = ActionX.release_right;
-            else if (CBralt_action_a.SelectedIndex == 12)
                 right_alt_action_a = ActionX.none;
 
             if (CBlalt_action_b.SelectedIndex == 0)
@@ -729,22 +717,20 @@ namespace Aspiring_Keyboard
             else if (CBlalt_action_b.SelectedIndex == 3)
                 left_alt_action_b = ActionX.triple_left_click;
             else if (CBlalt_action_b.SelectedIndex == 4)
-                left_alt_action_b = ActionX.center_left_click;
-            else if (CBlalt_action_b.SelectedIndex == 5)
                 left_alt_action_b = ActionX.ctrl_left_click;
-            else if (CBlalt_action_b.SelectedIndex == 6)
+            else if (CBlalt_action_b.SelectedIndex == 5)
                 left_alt_action_b = ActionX.move_mouse;
-            else if (CBlalt_action_b.SelectedIndex == 7)
+            else if (CBlalt_action_b.SelectedIndex == 6)
                 left_alt_action_b = ActionX.drag_and_drop;
+            else if (CBlalt_action_b.SelectedIndex == 7)
+                left_alt_action_b = ActionX.hold_LMB;
             else if (CBlalt_action_b.SelectedIndex == 8)
-                left_alt_action_b = ActionX.hold_left;
+                left_alt_action_b = ActionX.hold_RMB;
             else if (CBlalt_action_b.SelectedIndex == 9)
-                left_alt_action_b = ActionX.hold_right;
+                left_alt_action_b = ActionX.release_LMB;
             else if (CBlalt_action_b.SelectedIndex == 10)
-                left_alt_action_b = ActionX.release_left;
+                left_alt_action_b = ActionX.release_RMB;
             else if (CBlalt_action_b.SelectedIndex == 11)
-                left_alt_action_b = ActionX.release_right;
-            else if (CBlalt_action_b.SelectedIndex == 12)
                 left_alt_action_b = ActionX.none;
 
             if (CBralt_action_b.SelectedIndex == 0)
@@ -756,22 +742,20 @@ namespace Aspiring_Keyboard
             else if (CBralt_action_b.SelectedIndex == 3)
                 right_alt_action_b = ActionX.triple_left_click;
             else if (CBralt_action_b.SelectedIndex == 4)
-                right_alt_action_b = ActionX.center_left_click;
-            else if (CBralt_action_b.SelectedIndex == 5)
                 right_alt_action_b = ActionX.ctrl_left_click;
-            else if (CBralt_action_b.SelectedIndex == 6)
+            else if (CBralt_action_b.SelectedIndex == 5)
                 right_alt_action_b = ActionX.move_mouse;
-            else if (CBralt_action_b.SelectedIndex == 7)
+            else if (CBralt_action_b.SelectedIndex == 6)
                 right_alt_action_b = ActionX.drag_and_drop;
+            else if (CBralt_action_b.SelectedIndex == 7)
+                right_alt_action_b = ActionX.hold_LMB;
             else if (CBralt_action_b.SelectedIndex == 8)
-                right_alt_action_b = ActionX.hold_left;
+                right_alt_action_b = ActionX.hold_RMB;
             else if (CBralt_action_b.SelectedIndex == 9)
-                right_alt_action_b = ActionX.hold_right;
+                right_alt_action_b = ActionX.release_LMB;
             else if (CBralt_action_b.SelectedIndex == 10)
-                right_alt_action_b = ActionX.release_left;
+                right_alt_action_b = ActionX.release_RMB;
             else if (CBralt_action_b.SelectedIndex == 11)
-                right_alt_action_b = ActionX.release_right;
-            else if (CBralt_action_b.SelectedIndex == 12)
                 right_alt_action_b = ActionX.none;
 
             if (CBlctrl_action_a.SelectedIndex == 0)
@@ -783,22 +767,20 @@ namespace Aspiring_Keyboard
             else if (CBlctrl_action_a.SelectedIndex == 3)
                 left_ctrl_action_a = ActionX.triple_left_click;
             else if (CBlctrl_action_a.SelectedIndex == 4)
-                left_ctrl_action_a = ActionX.center_left_click;
-            else if (CBlctrl_action_a.SelectedIndex == 5)
                 left_ctrl_action_a = ActionX.ctrl_left_click;
-            else if (CBlctrl_action_a.SelectedIndex == 6)
+            else if (CBlctrl_action_a.SelectedIndex == 5)
                 left_ctrl_action_a = ActionX.move_mouse;
-            else if (CBlctrl_action_a.SelectedIndex == 7)
+            else if (CBlctrl_action_a.SelectedIndex == 6)
                 left_ctrl_action_a = ActionX.drag_and_drop;
+            else if (CBlctrl_action_a.SelectedIndex == 7)
+                left_ctrl_action_a = ActionX.hold_LMB;
             else if (CBlctrl_action_a.SelectedIndex == 8)
-                left_ctrl_action_a = ActionX.hold_left;
+                left_ctrl_action_a = ActionX.hold_RMB;
             else if (CBlctrl_action_a.SelectedIndex == 9)
-                left_ctrl_action_a = ActionX.hold_right;
+                left_ctrl_action_a = ActionX.release_LMB;
             else if (CBlctrl_action_a.SelectedIndex == 10)
-                left_ctrl_action_a = ActionX.release_left;
+                left_ctrl_action_a = ActionX.release_RMB;
             else if (CBlctrl_action_a.SelectedIndex == 11)
-                left_ctrl_action_a = ActionX.release_right;
-            else if (CBlctrl_action_a.SelectedIndex == 12)
                 left_ctrl_action_a = ActionX.none;
 
             if (CBrctrl_action_a.SelectedIndex == 0)
@@ -810,22 +792,20 @@ namespace Aspiring_Keyboard
             else if (CBrctrl_action_a.SelectedIndex == 3)
                 right_ctrl_action_a = ActionX.triple_left_click;
             else if (CBrctrl_action_a.SelectedIndex == 4)
-                right_ctrl_action_a = ActionX.center_left_click;
-            else if (CBrctrl_action_a.SelectedIndex == 5)
                 right_ctrl_action_a = ActionX.ctrl_left_click;
-            else if (CBrctrl_action_a.SelectedIndex == 6)
+            else if (CBrctrl_action_a.SelectedIndex == 5)
                 right_ctrl_action_a = ActionX.move_mouse;
-            else if (CBrctrl_action_a.SelectedIndex == 7)
+            else if (CBrctrl_action_a.SelectedIndex == 6)
                 right_ctrl_action_a = ActionX.drag_and_drop;
+            else if (CBrctrl_action_a.SelectedIndex == 7)
+                right_ctrl_action_a = ActionX.hold_LMB;
             else if (CBrctrl_action_a.SelectedIndex == 8)
-                right_ctrl_action_a = ActionX.hold_left;
+                right_ctrl_action_a = ActionX.hold_RMB;
             else if (CBrctrl_action_a.SelectedIndex == 9)
-                right_ctrl_action_a = ActionX.hold_right;
+                right_ctrl_action_a = ActionX.release_LMB;
             else if (CBrctrl_action_a.SelectedIndex == 10)
-                right_ctrl_action_a = ActionX.release_left;
+                right_ctrl_action_a = ActionX.release_RMB;
             else if (CBrctrl_action_a.SelectedIndex == 11)
-                right_ctrl_action_a = ActionX.release_right;
-            else if (CBrctrl_action_a.SelectedIndex == 12)
                 right_ctrl_action_a = ActionX.none;
 
             if (CBlctrl_action_b.SelectedIndex == 0)
@@ -837,22 +817,20 @@ namespace Aspiring_Keyboard
             else if (CBlctrl_action_b.SelectedIndex == 3)
                 left_ctrl_action_b = ActionX.triple_left_click;
             else if (CBlctrl_action_b.SelectedIndex == 4)
-                left_ctrl_action_b = ActionX.center_left_click;
-            else if (CBlctrl_action_b.SelectedIndex == 5)
                 left_ctrl_action_b = ActionX.ctrl_left_click;
-            else if (CBlctrl_action_b.SelectedIndex == 6)
+            else if (CBlctrl_action_b.SelectedIndex == 5)
                 left_ctrl_action_b = ActionX.move_mouse;
-            else if (CBlctrl_action_b.SelectedIndex == 7)
+            else if (CBlctrl_action_b.SelectedIndex == 6)
                 left_ctrl_action_b = ActionX.drag_and_drop;
+            else if (CBlctrl_action_b.SelectedIndex == 7)
+                left_ctrl_action_b = ActionX.hold_LMB;
             else if (CBlctrl_action_b.SelectedIndex == 8)
-                left_ctrl_action_b = ActionX.hold_left;
+                left_ctrl_action_b = ActionX.hold_RMB;
             else if (CBlctrl_action_b.SelectedIndex == 9)
-                left_ctrl_action_b = ActionX.hold_right;
+                left_ctrl_action_b = ActionX.release_LMB;
             else if (CBlctrl_action_b.SelectedIndex == 10)
-                left_ctrl_action_b = ActionX.release_left;
+                left_ctrl_action_b = ActionX.release_RMB;
             else if (CBlctrl_action_b.SelectedIndex == 11)
-                left_ctrl_action_b = ActionX.release_right;
-            else if (CBlctrl_action_b.SelectedIndex == 12)
                 left_ctrl_action_b = ActionX.none;
 
             if (CBrctrl_action_b.SelectedIndex == 0)
@@ -864,22 +842,20 @@ namespace Aspiring_Keyboard
             else if (CBrctrl_action_b.SelectedIndex == 3)
                 right_ctrl_action_b = ActionX.triple_left_click;
             else if (CBrctrl_action_b.SelectedIndex == 4)
-                right_ctrl_action_b = ActionX.center_left_click;
-            else if (CBrctrl_action_b.SelectedIndex == 5)
                 right_ctrl_action_b = ActionX.ctrl_left_click;
-            else if (CBrctrl_action_b.SelectedIndex == 6)
+            else if (CBrctrl_action_b.SelectedIndex == 5)
                 right_ctrl_action_b = ActionX.move_mouse;
-            else if (CBrctrl_action_b.SelectedIndex == 7)
+            else if (CBrctrl_action_b.SelectedIndex == 6)
                 right_ctrl_action_b = ActionX.drag_and_drop;
+            else if (CBrctrl_action_b.SelectedIndex == 7)
+                right_ctrl_action_b = ActionX.hold_LMB;
             else if (CBrctrl_action_b.SelectedIndex == 8)
-                right_ctrl_action_b = ActionX.hold_left;
+                right_ctrl_action_b = ActionX.hold_RMB;
             else if (CBrctrl_action_b.SelectedIndex == 9)
-                right_ctrl_action_b = ActionX.hold_right;
+                right_ctrl_action_b = ActionX.release_LMB;
             else if (CBrctrl_action_b.SelectedIndex == 10)
-                right_ctrl_action_b = ActionX.release_left;
+                right_ctrl_action_b = ActionX.release_RMB;
             else if (CBrctrl_action_b.SelectedIndex == 11)
-                right_ctrl_action_b = ActionX.release_right;
-            else if (CBrctrl_action_b.SelectedIndex == 12)
                 right_ctrl_action_b = ActionX.none;
 
             bool grid_size_changed = false;

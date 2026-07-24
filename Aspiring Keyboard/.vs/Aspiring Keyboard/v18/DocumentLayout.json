@@ -1,0 +1,105 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\mikol\\Documents\\Visual Studio 2022\\Projects\\Aspiring Keyboard\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E838B6FF-73BD-42DA-966A-B1DD6E73D48F}|Aspiring Keyboard\\Aspiring Keyboard.csproj|c:\\users\\mikol\\documents\\visual studio 2022\\projects\\aspiring keyboard\\aspiring keyboard\\windowabout.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E838B6FF-73BD-42DA-966A-B1DD6E73D48F}|Aspiring Keyboard\\Aspiring Keyboard.csproj|solutionrelative:aspiring keyboard\\windowabout.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E838B6FF-73BD-42DA-966A-B1DD6E73D48F}|Aspiring Keyboard\\Aspiring Keyboard.csproj|C:\\Users\\mikol\\Documents\\Visual Studio 2022\\Projects\\Aspiring Keyboard\\aspiring keyboard\\auxiliary methods.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E838B6FF-73BD-42DA-966A-B1DD6E73D48F}|Aspiring Keyboard\\Aspiring Keyboard.csproj|solutionrelative:aspiring keyboard\\auxiliary methods.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E838B6FF-73BD-42DA-966A-B1DD6E73D48F}|Aspiring Keyboard\\Aspiring Keyboard.csproj|C:\\Users\\mikol\\Documents\\Visual Studio 2022\\Projects\\Aspiring Keyboard\\aspiring keyboard\\mainwindow.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
+      "RelativeMoniker": "D:0:0:{E838B6FF-73BD-42DA-966A-B1DD6E73D48F}|Aspiring Keyboard\\Aspiring Keyboard.csproj|solutionrelative:aspiring keyboard\\mainwindow.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E838B6FF-73BD-42DA-966A-B1DD6E73D48F}|Aspiring Keyboard\\Aspiring Keyboard.csproj|C:\\Users\\mikol\\Documents\\Visual Studio 2022\\Projects\\Aspiring Keyboard\\aspiring keyboard\\windowchangelog.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
+      "RelativeMoniker": "D:0:0:{E838B6FF-73BD-42DA-966A-B1DD6E73D48F}|Aspiring Keyboard\\Aspiring Keyboard.csproj|solutionrelative:aspiring keyboard\\windowchangelog.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E838B6FF-73BD-42DA-966A-B1DD6E73D48F}|Aspiring Keyboard\\Aspiring Keyboard.csproj|C:\\Users\\mikol\\Documents\\Visual Studio 2022\\Projects\\Aspiring Keyboard\\aspiring keyboard\\classes_enums.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E838B6FF-73BD-42DA-966A-B1DD6E73D48F}|Aspiring Keyboard\\Aspiring Keyboard.csproj|solutionrelative:aspiring keyboard\\classes_enums.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "WindowAbout.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\mikol\\Documents\\Visual Studio 2022\\Projects\\Aspiring Keyboard\\Aspiring Keyboard\\WindowAbout.xaml.cs",
+              "RelativeDocumentMoniker": "Aspiring Keyboard\\WindowAbout.xaml.cs",
+              "ToolTip": "C:\\Users\\mikol\\Documents\\Visual Studio 2022\\Projects\\Aspiring Keyboard\\Aspiring Keyboard\\WindowAbout.xaml.cs",
+              "RelativeToolTip": "Aspiring Keyboard\\WindowAbout.xaml.cs",
+              "ViewState": "AgIAADkAAAAAAAAAAAAhwFUAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-24T13:10:48.647Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Auxiliary methods.cs",
+              "DocumentMoniker": "C:\\Users\\mikol\\Documents\\Visual Studio 2022\\Projects\\Aspiring Keyboard\\Aspiring Keyboard\\Auxiliary methods.cs",
+              "RelativeDocumentMoniker": "Aspiring Keyboard\\Auxiliary methods.cs",
+              "ToolTip": "C:\\Users\\mikol\\Documents\\Visual Studio 2022\\Projects\\Aspiring Keyboard\\Aspiring Keyboard\\Auxiliary methods.cs",
+              "RelativeToolTip": "Aspiring Keyboard\\Auxiliary methods.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-24T13:10:38.99Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "classes_enums.cs",
+              "DocumentMoniker": "C:\\Users\\mikol\\Documents\\Visual Studio 2022\\Projects\\Aspiring Keyboard\\Aspiring Keyboard\\classes_enums.cs",
+              "RelativeDocumentMoniker": "Aspiring Keyboard\\classes_enums.cs",
+              "ToolTip": "C:\\Users\\mikol\\Documents\\Visual Studio 2022\\Projects\\Aspiring Keyboard\\Aspiring Keyboard\\classes_enums.cs",
+              "RelativeToolTip": "Aspiring Keyboard\\classes_enums.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAowDAAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-22T21:28:08.31Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "WindowChangelog.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\mikol\\Documents\\Visual Studio 2022\\Projects\\Aspiring Keyboard\\Aspiring Keyboard\\WindowChangelog.xaml.cs",
+              "RelativeDocumentMoniker": "Aspiring Keyboard\\WindowChangelog.xaml.cs",
+              "ToolTip": "C:\\Users\\mikol\\Documents\\Visual Studio 2022\\Projects\\Aspiring Keyboard\\Aspiring Keyboard\\WindowChangelog.xaml.cs",
+              "RelativeToolTip": "Aspiring Keyboard\\WindowChangelog.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-13T09:51:37.716Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\mikol\\Documents\\Visual Studio 2022\\Projects\\Aspiring Keyboard\\Aspiring Keyboard\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "Aspiring Keyboard\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\mikol\\Documents\\Visual Studio 2022\\Projects\\Aspiring Keyboard\\Aspiring Keyboard\\MainWindow.xaml.cs",
+              "RelativeToolTip": "Aspiring Keyboard\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-13T09:51:37.622Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

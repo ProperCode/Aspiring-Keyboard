@@ -7,17 +7,17 @@
 Aspiring Keyboard is a Windows app which allows using a computer without a mouse.
 
 Benefits of using Aspiring Keyboard:
-- Complete many types of tasks faster than by using a mouse and keyboard in a traditional way*.
+- Useful for users who experience pain while usimg a mouse.
+- Complete some types of tasks faster than by using a mouse and keyboard in a traditional way*.
 - No need to move your hand between keyboard and mouse.
 - No need to buy mouse pads and mice.
-- Healthier activity than by using a mouse and keyboard in a traditional way (lower chance of developing RSI).
 - May help users with mobility issues which make it difficult to use a mouse.
 - Useful when you forget to take a mouse with your laptop or in case of mouse failure.
 
 *- you must be able to touch type and you should know the most important [Windows Key Combinations](https://github.com/ProperCode/Aspiring-Keyboard/blob/main/other/Useful%20Windows%20Key%20Combinations.pdf) to use Aspiring Keyboard in the best way possible.
 
 Aspiring Keyboard has mouse actions assigned to hotkeys. When you press a hotkey the mousegrid is shown.
-The mousegrid divides the screen into up to 2704 figures for any keyboard layout and up to 3364 figures for US English / US International keyboard layout.
+The mousegrid divides the screen into up to 2500 figures for any keyboard layout and up to 3364 figures for US English / US International keyboard layout.
 Typing 2 characters inside mousegrid figure moves the mouse cursor to the center of that figure
  and performs a mouse action that was chosen earlier by pressing a hotkey.
 You can move the mousegrid by pressing arrow keys. Pressing caps lock while mousegrid is visible changes moving precision.

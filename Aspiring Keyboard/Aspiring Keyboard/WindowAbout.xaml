@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Aspiring_Keyboard"
         mc:Ignorable="d"
-        Title="About" Height="350" Width="730" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="About" Height="410" Width="730" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Canvas>
         <Label x:Name="Lprogram_name" Content="Program name" Canvas.Left="10" Canvas.Top="10"
                            FontSize="16" FontWeight="Bold"/>
@@ -35,6 +35,17 @@
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" 
                                  StartPoint="0.5,0">
+                    <GradientStop Color="White"/>
+                    <GradientStop Color="#FFCDCDCD" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button Foreground="Black" BorderBrush="Black" x:Name="Bthird_party" Content="Third-Party License"
+            Canvas.Left="16" Canvas.Top="303" 
+            Width="197" Height="46" FontSize="16" Click="Bthird_party_Click" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" 
+                    StartPoint="0.5,0">
                     <GradientStop Color="White"/>
                     <GradientStop Color="#FFCDCDCD" Offset="1"/>
                 </LinearGradientBrush>
