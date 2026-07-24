@@ -7,7 +7,7 @@
 Aspiring Keyboard is a Windows app which allows using a computer without a mouse.
 
 Benefits of using Aspiring Keyboard:
-- Useful for users who experience pain while usimg a mouse.
+- May help users who experience discomfort when using a mouse.
 - Complete some types of tasks faster than by using a mouse and keyboard in a traditional way*.
 - No need to move your hand between keyboard and mouse.
 - No need to buy mouse pads and mice.
